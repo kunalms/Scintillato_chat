@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:gradient="http://schemas.android.com/apk/res-auto"
+    tools:context="com.scintillato.scintillatochat.Enter_Username">
+
+    <com.dynamitechetan.flowinggradient.FlowingGradient
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        gradient:transition_duration = "4000"
+        gradient:transition_drawable="@drawable/translate"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_enter_username_username"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:hint="Username"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:hint="Password..."
+        android:id="@+id/et_enter_username_pwd"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/et_enter_username_username"
+        android:layout_alignStart="@+id/et_enter_username_username"
+        android:layout_alignEnd="@+id/et_enter_username_username" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Confirm Password.."
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="12dp"
+        android:id="@+id/et_enter_username_repwd"
+        android:layout_below="@+id/et_enter_username_pwd"
+        android:layout_alignStart="@+id/et_enter_username_pwd"
+        android:layout_alignEnd="@+id/et_enter_username_pwd" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textStyle="bold"
+        android:id="@+id/btn_enter_username_next"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_semi_transparent"/>
+
+    <CheckBox
+        android:text="Show Password"
+        android:textColor="@color/white"
+        android:buttonTint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkbox_enter_username_show_pwd"
+        android:layout_below="@+id/et_enter_username_repwd"
+        android:layout_alignStart="@+id/et_enter_username_repwd" />
+
+</RelativeLayout>

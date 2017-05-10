@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/parent_margin_left"
+    android:padding="8dp"
+    android:layout_marginRight="@dimen/parent_margin_right">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+
+        android:textColor="#000000"
+        android:id="@+id/tv_ask_question_category_row_category"
+        android:layout_marginLeft="35dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_ask_question_category"
+        android:buttonTint="@color/cyan"
+        android:layout_alignTop="@id/tv_ask_question_category_row_category"
+        android:layout_alignParentEnd="true"/>
+
+
+</RelativeLayout>

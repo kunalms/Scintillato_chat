@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_custom_actionbar_layout">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_arrow_back"
+        android:id="@+id/iv_custom_actionbar_layout_back"
+        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="40dp"
+        android:src="@drawable/userprofile100"
+        android:layout_toRightOf="@id/iv_custom_actionbar_layout_back"
+        android:id="@+id/circleimageview_menu"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/circleimageview_menu"
+        android:id="@+id/tv_custom_actionbar_layout_title"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SubTitle"
+        android:textSize="13dp"
+        android:layout_below="@+id/tv_custom_actionbar_layout_title"
+        android:layout_alignStart="@+id/tv_custom_actionbar_layout_title"
+        android:id="@+id/tv_custom_actionbar_layout_subtitle"/>
+</RelativeLayout>

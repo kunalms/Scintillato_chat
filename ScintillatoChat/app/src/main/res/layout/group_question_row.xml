@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/iv_group_question_row_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/userprofile100" />
+    <TextView
+        android:text="Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_group_question_row_profile"
+        android:layout_marginTop="17dp"
+        android:id="@+id/tv_group_question_row_user" />
+
+    <TextView
+        android:text="Answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_group_question_row_like"
+        android:layout_toEndOf="@+id/tv_group_question_row_like"
+        android:layout_marginStart="21dp"
+        android:id="@+id/tv_group_question_row_answer" />
+
+    <TextView
+        android:text="Likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_group_question_row_like"
+        android:layout_below="@+id/tv_group_question_row_question"
+        android:layout_alignStart="@+id/tv_group_question_row_question" />
+
+    <TextView
+        android:text="Question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_group_question_row_question"
+        android:layout_below="@+id/tv_group_question_row_user"
+        android:layout_alignStart="@+id/tv_group_question_row_user" />
+
+    <TextView
+        android:text="TIME"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_group_questions_row_time"
+        android:layout_below="@+id/tv_group_question_row_like"
+        android:layout_alignStart="@+id/tv_group_question_row_like" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_group_questions_row_time"
+        android:layout_alignParentStart="true">
+
+        <ImageButton
+            android:src="@drawable/like30"
+            android:background="@drawable/top_border_adapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibtn_group_question_row_like"
+            android:layout_below="@+id/tv_group_question_row_answer"
+            android:layout_alignStart="@+id/tv_group_question_row_like"
+            android:layout_weight="1"
+            />
+
+        <ImageButton
+            android:src="@drawable/comments30"
+            android:background="@drawable/top_border_adapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibtn_group_question_row_answer"
+            android:layout_alignBaseline="@+id/ibtn_group_question_row_like"
+            android:layout_alignBottom="@+id/ibtn_group_question_row_like"
+            android:layout_toEndOf="@+id/ibtn_group_question_row_like"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:background="@drawable/top_border_adapter"
+            android:src="@drawable/tags30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ibtn_group_question_row_answer"
+            android:layout_toEndOf="@+id/ibtn_group_question_row_answer"
+            android:id="@+id/ibtn_group_question_row_category"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>

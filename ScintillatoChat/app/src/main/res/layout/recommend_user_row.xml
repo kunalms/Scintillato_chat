@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/parent_margin_left"
+    android:layout_marginRight="@dimen/parent_margin_right"
+    android:background="@color/white"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="8dp">
+
+    <Button
+        android:id="@+id/btn_recommend_user_follow"
+        android:text="FOLLOW"
+        android:textColor="#0d7bae"
+        android:layout_marginRight="10dp"
+        android:textSize="10dp"
+        android:layout_width="85dp"
+        android:background="@drawable/follow_button"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="15dp"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/iv_recommend_user_profile"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_color="@color/cyan"
+        app:civ_border_width="1dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="followers"
+        android:id="@+id/tv_recommend_user_follwers"
+        android:textColor="@color/half_black"
+        android:layout_below="@+id/tv_recommend_user_name"
+        android:layout_alignStart="@+id/tv_recommend_user_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/tv_recommend_user_name"
+        android:layout_marginLeft="@dimen/parent_margin_left"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/iv_recommend_user_profile" />
+
+
+</RelativeLayout>

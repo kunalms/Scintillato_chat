@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.scintillato.scintillatochat">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/launcher"
+        android:label="@string/app_name"
+        android:launchMode="singleTop"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Launch_Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Verify_Phone"
+            android:label="@string/title_activity_verify__phone" />
+        <activity
+            android:name=".Enter_Profile_Info"
+            android:label="@string/title_activity_enter__profile__info" />
+        <activity
+            android:name=".Start_Page"
+            android:label="@string/title_activity_start__page"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".Group_create_contacts"
+            android:label="@string/title_activity_group_create_contacts" />
+        <activity
+            android:name=".Choose_Contacts"
+            android:label="@string/title_activity_choose__contacts" />
+        <activity
+            android:name=".Group_Details"
+            android:label="@string/title_activity_group__details" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".Message_Chat_Single" />
+        <activity android:name=".Choose_Contacts_Single" />
+        <activity android:name=".Enter_Username" />
+        <activity android:name=".Category_check" />
+        <activity android:name=".Follow_Notification" />
+        <activity android:name=".Ask_Question_Category" />
+        <activity
+            android:name=".Login_Page"
+            android:label="@string/title_activity_login__page" />
+        <activity android:name=".Answer_Feed" />
+        <activity android:name=".Answer_Community_Question" />
+        <activity android:name=".Message_Chat_Public_Group_Main" />
+        <activity android:name=".Ask_Question_Group" />
+        <activity android:name=".Group_Answer" />
+        <activity android:name=".Answer_Group_Feed" />
+        <activity android:name=".SyncActivity" />
+        <activity android:name=".New_Unknown_User_Send" />
+        <activity android:name=".Group_Details_Public" />
+        <activity android:name=".Trending_Groups" />
+        <activity android:name=".Self_Profile" />
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".Self_Questions" />
+        <activity android:name=".Self_Answer" />
+        <activity
+            android:name=".Comment_Answer_Community"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".Edit_Profile" />
+        <activity android:name=".Self_Profile_Group" />
+        <activity android:name=".Profile_Other" />
+        <activity android:name=".Message_Chat_Single_Profile" />
+        <activity android:name=".Comment_Feed_Community" />
+        <activity android:name=".Profile_Chat_Single" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity android:name=".Feed_Recycler" />
+        <activity android:name=".Chat_Page" />
+        <activity
+            android:name=".Chat_Message_Single"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Profile_Chat_Group" />
+        <activity android:name=".Add_Member"></activity>
+    </application>
+
+</manifest>

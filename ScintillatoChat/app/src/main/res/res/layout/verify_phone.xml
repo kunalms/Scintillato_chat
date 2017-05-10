@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tv_verify_phone_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Chat will send and SMS message and verify your phone number. Enter your phone number:-" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_verify_phone_india"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" android:id="@+id/relativeLayout1">
+        <EditText android:id="@+id/et_verify_phone_numberverify_phone_c_code"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text="+91"/>
+
+        <EditText
+            android:id="@+id/et_verify_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/et_verify_phone_numberverify_phone_c_code"
+            android:ems="10"
+            android:hint="Phone Number.."
+            android:inputType="number" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_verify_phone_india"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_verify_phone_instruction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="INDIA"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btn_verify_phone_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"
+        android:text="NEXT" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tv_verify_phone_india"
+        android:layout_below="@+id/btn_verify_phone_next"
+        android:layout_marginTop="79dp"
+        android:text="SKIP" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_verify_phone_login"
+        android:layout_below="@+id/textView1"
+        android:layout_alignEnd="@+id/textView1" />
+
+</RelativeLayout>

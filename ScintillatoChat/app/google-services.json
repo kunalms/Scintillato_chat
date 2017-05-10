@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "653498386914",
+    "firebase_url": "https://chat-153021.firebaseio.com",
+    "project_id": "chat-153021",
+    "storage_bucket": "chat-153021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653498386914:android:472f3be2dce8dee6",
+        "android_client_info": {
+          "package_name": "com.scintillato.scintillatochat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653498386914-oiqs9jkq51a0484n1nnkmbqj8l1mbl4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scintillato.scintillatochat",
+            "certificate_hash": "2E3D593D80A7B8FCB6DD7E8E55B60F650098A7A8"
+          }
+        },
+        {
+          "client_id": "653498386914-a9g4rielmc99crkt1ticikut8jigtesn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoqrtqPMBHI9sjbIjNwLto5PpW5n-4guM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653498386914-a9g4rielmc99crkt1ticikut8jigtesn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

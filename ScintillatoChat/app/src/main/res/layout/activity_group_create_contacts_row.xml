@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/adapter_background"
+     >
+
+    <TextView
+        android:id="@+id/tv_group_create_contacts_row_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:layout_alignTop="@+id/iv_group_create_contacts_row_dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/iv_group_create_contacts_row_dp"
+        android:text="NAME" />
+
+    <TextView
+        android:id="@+id/tv_group_create_contacts_row_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:layout_alignLeft="@+id/tv_group_create_contacts_row_name"
+        android:layout_below="@+id/tv_group_create_contacts_row_name"
+        android:layout_marginTop="3dp"
+        android:text="NUMBER" />
+
+    <Button
+        android:id="@+id/tv_group_create_contacts_row_invite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_group_create_contacts_row_dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="12dp"
+        android:text="INVITE"
+        android:textStyle="bold"
+        android:minHeight="30dp"
+        android:textColor="@color/cyan"
+        android:background="@drawable/follow_button"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_group_create_contacts_row_dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/userprofile100"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="19dp" />
+
+</RelativeLayout>

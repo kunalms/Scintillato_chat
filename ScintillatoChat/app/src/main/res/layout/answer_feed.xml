@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_answer__feed"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="@dimen/parent_margin_right"
+    android:layout_marginLeft="@dimen/parent_margin_left"
+    android:layout_marginTop="@dimen/parent_margin_left"
+    >
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar_answer_feed"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_question"
+        android:layout_alignParentTop="true"
+        android:padding="8dp"
+        android:background="@drawable/adapter_background"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/userprofile100"
+                android:id="@+id/iv_answer_feed_profile" />
+
+            <TextView
+                android:text="User"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_feed_user"
+                android:layout_marginLeft="55dp"
+                android:layout_weight="1" />
+
+            <TextView
+                    android:text="Time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_feed_time"
+                android:layout_weight="1"
+                android:layout_marginLeft="55dp"
+                android:layout_below="@+id/tv_answer_feed_user"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:text="Question"
+            android:layout_marginLeft="@dimen/parent_margin_left"
+            android:layout_marginRight="@dimen/parent_margin_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_feed_question"
+            android:scrollbars="vertical"
+            android:maxLines="7"/>
+
+        <TextView
+            android:text="Category"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/parent_margin_left"
+            android:layout_marginRight="@dimen/parent_margin_right"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_feed_category" />
+
+        <TextView
+            android:text="Likes : Answers :"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/parent_margin_left"
+            android:layout_marginRight="@dimen/parent_margin_right"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_feed_likeanswer" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top_border_adapter"
+            android:padding="8dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/like30"
+                android:id="@+id/btn_answer_feed_like"
+                android:layout_weight="1"
+                android:background="#FFFFFF"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_feed_answer"
+                android:layout_weight="1"
+                android:src="@drawable/comments30"
+                android:background="#FFFFFF"/>
+
+            <ImageButton
+                android:src="@drawable/tags30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_feed_tag"
+                android:layout_weight="1"
+                android:background="#FFFFFF"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv_answer_feed_answers"
+        android:dividerHeight="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:divider="@null"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_below="@+id/ll_question"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

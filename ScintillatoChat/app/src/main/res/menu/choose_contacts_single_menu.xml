@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.scintillato.chat.Choose_Contacts_Single" >
+
+    <item
+        android:id="@+id/btn_choose_contacts_unknown"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/comments30"
+        />
+</menu>
+

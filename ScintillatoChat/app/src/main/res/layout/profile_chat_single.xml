@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_chat_single"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.scintillato.scintillatochat.Profile_Chat_Single">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        app:srcCompat="@drawable/userprofile100"
+        android:layout_alignParentTop="true"
+        android:id="@+id/iv_profile_chat_single_pic" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_profile_chat_single_pic"
+        android:text="NAME"
+        android:id="@+id/tv_profile_chat_single_name"
+        android:textColor="@color/black"
+        android:layout_margin="16dp"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_profile_chat_single_number"
+        android:background="@color/white"
+        android:layout_below="@+id/tv_profile_chat_single_name"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_profile_chat_single_label_number"
+
+            android:text="Phone number"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_profile_chat_single_number"
+
+            android:layout_below="@+id/tv_profile_chat_single_label_number"
+            android:text="+918511106612"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/messages36"
+            android:id="@+id/ib_profile_chat_single_message"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_profile_chat_single_number"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:id="@+id/rl_profile_chat_groups"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_profile_chat_single_lable_groups"
+            android:text="Common Groups" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_profile_chat_single_lable_groups"
+            android:id="@+id/lv_profile_chat_single_groups">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_profile_chat_single_group_count"
+            android:text="Common Groups"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+</RelativeLayout>

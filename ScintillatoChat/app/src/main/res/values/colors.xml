@@ -1,0 +1,78 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="colorPrimary">#d0a0fe</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ff0057</color>
+    <color name="icons">#212121</color>
+    <color name="blue">#b16df1</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="black_semi_transparent">#be000000</color>
+    <color name="background">#e5e5e5</color>
+    <color name="half_black">#808080</color>
+    <color name="white_btn">#fafafa</color>
+    <color name="white_pressed">#f1f1f1</color>
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#805677fc</color>
+    <color name="blue_semi_transparent_pressed">#9385e1ff</color>
+    <color name="aangi_green">#29ac1b</color>
+    <color name="royal_blue">#05095d</color>
+    <color name="listback">#6e32b3ea</color>
+    <color name="royal_blue_pressed">#21279c</color>
+    <color name="cyan">#0275cc</color> //3b5998 ff3700
+    <color name="cyan_pressed">#0693fd</color>
+    <color name="light_royal_blue">#6f7eea</color>
+    <color name="light_gray">#ada38484</color>
+    <color name="cyan_transparent">#579bcf</color>
+    <color name="border_light">#d4d1d1</color>
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+    <color name="bg_screen5">#f64c73</color>
+    <color name="bg_screen6">#20d2bb</color>
+    <color name="bg_screen7">#3395ff</color>
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+    <color name="dot_dark_screen5">#d1395c</color>
+    <color name="dot_dark_screen6">#14a895</color>
+    <color name="dot_dark_screen7">#2278d4</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+    <color name="dot_light_screen5">#f98da5</color>
+    <color name="dot_light_screen6">#8cf9eb</color>
+    <color name="dot_light_screen7">#93c6fd</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+        <item>@color/dot_light_screen6</item>
+        <item>@color/dot_light_screen7</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen5</item>
+        <item>@color/dot_dark_screen6</item>
+        <item>@color/dot_dark_screen7</item>
+    </array>
+<color name="light_font">#818181</color>
+    <color name="button_transparent">#5affffff</color>
+    <color name="button_transparent_pressed">#5a968c8c</color>
+</resources>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_answer__feed"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.scintillato.scintillatochat.Answer_Group_Feed">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/ll_question"
+        android:layout_marginBottom="8dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/imageView" />
+
+            <TextView
+                android:text="User"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_group_feed_user"
+                android:layout_marginLeft="55dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_group_feed_time"
+                android:layout_weight="1"
+                android:layout_marginLeft="55dp"
+                android:layout_below="@+id/tv_answer_group_feed_user"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:text="Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_group_feed_question" />
+
+        <TextView
+            android:text="Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_group_feed_category" />
+
+        <TextView
+            android:text="Likes :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_group_feed_like" />
+
+        <TextView
+            android:text="Answers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer_group_feed_answer" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/like30"
+                android:id="@+id/btn_answer_group_feed_like"
+                android:layout_weight="1"
+                android:background="#FFFFFF"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_group_feed_answer"
+                android:layout_weight="1"
+                android:src="@drawable/comments30"
+                android:background="#FFFFFF"/>
+
+            <ImageButton
+                android:src="@drawable/tags30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_answer_group_feed_tag"
+                android:layout_weight="1"
+                android:background="#FFFFFF"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar_answer_group_feed"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/lv_answer_group_feed_answers"
+        android:layout_above="@id/progressBar_answer_group_feed"
+        android:layout_below="@+id/ll_question" />
+
+
+</RelativeLayout>

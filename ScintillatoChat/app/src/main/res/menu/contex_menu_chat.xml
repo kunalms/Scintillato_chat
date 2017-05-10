@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btn_chat_copy"
+        android:orderInCategory="100"
+        android:title="Copy"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_content_copy"
+        />
+    <item
+        android:orderInCategory="200"
+        android:id="@+id/btn_chat_delete"
+        android:title="Delete"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_delete"
+        />
+    <item
+        android:orderInCategory="300"
+        android:id="@+id/btn_chat_reply"
+        android:title="Reply"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_content_copy"
+        />
+
+</menu>

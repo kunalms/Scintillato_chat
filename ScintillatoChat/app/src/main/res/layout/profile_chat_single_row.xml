@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/iv_profile_chat_single_row_profile"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_color="@color/cyan"
+        app:civ_border_width="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Group Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_profile_chat_single_row_profile"
+        android:layout_toRightOf="@+id/iv_profile_chat_single_row_profile"
+        android:layout_toEndOf="@+id/iv_profile_chat_single_row_profile"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:id="@+id/tv_profile_chat_single_row_name" />
+
+    <TextView
+        android:text="Members"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_profile_chat_single_row_name"
+        android:layout_alignRight="@+id/tv_profile_chat_single_row_name"
+        android:layout_alignEnd="@+id/tv_profile_chat_single_row_name"
+        android:id="@+id/tv_profile_chat_single_row_member" />
+
+
+</RelativeLayout>

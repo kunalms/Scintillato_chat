@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.scintillato.scintillatochat.Login_Page">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:id="@+id/et_login_page_number" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Password"
+        android:layout_below="@+id/et_login_page_number"
+        android:layout_alignEnd="@+id/et_login_page_number"
+        android:layout_marginTop="14dp"
+        android:id="@+id/et_login_page_pwd" />
+
+    <Button
+        android:text="SIGN IN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_login_page_pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:id="@+id/btn_login_page_signin"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/button_background"/>
+</RelativeLayout>   

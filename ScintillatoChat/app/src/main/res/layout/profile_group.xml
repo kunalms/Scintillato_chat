@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.scintillato.scintillatochat.Profile_Chat_Group">
+
+
+    <ImageView
+        android:id="@+id/iv_profile_group_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        app:srcCompat="@drawable/groupprofile100" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_profile_group_image"
+        android:layout_alignParentLeft="true"
+        android:background="@color/white"
+        android:id="@+id/rl_profile_group_1"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_profile_group_participant_tag"
+            android:text="Participants" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="250"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rv_profile_group_participant"
+            android:layout_below="@+id/tv_profile_group_participant_tag">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_profile_group_1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_profile_group_exit"
+            android:text="EXIT GROUP"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</RelativeLayout>

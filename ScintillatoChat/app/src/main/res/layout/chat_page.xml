@@ -1,0 +1,82 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+
+    android:fitsSystemWindows="true"
+    xmlns:gradient="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <Button
+            android:id="@+id/btn_chat_page_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:layout_alignParentTop="true"
+            android:text="Logout" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_chat_page_feed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btn_chat_page_logout"
+            android:layout_centerHorizontal="true"
+            android:divider="@null">
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/multiple_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        fab:fab_addButtonColorNormal="@color/cyan"
+        fab:fab_addButtonColorPressed="@color/cyan_pressed"
+        fab:fab_addButtonPlusIconColor="@color/white"
+        fab:fab_addButtonSize="normal"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        >
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white_btn"
+            fab:fab_title="Create a private group"
+            fab:fab_colorPressed="@color/white_pressed"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white_btn"
+            fab:fab_title="Join a public group"
+            fab:fab_colorPressed="@color/white_pressed"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/action_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white_btn"
+            fab:fab_title="One to One Discussion"
+            fab:fab_colorPressed="@color/white_pressed"/>
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

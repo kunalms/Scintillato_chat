@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_answer_row"
+    android:layout_marginTop="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:padding="8dp"
+    android:background="@drawable/adapter_background">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/adapter_background"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_answer_group_feed_row_1"
+            android:background="@drawable/top_border_adapter"
+            >
+
+            <ImageButton
+                android:text="Like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_answer_group_feed_row_like"
+                android:layout_weight="1"
+                android:src="@drawable/like30"
+                android:background="#FFFFFF"/>
+
+            <ImageButton
+                android:text="Comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_answer_group_feed_row_comment"
+                android:layout_weight="1"
+                android:src="@drawable/comments30"
+                android:background="#FFFFFF"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl_answer_group_feed_row_1"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:text="User"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_answer_group_feed_row_user"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/iv_answer_group_feed_profile" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_answer_group_feed_profile"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_launcher"
+                    app:civ_border_color="@color/cyan"
+                    app:civ_border_width="2dp"/>
+
+            <TextView
+                android:text="Answer"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/iv_answer_group_feed_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_group_feed_row_answer" />
+
+
+            <TextView
+                android:textColor="@color/black"
+                android:text="Likes 0 "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_group_feed_row_like"
+                android:layout_below="@+id/tv_answer_group_feed_row_answer" />
+            <TextView
+                android:textColor="@color/black"
+                android:text="Comments 0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tv_answer_group_feed_row_like"
+                android:id="@+id/tv_answer_group_feed_row_comments"
+                android:layout_below="@+id/tv_answer_group_feed_row_answer" />
+
+            <TextView
+                android:text="Time"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_answer_group_feed_row_time"
+                android:layout_below="@+id/tv_answer_group_feed_row_user"
+                android:layout_toEndOf="@+id/iv_answer_group_feed_profile" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

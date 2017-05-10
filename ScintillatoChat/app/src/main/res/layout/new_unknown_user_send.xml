@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_unknown_user_send"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.scintillato.scintillatochat.New_Unknown_User_Send">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginTop="38dp"
+        android:hint="Enter Number..."
+        android:id="@+id/et_new_unknown_user_send_number"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Go To Chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/btn_new_unknown_user_send_go"
+        android:layout_below="@+id/et_new_unknown_user_send_number"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="-"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_new_unknown_user_send_go"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:id="@+id/tv_new_unknown_user_send_status" />
+</RelativeLayout>

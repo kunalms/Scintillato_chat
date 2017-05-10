@@ -1,0 +1,211 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/layoutTop"
+        android:background="@color/cyan_pressed"
+        android:layout_width="match_parent"
+        android:layout_height="140dp" >
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/layoutTop"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+         >
+
+        <TextView
+            android:text="Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_user_profile_name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:capitalize="words"
+            android:layout_marginTop="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_marginStart="19dp" />
+
+        <TextView
+            android:text="/@Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username_profile_self"
+            android:textSize="20dp"
+            android:textColor="@color/cyan"
+            android:capitalize="words"
+            android:layout_below="@+id/tv_user_profile_name"
+            android:layout_alignStart="@+id/tv_user_profile_name" />
+
+
+
+        <Button
+            android:text="Edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_user_self_edit"
+            android:layout_below="@+id/tv_username_profile_self"
+            android:layout_alignStart="@+id/tv_username_profile_self"
+
+            android:textColor="@color/black"
+            android:minHeight="30dp"
+            android:minWidth="60dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:id="@+id/linearLayout2_profile_user"
+            android:layout_below="@+id/tv_self_profile_bio"
+            android:layout_centerHorizontal="true">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutTop"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:text="30"
+                    android:layout_weight="1.09"
+                    android:id="@+id/tv_profile_self_following_number"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:text="30"
+                    android:layout_weight="1.02"
+                    android:id="@+id/tv_profile_self_follower_number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:id="@+id/tv_profile_self_like_number"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutTop"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:text="following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_profile_self_following"
+                    android:layout_weight="0.73" />
+
+                <TextView
+                    android:text="followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_profile_self_follower"
+                    android:layout_weight="0.69" />
+
+                <TextView
+                    android:text="likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_profile_self_like"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/linearLayout2_profile_user"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btn_self_profile_answer"
+                android:text="ANSWERS"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="QUESTIONS"
+                android:id="@+id/btn_self_profile_question"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GROUPS"
+                android:id="@+id/btn_self_profile_group"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="RESPECT POINTS"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:layout_marginRight="15dp"
+            android:layout_alignBaseline="@+id/tv_user_profile_name"
+            android:layout_alignBottom="@+id/tv_user_profile_name"
+            android:layout_alignEnd="@+id/linearLayout2_profile_user" />
+
+        <TextView
+            android:text="0"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_self_profile_respect_points"
+            android:layout_below="@+id/textView"
+            android:layout_alignStart="@+id/textView" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BIO"
+            android:textColor="@color/black"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:id="@+id/tv_self_profile_bio"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/tv_username_profile_self"
+            />
+
+
+    </RelativeLayout>
+    </ScrollView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleimageview_self_profile_pic"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher"
+        app:civ_fill_color="@color/cyan"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp" />
+
+
+</RelativeLayout>

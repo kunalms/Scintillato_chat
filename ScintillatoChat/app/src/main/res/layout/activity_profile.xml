@@ -1,0 +1,205 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/layoutTop"
+        android:background="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="140dp" >
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/layoutTop" >
+
+        <Button
+            android:text="Follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:background="@drawable/follow_button"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/cyan"
+            android:minHeight="35dp"
+            android:id="@+id/btn_profile_follow"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="19dp" />
+
+        <TextView
+            android:text="Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:id="@+id/tv_user_profile"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:capitalize="words"
+            android:layout_alignTop="@+id/btn_profile_follow"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="\@Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username_profile"
+            android:textSize="20dp"
+            android:textColor="@color/cyan"
+            android:capitalize="words"
+            android:layout_below="@+id/tv_user_profile"
+            android:layout_alignStart="@+id/tv_user_profile" />
+
+        <TextView
+            android:text="BIO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:id="@+id/tv_profile_bio" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:layout_below="@+id/tv_profile_bio"
+            android:id="@+id/linearLayout2_profile">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutTop"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:text="0"
+                    android:layout_weight="1.09"
+                    android:id="@+id/tv_profile_following_number"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:text="0"
+                    android:layout_weight="1.02"
+                    android:id="@+id/tv_profile_follower_number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:id="@+id/tv_profile_like_number"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutTop"
+                android:layout_centerHorizontal="true"
+                >
+
+                <TextView
+                    android:text="following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_profile_following"
+                    android:layout_weight="0.73" />
+
+                <TextView
+                    android:text="followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_profile_follower"
+                    android:layout_weight="0.69" />
+
+                <TextView
+                    android:text="likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_profile_like"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/linearLayout2_profile"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="120dp"
+                android:layout_weight="1"
+                android:id="@+id/btn_self_profile_answer"
+                android:text="ANSWERS"
+                android:background="@drawable/button_background"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="GROUPS"
+                android:textColor="@color/white"
+                android:background="@drawable/button_background"
+                android:id="@+id/btn_self_profile_group"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignBaseline="@+id/btn_self_profile_question"
+                android:layout_alignBottom="@+id/btn_self_profile_question"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp" />
+
+            <Button
+                android:layout_width="120dp"
+                android:text="QUESTIONS"
+                android:textColor="@color/white"
+                android:id="@+id/btn_self_profile_question"
+                android:background="@drawable/button_background"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignBaseline="@+id/btn_self_profile_answer"
+                android:layout_alignBottom="@+id/btn_self_profile_answer"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleimageview_activity_profile_pic"
+        app:civ_fill_color="@color/cyan"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/userprofile100"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="79dp" />
+
+
+</RelativeLayout>

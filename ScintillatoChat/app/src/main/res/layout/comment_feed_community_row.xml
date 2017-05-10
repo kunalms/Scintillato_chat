@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/adapter_background"
+    android:layout_marginLeft="@dimen/parent_margin_left"
+    android:layout_marginRight="@dimen/parent_margin_right"
+    android:padding="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/userprofile100"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/iv_comment_feed_community_row_pic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Name"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_comment_feed_community_row_name"
+        android:layout_alignTop="@+id/iv_comment_feed_community_row_pic"
+        android:layout_toEndOf="@+id/iv_comment_feed_community_row_pic"
+        android:layout_marginLeft="18dp" />
+
+    <TextView
+        android:text="TIME"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_comment_feed_community_row_time"
+        android:layout_below="@+id/tv_comment_feed_community_row_name"
+        android:layout_alignStart="@+id/tv_comment_feed_community_row_name" />
+
+    <TextView
+        android:text="Comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/tv_comment_feed_community_row_comment"
+        android:layout_below="@+id/iv_comment_feed_community_row_pic"
+        android:layout_alignLeft="@+id/iv_comment_feed_community_row_pic"
+        android:layout_alignStart="@+id/iv_comment_feed_community_row_pic" />
+</RelativeLayout>
