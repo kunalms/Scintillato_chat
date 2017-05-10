@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by VIVEK on 13-03-2017.
  */
 public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Feed_Adapter_Recycler.Answer_Holder> {
-
+//lj
 
     private List<Answer_List> answer_list=new ArrayList<>();
 
@@ -250,7 +250,7 @@ public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Fe
             }
         });
 
-    }
+    }//
 
     @Override
     public int getItemCount() {
