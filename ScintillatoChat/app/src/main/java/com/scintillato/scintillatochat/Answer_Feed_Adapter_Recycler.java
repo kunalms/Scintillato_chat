@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by VIVEK on 13-03-2017.
  */
 public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Feed_Adapter_Recycler.Answer_Holder> {
-//lj
+//ljj
 
     private List<Answer_List> answer_list=new ArrayList<>();
 
