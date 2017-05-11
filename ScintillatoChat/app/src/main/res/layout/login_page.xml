@@ -15,6 +15,18 @@
         gradient:transition_drawable="@drawable/translate"
         />
 
+    <EditText
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="+91"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:textColor="@color/white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp"
+     />
+
     <Button
         android:text="Dont have an account ? sign up"
         android:layout_width="match_parent"
@@ -22,10 +34,6 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/btn_login_page_signup"
         android:textColor="@color/black"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
         android:background="@drawable/button_semi_transparent"/>
 
 
@@ -40,20 +48,7 @@
         android:layout_above="@+id/btn_login_page_signup"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="45dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="+91"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:textColor="@color/white"
-        android:layout_marginBottom="97dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="35dp"
-        android:layout_above="@+id/btn_login_page_signin"
-        android:layout_alignLeft="@+id/btn_login_page_signup"
-        android:layout_alignStart="@+id/btn_login_page_signup" />
+
 
     <EditText
         android:layout_width="wrap_content"

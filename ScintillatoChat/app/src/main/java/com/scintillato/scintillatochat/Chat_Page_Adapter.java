@@ -97,12 +97,12 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
             }
             else if(chat_list.getStatus().equals("1"))
             {
-                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_done_black18));
+                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.done_black_18x18));
 
             }
             else if(chat_list.getStatus().equals("2"))
             {
-                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_done_all_black18));
+                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.done_all_black_18x18));
 
             }
             else //if(chat_list.getStatus().equals("3"))

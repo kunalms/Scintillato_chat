@@ -10,6 +10,6 @@
     <item
         android:id="@+id/chat_single_menu_search"
         android:title="Search"
-        android:icon="@drawable/search_white_27x27"
+        android:icon="@drawable/search_white27x27"
         android:showAsAction="never"></item>
 </menu>
