@@ -22,7 +22,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -89,11 +91,17 @@ public class Login_Page extends AppCompatActivity {
         flag_token=sharedpreferences.getInt("flag_token", -1);
         token=sharedpreferences.getString("token","");
 
+
         ctx=this;
         user_number = (EditText) findViewById(R.id.et_login_page_number);
+        user_number.setNextFocusDownId(R.id.et_login_page_pwd);
         password = (EditText) findViewById(R.id.et_login_page_pwd);
+        password.setNextFocusDownId(R.id.btn_login_page_signin);
         signin = (Button) findViewById(R.id.btn_login_page_signin);
         signup=(Button)findViewById(R.id.btn_login_page_signup);
+        signin.setBackgroundResource(R.drawable.textview_back);
+        signin.setTextColor(getApplication().getResources().getColor(R.color.white));
+        signin.setEnabled(false);
         signup.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -103,6 +111,7 @@ public class Login_Page extends AppCompatActivity {
             }
         });
         show_pwd();
+        button_changer();
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -326,6 +335,33 @@ public class Login_Page extends AppCompatActivity {
                     } else {
                         password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     }
+                }
+            });
+        }
+        void button_changer(){
+            password.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (s.length()>0){
+                        signin.setEnabled(true);
+                        signin.setTextColor(getApplication().getResources().getColor(R.color.black));
+                        signin.setBackgroundResource(R.drawable.button_semi_transparent);
+                    }
+                    else{
+                        signin.setEnabled(false);
+                        signin.setTextColor(getApplication().getResources().getColor(R.color.white));
+                        signin.setBackgroundResource(R.drawable.textview_back);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
                 }
             });
         }

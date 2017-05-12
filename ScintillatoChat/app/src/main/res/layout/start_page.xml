@@ -6,20 +6,18 @@
     <RelativeLayout 
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent">
-
-        <TabWidget android:id="@android:id/tabs"
+        <FrameLayout android:id="@android:id/tabcontent"
+             android:layout_width="fill_parent" 
+             android:layout_height="fill_parent"
+             android:layout_alignParentTop="true" 
+             android:layout_above="@android:id/tabs"
+            />
+        
+    <TabWidget android:id="@android:id/tabs"
              android:layout_width="fill_parent" 
              android:layout_height="wrap_content"
              android:layout_alignParentBottom="true"
-        android:background="@color/cyan"/>
-
-        <FrameLayout android:id="@android:id/tabcontent"
-             android:layout_width="fill_parent"
-             android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-        //#FF29AC1B #FF05095D
+        android:background="@color/cyan"/> //#FF29AC1B #FF05095D
 
     </RelativeLayout>
 </TabHost>
