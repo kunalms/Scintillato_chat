@@ -60,7 +60,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_done_all_black18"
+                android:src="@drawable/done_all_black_18x18"
                 android:id="@+id/img_message_chat_status"
                 android:layout_gravity="bottom"/>
 

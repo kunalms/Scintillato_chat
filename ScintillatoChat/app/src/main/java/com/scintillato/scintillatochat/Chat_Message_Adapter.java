@@ -123,7 +123,7 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             message_chat_holder.message.setTextColor(Color.parseColor("#FFFFFF"));
             message_chat_holder.time.setTextColor(Color.parseColor("#FFFFFF"));
             if(message_chat.getStatus().equals("0"))
-                message_chat_holder.status.setImageResource(R.drawable.ic_done_black18);
+                message_chat_holder.status.setImageResource(R.drawable.done_black_18x18);
             else if(message_chat.getStatus().equals("1"))
             {
                 message_chat_holder.status.setImageResource(R.drawable.ic_done_white18);

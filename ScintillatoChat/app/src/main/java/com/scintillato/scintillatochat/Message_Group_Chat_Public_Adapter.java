@@ -106,7 +106,7 @@ public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Mess
                 if (message_chat.getStatus().equals("0")) {
                     message_chat_holder.status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_done_white18));
                 } else if (message_chat.getStatus().equals("1")) {
-                    message_chat_holder.status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_done_black18));
+                    message_chat_holder.status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.done_black_18x18));
                 }
                 message_chat_holder.box.setBackgroundResource(R.drawable.cyanbubble);
                 params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);

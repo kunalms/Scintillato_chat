@@ -5,7 +5,7 @@
     <item
         android:id="@+id/profile_chat_group_add_members"
         android:title="Add Members"
-        android:icon="@drawable/ic_add_circle_black_24dp"
+        android:icon="@drawable/ic_add_circle"
         app:showAsAction="always"/>
 
 

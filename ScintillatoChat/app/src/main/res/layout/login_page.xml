@@ -13,74 +13,64 @@
         android:layout_height="match_parent"
         gradient:transition_duration = "4000"
         gradient:transition_drawable="@drawable/translate"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         />
 
-    <Button
-        android:text="Dont have an account ? sign up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/btn_login_page_signup"
-        android:textColor="@color/black"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_semi_transparent"/>
-
-
-    <Button
-        android:text="SIGN IN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_login_page_signin"
-        android:textColor="@color/black"
-        android:background="@drawable/button_semi_transparent"
-        android:layout_marginBottom="20dp"
-        android:layout_above="@+id/btn_login_page_signup"
-        android:layout_centerHorizontal="true" />
-
     <EditText
-        android:layout_width="45dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="+91"
+        android:gravity="center_horizontal"
+        android:ellipsize="start"
         android:ems="10"
         android:id="@+id/editText"
+        android:background="@drawable/textview_back"
         android:textColor="@color/white"
-        android:layout_marginBottom="97dp"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="35dp"
-        android:layout_above="@+id/btn_login_page_signin"
-        android:layout_alignLeft="@+id/btn_login_page_signup"
-        android:layout_alignStart="@+id/btn_login_page_signup" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
+        android:enabled="false"
+     />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:hint="Password"
-        android:id="@+id/et_login_page_pwd"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_below="@+id/et_login_page_number"
-        android:layout_toRightOf="@+id/editText"
-        android:layout_toEndOf="@+id/editText" />
-
-    <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:textColorHint="@color/white"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
+        android:gravity="center_horizontal"
+        android:background="@drawable/textview_back"
         android:hint="Phone Number"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
         android:textColor="@color/white"
         android:id="@+id/et_login_page_number"
         android:layout_alignBaseline="@+id/editText"
         android:layout_alignBottom="@+id/editText"
         android:layout_toRightOf="@+id/editText"
-        android:layout_toEndOf="@+id/editText" />
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:background="@drawable/textview_back"
+        android:ems="10"
+        android:hint="Password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_login_page_pwd"
+        android:gravity="center_horizontal"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_below="@+id/et_login_page_number"
+        android:layout_alignLeft="@+id/et_login_page_number"
+        android:layout_alignStart="@+id/editText"
+        android:layout_alignEnd="@+id/et_login_page_number"
+        android:layout_alignRight="@+id/et_login_page_number"
+        />
+
+
 
     <CheckBox
         android:text="show password"
@@ -89,8 +79,34 @@
         android:textColor="@color/white"
         android:buttonTint="@color/white"
         android:id="@+id/cb_login_page"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/et_login_page_pwd"
         android:layout_alignLeft="@+id/et_login_page_pwd"
-        android:layout_alignStart="@+id/et_login_page_pwd" />
+        android:layout_alignStart="@+id/et_login_page_pwd"
+        android:layout_alignRight="@+id/et_login_page_pwd"
+        android:layout_alignEnd="@+id/et_login_page_pwd" />
 
+    <Button
+        android:text="SIGN IN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_login_page_signin"
+        android:textColor="@color/black"
+        android:background="@drawable/button_semi_transparent"
+        android:layout_below="@+id/cb_login_page"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/cb_login_page"
+        android:layout_alignStart="@+id/cb_login_page"
+        android:layout_alignRight="@+id/cb_login_page"
+        android:layout_alignEnd="@+id/cb_login_page" />
+
+    <Button
+        android:text="Dont have an account ? sign up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_login_page_signup"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_semi_transparent"/>
 </RelativeLayout>
