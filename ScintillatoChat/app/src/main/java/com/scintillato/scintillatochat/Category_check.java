@@ -299,6 +299,7 @@ public class Category_check extends Activity {
                     loading.dismiss();
                     Intent i=new Intent(getApplicationContext(),SyncActivity.class);
                     startActivity(i);
+                    finish();
                 }
                 else
                 {
