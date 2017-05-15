@@ -340,6 +340,31 @@ public class Login_Page extends AppCompatActivity {
             });
         }
         void button_changer(){
+            user_number.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(s.length()==10 && password.getText().length()>0){
+                        signin.setEnabled(true);
+                        signin.setTextColor(getApplication().getResources().getColor(R.color.black));
+                        signin.setBackgroundResource(R.drawable.button_semi_transparent);
+                    }
+                    else{
+                        signin.setEnabled(false);
+                        signin.setTextColor(getApplication().getResources().getColor(R.color.white));
+                        signin.setBackgroundResource(R.drawable.textview_back);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
             password.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -348,10 +373,10 @@ public class Login_Page extends AppCompatActivity {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (s.length()>0){
-                        signin.setEnabled(true);
-                        signin.setTextColor(getApplication().getResources().getColor(R.color.black));
-                        signin.setBackgroundResource(R.drawable.button_semi_transparent);
+                    if (s.length()>0 && user_number.getText().length()==10){
+                            signin.setEnabled(true);
+                            signin.setTextColor(getApplication().getResources().getColor(R.color.black));
+                            signin.setBackgroundResource(R.drawable.button_semi_transparent);
                     }
                     else{
                         signin.setEnabled(false);

@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         gradient:transition_duration = "4000"
         gradient:transition_drawable="@drawable/translate"
+
         />
 
 
@@ -20,10 +21,11 @@
         android:textColorHint="@color/white"
         android:layout_height="wrap_content"
         android:id="@+id/et_enter_username_username"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
+        android:background="@drawable/textview_back"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
         android:hint="Username"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -36,24 +38,26 @@
         android:textColorHint="@color/white"
         android:hint="Password..."
         android:id="@+id/et_enter_username_pwd"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_back"
         android:layout_below="@+id/et_enter_username_username"
-        android:layout_alignStart="@+id/et_enter_username_username"
-        android:layout_alignEnd="@+id/et_enter_username_username" />
+        android:layout_alignLeft="@+id/et_enter_username_username"
+        android:layout_alignRight="@+id/et_enter_username_username" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:background="@drawable/textview_back"
         android:hint="Confirm Password.."
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/et_enter_username_repwd"
         android:layout_below="@+id/et_enter_username_pwd"
-        android:layout_alignStart="@+id/et_enter_username_pwd"
-        android:layout_alignEnd="@+id/et_enter_username_pwd" />
+        android:layout_alignLeft="@+id/et_enter_username_pwd"
+        android:layout_alignRight="@+id/et_enter_username_pwd" />
 
     <Button
         android:layout_width="match_parent"

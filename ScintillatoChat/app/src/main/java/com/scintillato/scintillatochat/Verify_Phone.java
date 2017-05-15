@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.PagerSnapHelper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +55,9 @@ public class Verify_Phone extends ActionBarActivity {
 		flag_token=sharedpreferences.getInt("flag_token", -1);
 		token=sharedpreferences.getString("token","");
 		Toast.makeText(getApplicationContext(),token+flag_token,Toast.LENGTH_LONG).show();
+		next.setEnabled(false);
+		next.setTextColor(getApplication().getResources().getColor(R.color.white));
+		next.setBackgroundResource(R.drawable.textview_back);
 
 		login.setOnClickListener(new View.OnClickListener(){
 			@Override
@@ -60,6 +65,30 @@ public class Verify_Phone extends ActionBarActivity {
 				Intent i=new Intent(getApplicationContext(),Login_Page.class);
 				startActivity(i);
 				finish();
+			}
+		});
+		number.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				if (s.length()==10){
+					next.setEnabled(true);
+					next.setTextColor(getApplication().getResources().getColor(R.color.black));
+					next.setBackgroundResource(R.drawable.button_semi_transparent);
+				}
+				else{
+					next.setEnabled(false);
+					next.setTextColor(getApplication().getResources().getColor(R.color.white));
+					next.setBackgroundResource(R.drawable.textview_back);
+				}
+			}
+			@Override
+			public void afterTextChanged(Editable s) {
+
 			}
 		});
 		next.setOnClickListener(new OnClickListener() {

@@ -24,6 +24,7 @@
     <color name="royal_blue_pressed">#21279c</color>
     <color name="cyan">#0275cc</color> //3b5998 ff3700
     <color name="cyan_pressed">#0693fd</color>
+    <color name="button_disabled">#9da1a4</color>
     <color name="light_royal_blue">#6f7eea</color>
     <color name="light_gray">#ada38484</color>
     <color name="cyan_transparent">#579bcf</color>

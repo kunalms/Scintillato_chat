@@ -45,10 +45,10 @@ public class Category_check extends Activity {
     MyListAdaper dataAdapter= null;
     ArrayList<String> selected_category=new ArrayList<>();
     ListView lv;
+    Button myButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.category);
         ctx=this;
         lv = (ListView) findViewById(R.id.listView1);
@@ -59,9 +59,10 @@ public class Category_check extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(Category_check.this, "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
-
             }
         });
+        myButton = (Button) findViewById(R.id.btn_category_findSelected);
+        myButton.setEnabled(false);
         checkButtonClick();
     }
 
@@ -144,6 +145,12 @@ public class Category_check extends Activity {
 
                     updateView();
                     Toast.makeText(getContext(), "Button was clicked for list item " + position, Toast.LENGTH_SHORT).show();
+                    if(mObjects.size()>=4){
+                        myButton.setEnabled(true);
+                    }
+                    else{
+                        myButton.setEnabled(false);
+                    }
                 }
             });
             mainViewholder.name.setText(category.getName());
@@ -160,7 +167,7 @@ public class Category_check extends Activity {
     private void checkButtonClick() {
 
 
-        Button myButton = (Button) findViewById(R.id.btn_category_findSelected);
+
         myButton.setOnClickListener(new OnClickListener() {
 
             @Override

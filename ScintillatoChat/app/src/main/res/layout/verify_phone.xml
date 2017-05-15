@@ -11,18 +11,32 @@
         android:layout_height="match_parent"
         gradient:transition_duration = "4000"
         gradient:transition_drawable="@drawable/translate"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         />
 
+    <TextView
+        android:id="@+id/tv_verify_phone_instruction"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Chat will send and SMS message and verify your phone number. Enter your phone number."
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
 
     <TextView
         android:id="@+id/tv_verify_phone_india"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="INDIA"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/tv_verify_phone_instruction"
         android:layout_centerHorizontal="true" />
 
     <EditText android:id="@+id/et_verify_phone_numberverify_phone_c_code"
@@ -54,16 +68,7 @@
         android:layout_toRightOf="@+id/et_verify_phone_numberverify_phone_c_code"
         android:layout_toEndOf="@+id/et_verify_phone_numberverify_phone_c_code" />
 
-    <TextView
-        android:id="@+id/tv_verify_phone_instruction"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Chat will send and SMS message and verify your phone number. Enter your phone number:-"
-        android:layout_below="@+id/et_verify_phone_number"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+
 
     <Button
         android:id="@+id/btn_verify_phone_next"
@@ -75,7 +80,7 @@
         android:text="VERIFY"
         android:layout_marginTop="10dp"
         android:layout_alignRight="@id/et_verify_phone_number"
-        android:layout_below="@+id/tv_verify_phone_instruction"
+        android:layout_below="@+id/et_verify_phone_numberverify_phone_c_code"
         android:layout_centerHorizontal="true"
         android:layout_alignLeft="@id/et_verify_phone_numberverify_phone_c_code" />
 

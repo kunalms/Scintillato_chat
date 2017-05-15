@@ -46,6 +46,7 @@ public class Category {
         public void setSelected(boolean selected) {
             this.selected = selected;
         }
+
     public void incNo_followers(){
         no_followers+=1;
     }
