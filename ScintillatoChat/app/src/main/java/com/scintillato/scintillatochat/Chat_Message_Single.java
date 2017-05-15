@@ -581,7 +581,8 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
 
                         if (cr.getString(0).equals(unseen_message_id)) {
                             Log.d("message_idunseen", unseen_message_id);
-                            Chat_Message_Single_List chat_message_single_list1 = new Chat_Message_Single_List(true, unseen_count + "");
+                            String date_time=get_datetime();
+                            Chat_Message_Single_List chat_message_single_list1 = new Chat_Message_Single_List(true, unseen_count + "",date_time);
                             chat_list.add(chat_message_single_list1);
                         }
                     }

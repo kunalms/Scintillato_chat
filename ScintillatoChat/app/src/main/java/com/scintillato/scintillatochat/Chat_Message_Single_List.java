@@ -9,10 +9,11 @@ public class Chat_Message_Single_List {
     private String name,message,message_id,sender,time,opposite_person_number,status,other_person_message_id;
     private boolean ismine,unseen=false;
     private String unseen_count;
-    public Chat_Message_Single_List(boolean unseen,String unseen_count)
+    public Chat_Message_Single_List(boolean unseen,String unseen_count,String time)
     {
         this.unseen=unseen;
         this.unseen_count=unseen_count;
+        this.time=time;
     }
     public Chat_Message_Single_List(String name,String message,String sender,String time,String message_id,String opposite_person_number,String status,String other_person_message_id) {
         this.name=name;
@@ -24,7 +25,6 @@ public class Chat_Message_Single_List {
         this.opposite_person_number=opposite_person_number;
         this.other_person_message_id=other_person_message_id;
     }
-
     public String getUnseen_count() {
         return unseen_count;
     }

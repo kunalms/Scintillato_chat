@@ -271,7 +271,6 @@ public class Add_Member extends AppCompatActivity {
             fetch_members();
             backGroundTaskAddMember=new BackGroundTaskAddMember();
             backGroundTaskAddMember.execute(group_id,jsonString_members,cur_number);
-
         }
 
         return super.onOptionsItemSelected(item);

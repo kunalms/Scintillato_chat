@@ -148,14 +148,19 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             message_chat_holder.box.setLayoutParams(params);
             message_chat_holder.status.setVisibility(View.GONE);
         }
+        if(message_chat.isUnseen()==true)
+        {
 
-        Log.e("time_id",message_chat.getMessage());
-        message_chat_holder.time.setText( time(message_chat.getTime()));
-        message_chat_holder.message.setText(message_chat.getMessage());
-        if(isSelected(position)){
-            message_chat_holder.view.setBackgroundColor(Color.CYAN);
-        }else{
-            message_chat_holder.view.setBackgroundColor(Color.TRANSPARENT);
+        }
+        else {
+            Log.e("time_id", message_chat.getMessage());
+            message_chat_holder.time.setText(time(message_chat.getTime()));
+            message_chat_holder.message.setText(message_chat.getMessage());
+            if (isSelected(position)) {
+                message_chat_holder.view.setBackgroundColor(Color.CYAN);
+            } else {
+                message_chat_holder.view.setBackgroundColor(Color.TRANSPARENT);
+            }
         }
 
 

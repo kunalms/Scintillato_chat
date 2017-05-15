@@ -99,6 +99,7 @@ public class Enter_Profile_Info extends ActionBarActivity {
 		number=b.getString("number");
 		username=b.getString("username");
 		password=b.getString("password");
+        Log.d("username",username+" "+password);
 		number=phone_manage(number);
 		ctx=this;
 		gender.setOnCheckedChangeListener(new OnCheckedChangeListener()
@@ -226,7 +227,8 @@ public class Enter_Profile_Info extends ActionBarActivity {
 		String profile_pic=getStringImage(bitmap_image_main);
 		string_profile_pic=profile_pic;
 		backgroundregister =new BackGroundTaskRegister();
-		Log.d("profile_pic1",profile_pic);
+		//Log.d("profile_pic1",profile_pic);
+        Log.d("username1",username+" "+password);
 		backgroundregister.execute(name.getText().toString(),number,token,text_gender,profile_pic,username,password);
 	}
 	class BackGroundTaskRegister extends AsyncTask<String, Void, String> {
@@ -245,9 +247,8 @@ public class Enter_Profile_Info extends ActionBarActivity {
 			String profile_pic=params[4];
 			String username=params[5];
 			String password=params[6];
-
+            Log.d("details",name+" "+number+" "+token+" "+gender+" "+username+" "+password+" "+" ");
 			String register_url="http://www.scintillato.esy.es/insert.php";
-
 
 			try{
 				URL url=new URL(register_url);
@@ -301,7 +302,8 @@ public class Enter_Profile_Info extends ActionBarActivity {
 			catch(Exception e)
 			{
 				flag1=0;
-				return "Check Internet Connection!";
+                Log.d("error",e.toString());
+                return "Check Internet Connection!";
 
 			}
 
@@ -310,7 +312,8 @@ public class Enter_Profile_Info extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			loading.dismiss();
-			Log.d("1",flag+"");
+			Log.d("flag1",flag+" "+result+" "+flag1);
+
 			Toast.makeText(ctx,result,Toast.LENGTH_LONG);
 
 			if(flag1==0)
