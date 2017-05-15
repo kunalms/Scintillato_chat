@@ -356,6 +356,7 @@ public class Profile_Chat_Group extends AppCompatActivity {
             Intent i=new Intent(getApplicationContext(),Add_Member.class);
             i.putExtra("group_id",group_id);
             i.putExtra("rank",rank);
+            Log.d("rank",rank);
             startActivity(i);
         }
 

@@ -102,6 +102,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Profile_Chat_Group" />
         <activity android:name=".Add_Member"></activity>
+        <activity android:name=".Message_Group_Chat_Public"></activity>
     </application>
 
 </manifest>

@@ -52,8 +52,6 @@ public class Choose_Contacts extends ActionBarActivity {
 				} while (cr.moveToNext());
 			}else {
 				Toast.makeText(getApplicationContext(),"no contacts found",Toast.LENGTH_SHORT).show();
-
-
 			}
 		}
 	}
@@ -74,19 +72,15 @@ public class Choose_Contacts extends ActionBarActivity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
-		else if(id==R.id.btn_choose_contacts_create)
-		{
-			if(one_to_one_flag.equals("0")) {
+		else if(id==R.id.btn_choose_contacts_create) {
+			if (one_to_one_flag.equals("0")) {
 				Intent i = new Intent(getApplicationContext(), Group_Details.class);
 				startActivity(i);
-			}
-			else if(one_to_one_flag.equals("2"))
-			{
+			} else if (one_to_one_flag.equals("2")) {
 				Intent i = new Intent(getApplicationContext(), Group_Details_Public.class);
 				startActivity(i);
 			}
 		}
-			
 		return super.onOptionsItemSelected(item);
 	}
 }

@@ -1111,7 +1111,6 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
         @Override
         public void onReceive(Context context, Intent intent) {
 
-
             String code=intent.getStringExtra("code");
             String sender = intent.getStringExtra("sender");
             formattedDate=get_datetime();
@@ -1124,16 +1123,18 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
                 Log.d("status1",status);
                 for(int i=0;i<chat_list.size() && count>=0;i++) {
 
-                    if (chat_list.get(i).getMessage_id().equals(other_message_id_list.get(count))) {
-                        if(status.equals("0"))
-                            chat_list.get(i).setStatus("2");
-                        else
-                            chat_list.get(i).setStatus("3");
-                        Log.d("status2", chat_list.get(i).getStatus());
+                    if(chat_list.get(i).getMessage_id()!=null) {
+                        if (chat_list.get(i).getMessage_id().equals(other_message_id_list.get(count))) {
+                            if (status.equals("0"))
+                                chat_list.get(i).setStatus("2");
+                            else
+                                chat_list.get(i).setStatus("3");
+                            Log.d("status2", chat_list.get(i).getStatus());
 
-                        adapter.notifyDataSetChanged();
-                        ((LinearLayoutManager)chat_RecyclerView.getLayoutManager()).scrollToPositionWithOffset(0,0);
-                        count--;
+                            adapter.notifyDataSetChanged();
+                            ((LinearLayoutManager) chat_RecyclerView.getLayoutManager()).scrollToPositionWithOffset(0, 0);
+                            count--;
+                        }
                     }
                 }
 

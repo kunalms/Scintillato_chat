@@ -214,11 +214,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
         else if(code.equals("8"))
         {
-
             fetch_group_details(group_details,group_pubic_id);
             fetch_new_members(group_members,group_pubic_id);
             fetch_members(other_members,group_pubic_id);
-
         }
         else if(code.equals("9"))
         {

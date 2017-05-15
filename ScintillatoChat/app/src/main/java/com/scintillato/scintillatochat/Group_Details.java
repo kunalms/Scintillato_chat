@@ -266,7 +266,7 @@ public class Group_Details extends ActionBarActivity {
 		}
 		else if(id==R.id.btn_group_details_create)
 		{
-			    public_group_create(0);
+			    public_group_create(1);
 		}
 
 

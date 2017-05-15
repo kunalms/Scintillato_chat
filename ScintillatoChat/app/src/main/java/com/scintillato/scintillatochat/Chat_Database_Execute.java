@@ -568,8 +568,6 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     String get_max_rank_group(Chat_Database_Execute obj)
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
-
-
         Cursor c=SQ.query(GroupMemberDatabase.TABLE_NAME, null, GroupMemberDatabase.RANK+"=(SELECT MAX("+GroupMemberDatabase.RANK+") FROM "+GroupMemberDatabase.TABLE_NAME+")", null, null, null, null);
         c.moveToFirst();
         if(c.getCount()>0)

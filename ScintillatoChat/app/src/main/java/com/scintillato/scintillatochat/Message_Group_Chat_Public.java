@@ -101,22 +101,7 @@ public class Message_Group_Chat_Public extends Fragment {
 
 
         list_chat=new ArrayList<>();
-       /* Cursor cr = obj.fetch_group_members(obj, group_id);
-        JSONArray jsonarray = new JSONArray();
-        if (cr.getCount() > 0) {
-            cr.moveToFirst();
-            do {
-                Log.d("cursor", cr.getString(3) + cr.getString(2));
-                if (cr.getString(0).equals(cur_number) == false) {
-                    jsonarray.put(cr.getString(0));
-                }
 
-            } while (cr.moveToNext());
-        }
-        //JSONObject number_object=new JSONObject();
-        numbers_json = jsonarray + "";
-        Log.d("json_members", jsonarray + "");
-*/
         Toast.makeText(getActivity(),numbers_json,Toast.LENGTH_SHORT).show();
         adapter = new Message_Group_Chat_Public_Adapter(ctx, list_chat);
         final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());

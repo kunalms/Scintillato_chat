@@ -68,7 +68,6 @@ public class Add_Member extends AppCompatActivity {
 
         Contacts_Unregistered_Execute obj=new Contacts_Unregistered_Execute(getApplicationContext(),cur_number);
         Cursor cr=obj.getinfo_reg(obj);
-
         if(cr.getCount()>0)
         {
             cr.moveToFirst();
@@ -95,7 +94,6 @@ public class Add_Member extends AppCompatActivity {
             {
                 cursor_members.moveToFirst();
                 do{
-
                     object=new JSONObject();
                     try {
                         object.put("number", cursor_members.getString(0));
@@ -215,7 +213,7 @@ public class Add_Member extends AppCompatActivity {
                             }while (cursor_members.moveToNext());
                         }
                     }
-                    Intent i=new Intent(ctx,Message_Group_Chat_Public.class);
+                    Intent i=new Intent(ctx,Message_Chat_Public_Group_Main.class);
                     i.putExtra("group_id",group_id);
                     startActivity(i);
                     Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();

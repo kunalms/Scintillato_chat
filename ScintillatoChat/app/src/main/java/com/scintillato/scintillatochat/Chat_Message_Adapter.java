@@ -132,11 +132,10 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             {
                 message_chat_holder.status.setImageResource(R.drawable.ic_done_all_white18);
             }
-            else {
+            else
+            {
 
             }
-
-
         }
         //If not mine then it is from sender to show orange background and align to left
         else
@@ -150,6 +149,19 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
         }
         if(message_chat.isUnseen()==true)
         {
+            message_chat_holder.box.setBackgroundResource(R.drawable.whitebubble);
+            params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
+            message_chat_holder.message.setTextColor(Color.parseColor("#000000"));
+            message_chat_holder.status.setVisibility(View.GONE);
+            message_chat_holder.time.setVisibility(View.GONE);
+            message_chat_holder.box.setLayoutParams(params);
+            if(Integer.parseInt(message_chat.getUnseen_count())==1)
+            {
+                message_chat_holder.message.setText(message_chat.getUnseen_count() + " UNREAD MESSAGE");
+            }
+            else {
+                message_chat_holder.message.setText(message_chat.getUnseen_count() + " UNREAD MESSAGES");
+            }
 
         }
         else {
@@ -162,8 +174,6 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
                 message_chat_holder.view.setBackgroundColor(Color.TRANSPARENT);
             }
         }
-
-
     }
 
 

@@ -1,38 +1,27 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Base64;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -53,106 +42,77 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.Toast;
+
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Group_Details_Public extends AppCompatActivity {
 
+public class Group_Details_Public extends ActionBarActivity {
 
     private EditText group_name,group_title,group_description;
     private CircleImageView group_pic;
     private ListView members;
-    private String jsonString_members,cur_number,selected_category_id;
+    private String jsonString_members,cur_number;
     private int member_count;
-    private String[] category_all_list;
     private Context ctx;
-    private static final int PICK_FROM_CAMERA = 1;
-    private static final int CROP_FROM_CAMERA = 2;
-    private static final int PICK_FROM_FILE = 3;
     private Uri mImageCaptureUri;
-    private ProgressDialog loading;
+    private Bitmap bitmap_main;
     private int flag_image;
     private Cursor cursor_members;
-    private Spinner category;
-
-    private int status_value=1;
+    private ProgressDialog loading;
     private Group_Details_Adapter adapter;
     private Selected_Memebers_Execute obj;
     private BackGroundTaskRegister backGroundTaskRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.group_details_public);
+        setContentView(R.layout.group_details);
         ctx=this;
-        category_all_list = getResources().getStringArray(R.array.Categories);
+
         SharedPreferences sharedpreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
         cur_number = sharedpreferences.getString("number", "");
-        members=(ListView)findViewById(R.id.lv_group_details_public_members);
-        group_name=(EditText)findViewById(R.id.et_group_details_public_name);
-        group_title=(EditText)findViewById(R.id.et_group_details_public_topic);
-        group_description=(EditText)findViewById(R.id.et_group_details_public_description);
-        group_pic=(CircleImageView)findViewById(R.id.iv_group_details_public_image);
-        category=(Spinner)findViewById(R.id.spinner_group_details_public_categories);
+        members=(ListView)findViewById(R.id.lv_group_details_members);
+        group_name=(EditText)findViewById(R.id.et_group_details_name);
+        group_title=(EditText)findViewById(R.id.et_group_details_topic);
+        group_description=(EditText)findViewById(R.id.et_group_details_description);
+        group_pic=(CircleImageView)findViewById(R.id.iv_group_details_image);
         adapter=new Group_Details_Adapter(getApplicationContext(), R.layout.group_details_row);
         members.setAdapter(adapter);
 
-        final String [] items			= new String [] {"Take from camera", "Select from gallery"};
-        ArrayAdapter<String> adapter	= new ArrayAdapter<String> (this, android.R.layout.select_dialog_item,items);
-        AlertDialog.Builder builder		= new AlertDialog.Builder(this);
-
-        builder.setTitle("Select Image");
-        builder.setAdapter( adapter, new DialogInterface.OnClickListener() {
-            public void onClick( DialogInterface dialog, int item ) { //pick from camera
-                if (item == 0) {
-                    Intent intent 	 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                    mImageCaptureUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
-                            "tmp_avatar_" + String.valueOf(System.currentTimeMillis()) + ".jpg"));
-
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
-
-                    try {
-                        intent.putExtra("return-data", true);
-
-                        startActivityForResult(intent, PICK_FROM_CAMERA);
-                    } catch (ActivityNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                } else { //pick from file
-                    Intent intent = new Intent();
-
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-
-                    startActivityForResult(Intent.createChooser(intent, "Complete action using"), PICK_FROM_FILE);
-                }
-            }
-        } );
-
-        final AlertDialog dialog = builder.create();
+        bitmap_main = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.groupprofile100);
         group_pic.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v)
             {
-                flag_image=1;
-                dialog.show();
-            }
-        });
-        category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-
-                selected_category_id=position+1+"";
-
-            } // to close the onItemSelected
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-
+                onSelectImageClick(v);
             }
         });
         fetch_members();
     }
+
     void fetch_members()
     {
         JSONObject object;
@@ -162,6 +122,7 @@ public class Group_Details_Public extends AppCompatActivity {
         member_count=cursor_members.getCount();
         if(obj!=null)
         {
+            int rank=2;
             if(cursor_members.getCount()>0)
             {
                 SharedPreferences sharedpreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
@@ -172,6 +133,8 @@ public class Group_Details_Public extends AppCompatActivity {
                     object=new JSONObject();
                     try {
                         object.put("number", cursor_members.getString(0));
+                        object.put("rank",rank++);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -183,6 +146,7 @@ public class Group_Details_Public extends AppCompatActivity {
                 object=new JSONObject();
                 try {
                     object.put("number", number);
+                    object.put("rank",1);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -200,81 +164,11 @@ public class Group_Details_Public extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.group_details_public, menu);
+        getMenuInflater().inflate(R.menu.group__details, menu);
         return true;
     }
 
-    private void doCrop() {
-        final ArrayList<CropOption> cropOptions = new ArrayList<CropOption>();
 
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setType("image/*");
-
-        List<ResolveInfo> list = getPackageManager().queryIntentActivities( intent, 0 );
-
-        int size = list.size();
-
-        if (size == 0) {
-            Toast.makeText(this, "Can not find image crop app", Toast.LENGTH_SHORT).show();
-
-            return;
-        } else {
-            intent.setData(mImageCaptureUri);
-
-            intent.putExtra("outputX", 200);
-            intent.putExtra("outputY", 200);
-            intent.putExtra("aspectX", 1);
-            intent.putExtra("aspectY", 1);
-            intent.putExtra("scale", true);
-            intent.putExtra("return-data", true);
-
-            if (size == 1) {
-                Intent i 		= new Intent(intent);
-                ResolveInfo res	= list.get(0);
-
-                i.setComponent( new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-
-                startActivityForResult(i, CROP_FROM_CAMERA);
-            } else {
-                for (ResolveInfo res : list) {
-                    final CropOption co = new CropOption();
-
-                    co.title 	= getPackageManager().getApplicationLabel(res.activityInfo.applicationInfo);
-                    co.icon		= getPackageManager().getApplicationIcon(res.activityInfo.applicationInfo);
-                    co.appIntent= new Intent(intent);
-
-                    co.appIntent.setComponent( new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-
-                    cropOptions.add(co);
-                }
-
-                CropOptionAdapter adapter = new CropOptionAdapter(getApplicationContext(), cropOptions);
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Choose Crop App");
-                builder.setAdapter( adapter, new DialogInterface.OnClickListener() {
-                    public void onClick( DialogInterface dialog, int item ) {
-                        startActivityForResult( cropOptions.get(item).appIntent, CROP_FROM_CAMERA);
-                    }
-                });
-
-                builder.setOnCancelListener( new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel( DialogInterface dialog ) {
-
-                        if (mImageCaptureUri != null ) {
-                            getContentResolver().delete(mImageCaptureUri, null, null );
-                            mImageCaptureUri = null;
-                        }
-                    }
-                } );
-
-                AlertDialog alert = builder.create();
-
-                alert.show();
-            }
-        }
-    }
     private String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -282,80 +176,52 @@ public class Group_Details_Public extends AppCompatActivity {
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) return;
+    String get_datetime()
+    {
+        java.util.Calendar c;
+        java.text.SimpleDateFormat df;
+        c = java.util.Calendar.getInstance();
+        System.out.println("Current time => "+c.getTime());
 
-        switch (requestCode) {
-            case PICK_FROM_CAMERA:
-                doCrop();
-
-                break;
-
-            case PICK_FROM_FILE:
-                mImageCaptureUri = data.getData();
-
-                doCrop();
-
-                break;
-
-            case CROP_FROM_CAMERA:
-                Bundle extras = data.getExtras();
-
-                if (extras != null) {
-                    Bitmap photo = extras.getParcelable("data");
-
-                    group_pic.setImageBitmap(photo);
-                }
-
-                File f = new File(mImageCaptureUri.getPath());
-
-                if (f.exists()) f.delete();
-
-                break;
-
-        }
+        df = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//yyyy-MM-dd
+        String formattedDate = df.format(c.getTime());
+        return formattedDate;
     }
-    void private_group_create(String group_id)
+
+    void private_group_create(String public_id)
     {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");;
-        String currentDateandTime = sdf.format(new Date());
-        /*Group_Execute obj1 = new Group_Execute(getApplicationContext(),cur_number);
-        obj1.putinfo_groups(obj1, group_name.getText().toString(), group_title.getText().toString(), member_count+1 + "", group_description.getText().toString(), currentDateandTime,"1",group_id);
+        //  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");;
+        //String currentDateandTime = sdf.format(new Date());
+        String formattedDate=get_datetime();
+        Chat_Database_Execute obj_chat=new Chat_Database_Execute(getApplicationContext(),cur_number);
+        obj_chat.insert_groups(obj_chat,group_name.getText().toString(),group_title.getText().toString(),group_description.getText().toString(),formattedDate,member_count+1+"","1",public_id);
+        obj=new Selected_Memebers_Execute(getApplicationContext(),cur_number);
+        cursor_members=obj.getinfo_selected_members_temp(obj);
+        int rank=1;
+        obj_chat.putinfo_group_members(obj_chat,public_id,cur_number,"0",(rank++)+"",formattedDate);
 
         if (cursor_members.getCount() > 0) {
             cursor_members.moveToFirst();
             do {
-                obj1.putinfo_group_members(obj1, cursor_members.getString(1), cursor_members.getString(0), 0 + "", group_id);
-
+                obj_chat.putinfo_group_members(obj_chat,public_id,cursor_members.getString(0),"0",(rank++)+"",formattedDate);
             } while (cursor_members.moveToNext());
         }
-        SharedPreferences sharedpreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
-        String name = sharedpreferences.getString("name", "");
-        String number = sharedpreferences.getString("number", "");
-        //if (!(number.equals("") && name.equals(""))) {
-        obj1.putinfo_group_members(obj1, name, number, 1 + "", group_id);
-        //   obj1.putinfo_recentchats(obj1,group_id,"0",currentDateandTime,"1");
-        if(obj1.recent_chats_group_exists(obj1,group_id))
-        {
-            Log.d("sentupdate",group_id);
-            obj1.update_recent_chats(obj1,group_id,"0","1",currentDateandTime,"Group Created","0");
-        }
-        else
-        {
-            Log.d("sentinsert",group_id);
-            obj1.putinfo_recentchats(obj1,group_id,"0",currentDateandTime,"1","Group Created","0");
-        }
 
-        //}
+        obj_chat.insert_recent_chats(obj_chat,"1",public_id,"0",cur_number,formattedDate);
 
+        Cursor c=obj_chat.fetch_group_members(obj_chat,public_id);
+        if(c.getCount()>0)
+        {
+            c.moveToFirst();
+            do {
+
+            }while (c.moveToNext());
+        }
         obj.delete_selected_members_temp();
-        */
-        group_pic.buildDrawingCache();
-        Bitmap bmap = group_pic.getDrawingCache();
-        storeImage(bmap,group_id);
 
+
+        loading.cancel();
         Intent i = new Intent(getApplicationContext(), Start_Page.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -367,10 +233,12 @@ public class Group_Details_Public extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        if(id==R.id.btn_group_details_public_create)
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        else if(id==R.id.btn_group_details_create)
         {
-            public_group_create(1);
+            public_group_create(0);
         }
 
 
@@ -379,15 +247,22 @@ public class Group_Details_Public extends AppCompatActivity {
 
     void public_group_create(int x)
     {
-        SharedPreferences sharedpreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
-        String number = sharedpreferences.getString("number", "");
         String group_pic_string;
-        group_pic.buildDrawingCache();
-        Bitmap bmap = group_pic.getDrawingCache();
-        group_pic_string=getStringImage(bmap);
-                backGroundTaskRegister = new BackGroundTaskRegister();
-                backGroundTaskRegister.execute(group_name.getText().toString(), group_title.getText().toString(), group_description.getText().toString(), member_count + 1 + "", group_pic_string, x + "", number, jsonString_members,selected_category_id);
+        group_pic_string=getStringImage(bitmap_main);
+        //  if(x==0) {
+        //    if (flag_image != 1) {
+        // backGroundTaskRegister = new BackGroundTaskRegister();
+        // backGroundTaskRegister.execute(group_name.getText().toString(), group_title.getText().toString(), group_description.getText().toString(), member_count + 1 + "", "1", x + "", number, jsonString_members);
+        //} else {
+        backGroundTaskRegister = new BackGroundTaskRegister();
+        backGroundTaskRegister.execute(group_name.getText().toString(), group_title.getText().toString(), group_description.getText().toString(), member_count + 1 + "", group_pic_string, "0", cur_number, jsonString_members);
 
+        // }
+        //}
+        //else
+        //{
+        //group_insert_public.php
+        //}
     }
     class BackGroundTaskRegister extends AsyncTask<String, Void, String> {
         int flag1=1;
@@ -407,9 +282,8 @@ public class Group_Details_Public extends AppCompatActivity {
             String status=params[5];
             String admin=params[6];
             String members=params[7];
-            String category_id=params[8];
             Log.d("mmemem",members);
-            String register_url="http://www.scintillato.esy.es/group_insert_public.php";
+            String register_url="http://www.scintillato.esy.es/group_insert.php";
 
 
             try{
@@ -426,8 +300,7 @@ public class Group_Details_Public extends AppCompatActivity {
                         URLEncoder.encode("group_image","UTF-8")+"="+URLEncoder.encode(group_image,"UTF-8")+"&"+
                         URLEncoder.encode("status","UTF-8")+"="+URLEncoder.encode(status,"UTF-8")+"&"+
                         URLEncoder.encode("admin","UTF-8")+"="+URLEncoder.encode(admin,"UTF-8")+"&"+
-                        URLEncoder.encode("members","UTF-8")+"="+URLEncoder.encode(members,"UTF-8")+"&"+
-                        URLEncoder.encode("category_id","UTF-8")+"="+URLEncoder.encode(category_id,"UTF-8");
+                        URLEncoder.encode("members","UTF-8")+"="+URLEncoder.encode(members,"UTF-8");
 
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
@@ -471,7 +344,6 @@ public class Group_Details_Public extends AppCompatActivity {
         protected void onPostExecute(String result) {
             // loading.dismiss();
             Log.d("1",flag+"");
-            loading.cancel();
             Toast.makeText(ctx,result,Toast.LENGTH_LONG);
 
             if(flag1==0)
@@ -485,8 +357,8 @@ public class Group_Details_Public extends AppCompatActivity {
                 {
                     //String group_public_id;
                     //group_public_id=showlist(result);
-                    Log.d("sentsent",result);
                     private_group_create(result);
+
 
                     Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
                 }
@@ -499,9 +371,19 @@ public class Group_Details_Public extends AppCompatActivity {
         }
         @Override
         protected void onPreExecute() {
-            loading = ProgressDialog.show(ctx, "Status", "Creating Group...",true,false);
+            loading = ProgressDialog.show(ctx, "Status", "Logging In...",true,false);
+            loading.setCancelable(false);
         }
     }
+    @Override
+    protected void onPause() {
+        if(backGroundTaskRegister!=null)
+        {
+            backGroundTaskRegister.cancel(true);
+        }
+        super.onPause();
+    }
+
 
     private void storeImage(Bitmap image,String group_id) {
         File pictureFile = getOutputMediaFile(group_id);
@@ -541,26 +423,73 @@ public class Group_Details_Public extends AppCompatActivity {
         return mediaFile;
     }
 
-
-    @Override
-    protected void onPause() {
-        if(backGroundTaskRegister!=null)
-        {
-            backGroundTaskRegister.cancel(true);
-        }
-        super.onPause();
+    public void onSelectImageClick(View view) {
+        CropImage.startPickImageActivity(this);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (mImageCaptureUri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // required permissions granted, start crop image activity
+            startCropImageActivity(mImageCaptureUri);
+        } else {
+            Toast.makeText(this, "Cancelling, required permissions are not granted", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // handle result of pick image chooser
+        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri imageUri = CropImage.getPickImageResultUri(this, data);
+
+            // For API >= 23 we need to check specifically that we have permissions to read external storage.
+            if (CropImage.isReadExternalStoragePermissionsRequired(this, imageUri)) {
+                // request permissions and handle the result in onRequestPermissionsResult()
+                mImageCaptureUri = imageUri;
+                requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            } else {
+                // no permissions required or already grunted, can start crop image activity
+                startCropImageActivity(imageUri);
+            }
+        }
+
+        // handle result of CropImageActivity
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                group_pic.setImageURI(result.getUri());
+                Uri imageUri = result.getUri();
+                try {
+                    flag_image=1;
+                    bitmap_main = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(this, "Cropping successful, Sample: " + result.getSampleSize(), Toast.LENGTH_LONG).show();
+            }
+            else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+    private void startCropImageActivity(Uri imageUri) {
+        CropImage.activity(imageUri)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setMultiTouchEnabled(true).setAspectRatio(1,1)
+                .start(this);
+    }
 
     @Override
     protected void onStop() {
         if(backGroundTaskRegister!=null)
         {
             backGroundTaskRegister.cancel(true);
-
         }
-
-
         super.onStop();
     }
 
@@ -569,5 +498,4 @@ public class Group_Details_Public extends AppCompatActivity {
     {
         super.onResume();
     }
-
 }
