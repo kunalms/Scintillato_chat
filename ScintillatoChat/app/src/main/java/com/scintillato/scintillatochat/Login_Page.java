@@ -108,6 +108,7 @@ public class Login_Page extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),Verify_Phone.class);
                 startActivity(i);
+                finish();
             }
         });
         show_pwd();

@@ -38,7 +38,7 @@ public class Verify_Phone extends ActionBarActivity {
 	private int flag_token;
     private Context ctx;
 	private String token;
-	private TextView skip,login;
+	private Button login;
     private ProgressDialog loading;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,27 +48,18 @@ public class Verify_Phone extends ActionBarActivity {
 		getSupportActionBar().hide();
         number=(EditText)findViewById(R.id.et_verify_phone_number);
 		next=(Button)findViewById(R.id.btn_verify_phone_next);
-		skip=(TextView)findViewById(R.id.textView1);
-		login=(TextView) findViewById(R.id.tv_verify_phone_login);
+		login=(Button) findViewById(R.id.tv_verify_phone_login);
 		SharedPreferences sharedpreferences=getSharedPreferences("User", Context.MODE_PRIVATE);
 		flag_token=sharedpreferences.getInt("flag_token", -1);
 		token=sharedpreferences.getString("token","");
 		Toast.makeText(getApplicationContext(),token+flag_token,Toast.LENGTH_LONG).show();
-		skip.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i=new Intent(getApplicationContext(),SyncActivity.class);
-				startActivity(i);
-				
-			}
-		});
+
 		login.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v){
 				Intent i=new Intent(getApplicationContext(),Login_Page.class);
 				startActivity(i);
+				finish();
 			}
 		});
 		next.setOnClickListener(new OnClickListener() {
