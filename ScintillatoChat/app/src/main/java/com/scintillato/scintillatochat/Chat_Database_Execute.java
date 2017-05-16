@@ -565,15 +565,26 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
             }while (c.moveToNext());
         }
     }
-    String get_max_rank_group(Chat_Database_Execute obj)
+    String get_max_rank_group(Chat_Database_Execute obj,String group_id)
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
-        Cursor c=SQ.query(GroupMemberDatabase.TABLE_NAME, null, GroupMemberDatabase.RANK+"=(SELECT MAX("+GroupMemberDatabase.RANK+") FROM "+GroupMemberDatabase.TABLE_NAME+")", null, null, null, null);
+        Cursor c=SQ.rawQuery("SELECT MAX("+GroupMemberDatabase.RANK+") FROM "+GroupMemberDatabase.TABLE_NAME+" WHERE "+GroupMemberDatabase.GROUP_ID+"="+group_id +")", null);
         c.moveToFirst();
-        if(c.getCount()>0)
-            return c.getString(0);
+        if(c.getCount()>0) {
+              Log.d("rank1",c.getString(0));
+              return c.getString(0);
+        }
         else
             return "0";
+
+    //    Cursor c=SQ.query(GroupMemberDatabase.TABLE_NAME, null, GroupMemberDatabase.RANK+"=(SELECT MAX("+GroupMemberDatabase.RANK+") FROM "+GroupMemberDatabase.TABLE_NAME+" WHERE "+GroupMemberDatabase.GROUP_ID+"="+group_id +")", null, null, null, null);
+      //  c.moveToFirst();
+       // if(c.getCount()>0) {
+         //   Log.d("rank1",c.getString(0));
+           // return c.getString(0);
+        //}
+        //else
+          //  return "0";
     }
     public Cursor fetch_group_members(Chat_Database_Execute obj, String group_id)
     {

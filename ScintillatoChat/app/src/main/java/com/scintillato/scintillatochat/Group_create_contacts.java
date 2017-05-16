@@ -648,30 +648,7 @@ public class Group_create_contacts extends ActionBarActivity {
 				count++;
 			}
 			
-			/*if(obj1!=null)
-			{
-				Cursor cr=obj1.getinfo_unreg(obj1);
-				cr.moveToFirst();
-				do
-				{
-					Log.d("unregname",cr.getString(0));
-					Log.d("unregnumber",cr.getString(1));
-			
-				}while(cr.moveToNext());
-			}
-			if(obj1!=null)
-			{
-				Cursor cr=obj1.getinfo_reg(obj1);
-				cr.moveToFirst();
-				do
-				{
-					Log.d("regname",cr.getString(0));
-					Log.d("regnumber",cr.getString(1));
-			
-				}while(cr.moveToNext());
-			}
-			*/
-			
+
 
 		}
 		catch(Exception e)
@@ -688,9 +665,6 @@ public class Group_create_contacts extends ActionBarActivity {
 			//Toast.makeText(getApplicationContext(), "stopped", Toast.LENGTH_LONG).show();
 			loading.cancel();
 		}
-
-
-
 		super.onPause();
 	}
 	@Override

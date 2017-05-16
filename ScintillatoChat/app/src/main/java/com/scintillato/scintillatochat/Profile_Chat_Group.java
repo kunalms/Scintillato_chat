@@ -62,7 +62,7 @@ public class Profile_Chat_Group extends AppCompatActivity {
         rv_participants.setAdapter(adapter);
 
         Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
-        rank=obj.get_max_rank_group(obj);
+        rank=obj.get_max_rank_group(obj,group_id);
         if(obj.check_isadmin_group_members(obj,group_id,cur_number))
         {
 
