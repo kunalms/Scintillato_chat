@@ -80,7 +80,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                     .setAutoCancel(true)
                     .setContentTitle(message)
-                    .setContentText(final_message+group_pubic_id)
+                    .setContentText(final_message+group_pubic_id+group_details)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setContentIntent(pendingIntent);
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -215,6 +215,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         else if(code.equals("8"))
         {
             fetch_group_details(group_details,group_pubic_id);
+            Log.d("group_details",group_details);
+            Log.d("group_members",group_members);
+            Log.d("other_group_members",other_members);
+
             fetch_new_members(group_members,group_pubic_id);
             fetch_members(other_members,group_pubic_id);
         }
@@ -433,6 +437,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                 Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
                 obj.putinfo_group_members(obj,group_id,number,"0",rank,date);
+                count++;
             }
         }
         catch(Exception e)
@@ -476,6 +481,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String group_name,group_topic,group_description,group_create_date,group_count,status;
             while(count<jsonArray.length())
             {
+
                 JSONObject JO=jsonArray.getJSONObject(count);
                 group_count=JO.getString("group_count");
                 status=JO.getString("status");
@@ -484,9 +490,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 group_topic=JO.getString("group_topic");
                 group_name=JO.getString("group_name");
 
+                /*group_name'=>$row1[0],
+                'group_description'=>$row1[1],
+                    'group_topic'=>$row1[2],
+                    'group_create_date'=>$row1[3],
+                    'group_count'=>$row1[4],
+                    'status'=>$row1[5]*/
                 Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
                 obj.insert_groups(obj,group_name,group_topic,group_description,group_create_date,group_count,status,group_id);
                 obj.insert_recent_chats(obj,"0",group_id,"-1",sender,date);
+                count++;
             }
         }
         catch(Exception e)

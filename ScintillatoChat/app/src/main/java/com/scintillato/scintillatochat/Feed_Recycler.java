@@ -305,7 +305,6 @@ public class Feed_Recycler extends AppCompatActivity {
                 if (count==jsonArray.length()-1) {
                     if (last_question_id != question_id) {
                         last_question_id = question_id;
-
                     }
                     else
                         last=true;
