@@ -81,6 +81,39 @@ public class Feed_Recycler extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
+        list_questions.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy)
+            {
+                Log.d("here","here");
+                if (!recyclerView.canScrollVertically(-1)) {
+                    //onscrolled to top
+                }
+                else if (!recyclerView.canScrollVertically(1)) {
+                    Log.d("here","here2");
+                    //onScrolledToBottom();
+                    if(last==false && currently_fetching==false) {
+                        currently_fetching=true;
+                        progressBar.setVisibility(View.VISIBLE);
+                        fetch_questions();
+                    }
+
+                } else if (dy < 0) {
+                    Log.d("here","here3");
+                    //  onScrolledUp();
+                } else if (dy > 0) {
+                    Log.d("here","here4");
+                    //  onScrolledDown();
+                }
+            }
+        });
+/*
         list_questions.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
@@ -95,16 +128,11 @@ public class Feed_Recycler extends AppCompatActivity {
                     // Recycle view scrolling up...
 
                 } else if (dy > 0) {
-                    if(last==false && currently_fetching==false) {
-                        currently_fetching=true;
-                        progressBar.setVisibility(View.VISIBLE);
-                        fetch_questions();
-                    }
                     // Recycle view scrolling down...
                 }
             }
         });
-
+*/
       /*  list_questions.setOnScrollListener(new AbsListView.OnScrollListener(){
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 // TODO Auto-generated method stub
