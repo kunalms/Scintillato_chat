@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -289,6 +291,11 @@ public class Question_Holder extends RecyclerView.ViewHolder {
             }
         });
 
+
+        Animation animation = AnimationUtils.loadAnimation(ctx,
+                R.anim.up_from_bottom);
+        question_holder.itemView.startAnimation(animation);
+
     }
 
     @Override
@@ -419,12 +426,11 @@ public class Question_Holder extends RecyclerView.ViewHolder {
     }
 
 
-
-
     public static long getDateDiff(long date_incoming, TimeUnit timeUnit) {
         Date date1=new Date(date_incoming);
         Date date2 = Calendar.getInstance().getTime();
         long diffInMillies = date2.getTime() - date1.getTime();
         return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
     }
+
 }

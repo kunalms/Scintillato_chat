@@ -63,7 +63,10 @@ public class Feed_Recycler extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         list_questions.setLayoutManager(mLayoutManager);
-        list_questions.setItemAnimator(new DefaultItemAnimator());
+        RecyclerView.ItemAnimator itemAnimator = new DefaultItemAnimator();
+        itemAnimator.setAddDuration(1000);
+        itemAnimator.setRemoveDuration(1000);
+        list_questions.setItemAnimator(itemAnimator);
 
         fab=(FloatingActionButton)findViewById(R.id.fab_feed_super);
         fab.setIcon(R.drawable.create_white_24);

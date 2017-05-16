@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.scintillato.scintillatochat.Feed"
+    android:layout_marginTop="8dp"
     >
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_feed_feed"
