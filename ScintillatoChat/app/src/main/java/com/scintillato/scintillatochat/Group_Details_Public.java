@@ -199,7 +199,7 @@ public class Group_Details_Public extends ActionBarActivity {
         obj=new Selected_Memebers_Execute(getApplicationContext(),cur_number);
         cursor_members=obj.getinfo_selected_members_temp(obj);
         int rank=1;
-        obj_chat.putinfo_group_members(obj_chat,public_id,cur_number,"0",(rank++)+"",formattedDate);
+        obj_chat.putinfo_group_members(obj_chat,public_id,cur_number,"1",(rank++)+"",formattedDate);
 
         if (cursor_members.getCount() > 0) {
             cursor_members.moveToFirst();

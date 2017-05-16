@@ -27,7 +27,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     private String cur_number;
     public static final int database_version=2;
     public String CREATE_QUERY_GROUP="CREATE TABLE IF NOT EXISTS "+GroupDatabase.TABLE_NAME+"("+GroupDatabase.GROUP_NAME+" TEXT,"+GroupDatabase.TOPIC+" TEXT,"+GroupDatabase.DESCRIPTION+" TEXT,"+GroupDatabase.CREATE_DATE+" DATETIME,"+GroupDatabase.GROUP_IMAGE+" LONGBLOB,"+GroupDatabase.MEMBER_COUNT+" INTEGER,"+GroupDatabase.STATUS+" TEXT, "+GroupDatabase.GROUP_ID+" TEXT PRIMARY KEY)";
-    public String CREATE_QUERY_GROUP_MEMBERS="CREATE TABLE IF NOT EXISTS "+ Group_Member_Database.GroupMemberDatabase.TABLE_NAME+"("+ Group_Member_Database.GroupMemberDatabase.GROUP_ID+" TEXT,"+ Group_Member_Database.GroupMemberDatabase.NUMBER+" TEXT UNIQUE,"+ Group_Member_Database.GroupMemberDatabase.ADMIN+" INTEGER,"+Group_Member_Database.GroupMemberDatabase.RANK+" INTEGER,"+Group_Member_Database.GroupMemberDatabase.ENTER_DATE+" DATETIME,"+ Group_Member_Database.GroupMemberDatabase.PROFILE_PIC+" LONGBLOB);";
+    public String CREATE_QUERY_GROUP_MEMBERS="CREATE TABLE IF NOT EXISTS "+ Group_Member_Database.GroupMemberDatabase.TABLE_NAME+"("+ Group_Member_Database.GroupMemberDatabase.GROUP_ID+" TEXT,"+ Group_Member_Database.GroupMemberDatabase.NUMBER+" TEXT,"+ Group_Member_Database.GroupMemberDatabase.ADMIN+" INTEGER,"+Group_Member_Database.GroupMemberDatabase.RANK+" INTEGER,"+Group_Member_Database.GroupMemberDatabase.ENTER_DATE+" DATETIME,"+ Group_Member_Database.GroupMemberDatabase.PROFILE_PIC+" LONGBLOB);";
     public String CREATE_QUERY_MESSAGE_SINGLE="CREATE TABLE IF NOT EXISTS "+MessageSingleInfo.TABLE_NAME+"("+MessageSingleInfo.MESSAGE_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+MessageSingleInfo.DATE_TIME+" DATETIME,"+MessageSingleInfo.MESSAGE+" TEXT,"+MessageSingleInfo.SEND_RECIEVE+" INTEGER,"+MessageSingleInfo.SENDER+" TEXT,"+MessageSingleInfo.RECIEVER+" TEXT,"+MessageSingleInfo.OPPOSITE_PERSON_NUMBER+" TEXT,"+MessageSingleInfo.IMAGE_LOC+" TEXT,"+MessageSingleInfo.VIDEO_LOC+" TEXT,"+MessageSingleInfo.STATUS+" INTEGER,"+MessageSingleInfo.OPPOSITE_PERSON_MESSAGE_ID+" INTEGER);";;
     public String CREATE_QUERY_MESSAGE_GROUP="CREATE TABLE IF NOT EXISTS "+MessageGroupInfo.TABLE_NAME+"("+MessageGroupInfo.MESSAGE_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+MessageGroupInfo.DATE_TIME+" DATETIME,"+MessageGroupInfo.MESSAGE+" TEXT,"+MessageGroupInfo.SEND_RECIEVE+" INTEGER,"+MessageGroupInfo.SENDER+" TEXT,"+MessageGroupInfo.GROUP_ID+" TEXT,"+MessageGroupInfo.IMAGE_LOC+" TEXT,"+MessageGroupInfo.VIDEO_LOC+" TEXT,"+MessageGroupInfo.STATUS+" INTEGER,"+MessageGroupInfo._MEMBER+" TEXT,"+MessageGroupInfo.ADD+" BOOLEAN,"+MessageGroupInfo.REMOVE+" BOOLEAN,"+MessageGroupInfo.LEFT+" BOOLEAN,"+MessageGroupInfo.ICON_CHANGE+" BOOLEAN,"+MessageGroupInfo.NAME_CHANGE+" BOOLEAN,"+MessageGroupInfo.NEW_NAME+" TEXT);";
     public String CREATE_QUERY_RECENT_CHATS="CREATE TABLE IF NOT EXISTS " +RecentChatsInfo.TABLE_NAME+"("+RecentChatsInfo.FLAG+" INTEGER,"+RecentChatsInfo.GROUP_ID+" TEXT,"+RecentChatsInfo.OPPOSITE_PERSON_NUMBER+" TEXT,"+RecentChatsInfo.SENDER+" TEXT,"+RecentChatsInfo.LAST_UPDATED+" DATETIME);";
@@ -503,7 +503,6 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
         SQLiteDatabase SQ=obj.getReadableDatabase();
         String[] coloumns={GroupDatabase.GROUP_ID,GroupDatabase.GROUP_NAME,GroupDatabase.TOPIC,GroupDatabase.DESCRIPTION,GroupDatabase.CREATE_DATE,GroupDatabase.MEMBER_COUNT,GroupDatabase.STATUS};
         Cursor cr=SQ.query(GroupDatabase.TABLE_NAME, coloumns, null, null, null, null,null);
-
         return cr;
     }
 
@@ -568,11 +567,22 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     String get_max_rank_group(Chat_Database_Execute obj,String group_id)
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
-        Cursor c=SQ.rawQuery("SELECT MAX("+GroupMemberDatabase.RANK+") FROM "+GroupMemberDatabase.TABLE_NAME+" WHERE "+GroupMemberDatabase.GROUP_ID+"="+group_id +")", null);
-        c.moveToFirst();
-        if(c.getCount()>0) {
-              Log.d("rank1",c.getString(0));
-              return c.getString(0);
+       // String[] coloumns={GroupMemberDatabase.RANK};
+       // Cursor cr=SQ.query(GroupMemberDatabase.TABLE_NAME, coloumns, GroupMemberDatabase.GROUP_ID+"=?",new String[]{group_id}, null, null, null);
+       // cr.moveToFirst();
+        Cursor cr=SQ.rawQuery("SELECT max("+GroupMemberDatabase.RANK+") FROM " +GroupMemberDatabase.TABLE_NAME+" WHERE "+GroupMemberDatabase.GROUP_ID+ "=?", new String[] {group_id});
+        cr.moveToFirst();
+        //if(cr.getCount()>0) {
+           // do {
+               // if(cr!=null) {
+              //      Log.d("rank2", cr.getString(0));
+            //    }
+          //  } while (cr.moveToNext());
+        //}
+        cr.moveToFirst();
+        if(cr.getCount()>0) {
+              Log.d("rank1",cr.getString(0));
+              return cr.getString(0);
         }
         else
             return "0";

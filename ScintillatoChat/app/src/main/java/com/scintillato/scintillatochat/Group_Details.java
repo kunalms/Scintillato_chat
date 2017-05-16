@@ -201,7 +201,7 @@ public class Group_Details extends ActionBarActivity {
         obj=new Selected_Memebers_Execute(getApplicationContext(),cur_number);
         cursor_members=obj.getinfo_selected_members_temp(obj);
         int rank=1;
-        obj_chat.putinfo_group_members(obj_chat,public_id,cur_number,"0",(rank++)+"",formattedDate);
+        obj_chat.putinfo_group_members(obj_chat,public_id,cur_number,"1",(rank++)+"",formattedDate);
 
         if (cursor_members.getCount() > 0) {
             cursor_members.moveToFirst();
@@ -217,7 +217,7 @@ public class Group_Details extends ActionBarActivity {
         {
             c.moveToFirst();
             do {
-
+                Log.d("member"+public_id,c.getString(2));
             }while (c.moveToNext());
         }
         obj.delete_selected_members_temp();
@@ -386,7 +386,7 @@ public class Group_Details extends ActionBarActivity {
                     //String group_public_id;
                     //group_public_id=showlist(result);
 					private_group_create(result);
-
+                    Log.d("group_id",result);
 
 					Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
                 }
