@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle"  >
-            <corners android:radius="4dp" />
-            <solid android:color="@color/button_disabled"></solid>
-        </shape>
-    </item>
     <item android:state_pressed="true" >
         <shape android:shape="rectangle"  >
             <corners android:radius="4dp" />
@@ -21,7 +15,7 @@
     <item >
         <shape android:shape="rectangle"  >
             <corners android:radius="4dp" />
-            <solid android:color="@color/cyan_transparent"></solid>
+            <solid android:color="@color/cyan"></solid>
         </shape>
     </item>
 </selector>

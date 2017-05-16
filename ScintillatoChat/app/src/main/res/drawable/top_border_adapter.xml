@@ -7,7 +7,6 @@
     </item>
     <item android:top="1dp">
         <shape android:shape="rectangle">
-            <padding android:top="10dp"></padding>
             <solid android:color="#FFFFFF" />
         </shape>
     </item>

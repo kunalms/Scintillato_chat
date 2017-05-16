@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,13 +51,14 @@ public class Question_Holder extends RecyclerView.ViewHolder {
     ImageButton like,tag,answer;
     RelativeLayout box;
     CircleImageView profile;
+    CardView cardView;
     public Question_Holder(View row) {
         super(row);
         this.view = row;
         answer=(ImageButton)row.findViewById(R.id.bt_question_row_answer);
         like=(ImageButton)row.findViewById(R.id.bt_question_row_like);
         tag=(ImageButton)row.findViewById(R.id.bt_question_row_tag);
-        user_name=(TextView) row.findViewById(R.id.tv_queston_row_user);
+        user_name=(TextView) row.findViewById(R.id.tv_question_row_user);
         time=(TextView)row.findViewById(R.id.tv_question_row_time);
         question=(TextView)row.findViewById(R.id.tv_question_row_question);
         tv_like=(TextView)row.findViewById(R.id.tv_question_row_like);
@@ -64,6 +66,7 @@ public class Question_Holder extends RecyclerView.ViewHolder {
         profile=(CircleImageView)row.findViewById(R.id.iv_feed_row_profile);
         que_image=(ImageView) row.findViewById(R.id.iv_feed_row_que_image);
         box=(RelativeLayout)row.findViewById(R.id.rl_question_row);
+        cardView=(CardView)row.findViewById(R.id.cardview);
     }
 }
 

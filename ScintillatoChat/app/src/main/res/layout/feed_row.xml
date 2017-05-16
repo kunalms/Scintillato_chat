@@ -1,139 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_width="match_parent"
+<android.support.v7.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
-    android:background="@drawable/adapter_background"
-    android:id="@+id/rl_question_row"
-    android:padding="16dp">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentLeft="true">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/like30"
-            android:id="@+id/bt_question_row_like"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:background="@drawable/top_border_adapter"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:src="@drawable/comments30"
-            android:layout_height="wrap_content"
-            android:id="@+id/bt_question_row_answer"
-            android:textColor="@color/black"
-            android:layout_weight="1"
-            android:background="@drawable/top_border_adapter"/>
-
-        <ImageButton
-            android:src="@drawable/tags30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bt_question_row_tag"
-            android:textColor="@color/black"
-            android:layout_weight="1"
-            android:background="@drawable/top_border_adapter"
-/>
-    </LinearLayout>
+    android:layout_width="match_parent"
+    android:id="@+id/cardview"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    >
 
     <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:id="@+id/rl_question_row"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true">
-
-
-        <TextView
-            android:text="Answers :"
+        android:padding="16dp">
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_feed_row_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/tv_question_row_like"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_alignBottom="@+id/tv_question_row_like"
-            android:id="@+id/tv_question_row_answers"
-            />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/iv_feed_row_profile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/userprofile100"
-            android:layout_alignParentLeft="true" />
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_feed_row_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/userprofile100" />
+
+            <TextView
+                android:id="@+id/tv_question_row_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignTop="@id/iv_feed_row_profile"
+                android:layout_toRightOf="@id/iv_feed_row_profile"
+                android:text="User"
+                android:textColor="@color/black"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_question_row_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_question_row_user"
+                android:layout_alignStart="@+id/tv_question_row_user"
+                android:layout_below="@id/tv_question_row_user"
+                android:text="Time"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black" />
+            </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/RelativeLayout_feed_row_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/RelativeLayout_feed_row_2"
+            android:background="@drawable/top_border_adapter"
+            android:layout_marginTop="5dp">
 
 
-        <TextView
-            android:text="Question"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginTop="5dp"
-            android:id="@+id/tv_question_row_question"
-            android:layout_below="@+id/iv_feed_row_profile"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true" />
+            <TextView
+                android:id="@+id/tv_question_row_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Question"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
 
-        <ImageView
+            <ImageView
+                android:id="@+id/iv_feed_row_que_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/tv_question_row_question"
+                android:src="@color/background" />
+
+            <TextView
+                android:id="@+id/tv_question_row_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_feed_row_que_image"
+                android:text="Likes :"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_question_row_answers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_question_row_like"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/tv_question_row_like"
+                android:text="Answers :"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@color/background"
-            android:layout_below="@+id/tv_question_row_question"
-            android:id="@+id/iv_feed_row_que_image"/>
-
-        <TextView
-            android:text="User"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_queston_row_user"
-            android:textColor="@color/black"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/tv_question_row_answers"
-            android:layout_alignLeft="@+id/tv_question_row_answers" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/RelativeLayout_feed_row_3"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
 
+            <ImageButton
+                android:id="@+id/bt_question_row_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/top_border_adapter"
+                android:src="@drawable/like30"
+                android:textColor="@color/black" />
 
-        <TextView
-            android:text="Time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:id="@+id/tv_question_row_time"
-            android:layout_above="@+id/tv_question_row_question"
-            android:layout_marginBottom="5dp"
-            android:layout_alignStart="@+id/tv_queston_row_user"
-            android:layout_alignLeft="@+id/tv_queston_row_user" />
+            <ImageButton
+                android:id="@+id/bt_question_row_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/top_border_adapter"
+                android:src="@drawable/comments30"
+                android:textColor="@color/black" />
 
-        <TextView
-            android:text="Likes :"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:id="@+id/tv_question_row_like"
-            android:layout_below="@+id/iv_feed_row_que_image"
-             />
+            <ImageButton
+                android:id="@+id/bt_question_row_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/top_border_adapter"
+                android:src="@drawable/tags30"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
     </RelativeLayout>
-
-
-</RelativeLayout>
+</android.support.v7.widget.CardView>

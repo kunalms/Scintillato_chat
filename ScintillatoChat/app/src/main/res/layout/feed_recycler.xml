@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.scintillato.scintillatochat.Feed"
-    android:background="@drawable/chatback"
     >
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_feed_feed"
@@ -16,7 +15,6 @@
         android:layout_weight="0.1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_centerHorizontal="true"
-        android:padding="8dp"
         android:divider="@null"/>
 
 
