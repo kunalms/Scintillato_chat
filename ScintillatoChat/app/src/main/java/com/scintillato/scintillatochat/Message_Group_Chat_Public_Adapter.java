@@ -115,6 +115,13 @@ public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Mess
                 message_chat_holder.message.setTextColor(Color.parseColor("#FFFFFF"));
                 message_chat_holder.time.setTextColor(Color.parseColor("#FFFFFF"));
                 message_chat_holder.status.setImageResource(R.drawable.ic_done_all_white18);
+                message_chat_holder.name.setText(message_chat.get_name());
+                if(message_chat.get_time()!=null) {
+                    Log.d("time12", message_chat.get_time());
+                    message_chat_holder.time.setText(time(message_chat.get_time()));
+                }
+
+                message_chat_holder.message.setText(message_chat.get_messaage());
             }
             //If not mine then it is from sender to show other background and align to left
             else {
@@ -125,12 +132,19 @@ public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Mess
                 message_chat_holder.time.setTextColor(Color.parseColor("#000000"));
                 message_chat_holder.box.setLayoutParams(params);
                 message_chat_holder.status.setImageResource(R.drawable.done_all_black_18x18);
+                message_chat_holder.name.setText(message_chat.get_name());
+                if(message_chat.get_time()!=null) {
+                    Log.d("time12", message_chat.get_time());
+                    message_chat_holder.time.setText(time(message_chat.get_time()));
+                }
+                message_chat_holder.message.setText(message_chat.get_messaage());
             }
 
-            message_chat_holder.name.setText(message_chat.get_name());
+
+            /*message_chat_holder.name.setText(message_chat.get_name());
             Log.d("time12", message_chat.get_time());
             message_chat_holder.time.setText(time(message_chat.get_time()));
-            message_chat_holder.message.setText(message_chat.get_messaage());
+            message_chat_holder.message.setText(message_chat.get_messaage());*/
         }
 
     }

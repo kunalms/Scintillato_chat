@@ -558,6 +558,8 @@ public class Group_create_contacts extends ActionBarActivity {
     @Override
     protected void onPreExecute() {
 
+        loading = ProgressDialog.show(ctx, "Status", "Loading Contacts...",true,false);
+
         loading.setOnCancelListener(new OnCancelListener() {
 
             public void onCancel(DialogInterface arg0) {

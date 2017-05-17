@@ -227,7 +227,7 @@ public class Add_Member extends AppCompatActivity {
         }
         @Override
         protected void onPreExecute() {
-//            loading = ProgressDialog.show(ctx, "Status", "Logging In...",true,false);
+//            loading = ProgressDialog.show(ctx, "Status", "Adding Members...",true,false);
   //          loading.setCancelable(false);
         }
     }
