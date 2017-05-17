@@ -222,6 +222,7 @@ public class Profile_Chat_Group extends AppCompatActivity {
                     //delete from recent chats
                     Intent i=new Intent(ctx,Start_Page.class);
                     startActivity(i);
+                    finish();
                 }
             }
         }

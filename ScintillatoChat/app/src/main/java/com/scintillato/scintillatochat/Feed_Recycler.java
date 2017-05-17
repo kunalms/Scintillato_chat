@@ -313,7 +313,13 @@ public class Feed_Recycler extends AppCompatActivity {
 
                 count++;
             }
+            SharedPreferences sharedpreferences=getSharedPreferences("User", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=sharedpreferences.edit();
+            editor.putString("refresh_flag_feed","1");
+            editor.commit();
+
             adapter.notifyDataSetChanged();
+
             currently_fetching=false;
             for(int i=0;i<feedList.size();i++)
             {

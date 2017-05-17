@@ -292,9 +292,31 @@ public class Question_Holder extends RecyclerView.ViewHolder {
         });
 
 
-        Animation animation = AnimationUtils.loadAnimation(ctx,
-                R.anim.up_from_bottom);
-        question_holder.itemView.startAnimation(animation);
+        SharedPreferences sharedpreferences = ctx.getSharedPreferences("User", Context.MODE_PRIVATE);
+        String refresh_flag_feed = sharedpreferences.getString("refresh_flag_feed", "0");
+
+        if(refresh_flag_feed.equals("1"))
+        {
+             sharedpreferences=ctx.getSharedPreferences("User", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor=sharedpreferences.edit();
+            editor.putString("refresh_flag_feed","0");
+            editor.commit();
+
+            if(position==(getItemCount()-1))
+            {
+                sharedpreferences=ctx.getSharedPreferences("User", Context.MODE_PRIVATE);
+                editor=sharedpreferences.edit();
+                editor.putString("refresh_flag_feed","1");
+                editor.commit();
+            }
+        }
+        else {
+
+            Animation animation = AnimationUtils.loadAnimation(ctx,
+                    R.anim.up_from_bottom);
+            question_holder.itemView.startAnimation(animation);
+        }
+
 
     }
 

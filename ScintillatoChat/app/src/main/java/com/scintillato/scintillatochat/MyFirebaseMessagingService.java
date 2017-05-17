@@ -215,12 +215,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         else if(code.equals("8"))
         {
             fetch_group_details(group_details,group_pubic_id);
-            Log.d("group_details",group_details);
-            Log.d("group_members",group_members);
-            Log.d("other_group_members",other_members);
-
             fetch_new_members(group_members,group_pubic_id);
             fetch_members(other_members,group_pubic_id);
+
+
         }
         else if(code.equals("9"))
         {
@@ -461,6 +459,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 rank=JO.getString("rank");
                 Log.d("member1",member);
                 obj.putinfo_group_members(obj,group_id,member,"0",rank,formattedDate);
+                obj.insert_message_group_boolean(obj,false,false,false,false,true,member,"",group_pubic_id,"");
                 count++;
             }
         }

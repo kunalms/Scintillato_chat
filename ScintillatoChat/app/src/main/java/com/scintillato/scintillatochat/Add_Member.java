@@ -210,12 +210,14 @@ public class Add_Member extends AppCompatActivity {
                             cursor_members.moveToFirst();
                             do {
                                 obj.putinfo_group_members(obj, group_id, cursor_members.getString(0), "0", ++rank+"", date);
+                                obj.insert_message_group_boolean(obj,false,false,false,false,true,cursor_members.getString(0),"",group_id,cur_number);
                             }while (cursor_members.moveToNext());
                         }
                     }
                     Intent i=new Intent(ctx,Message_Chat_Public_Group_Main.class);
                     i.putExtra("group_id",group_id);
                     startActivity(i);
+                    finish();
                     Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
                 }
                 else
