@@ -2,14 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
+
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_chat_page_row_dp"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@drawable/ic_launcher"
-        android:background="@color/white"/>
+        android:layout_marginTop="8dp"
+        />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -30,6 +33,7 @@
             android:layout_alignLeft="@+id/tv_chat_page_row_name"
             android:layout_below="@+id/tv_chat_page_row_name"
             android:src="@drawable/done_all_black_18x18"
+            android:layout_alignBottom="@+id/tv_chat_page_row_message"
             />
         <TextView
             android:id="@+id/tv_chat_page_row_message"
