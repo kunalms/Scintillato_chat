@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}"
-    android:layout_marginRight="@dimen/parent_margin_right"
-    android:layout_marginLeft="@dimen/parent_margin_left">
+    >
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
@@ -38,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/rl_activity_group_contacts_1"
-        android:dividerHeight="0dp"
+        android:dividerHeight="1dp"
         android:divider="@null">
 
     </ListView>

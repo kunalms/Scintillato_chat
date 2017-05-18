@@ -10,8 +10,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_start__page">Start Page</string>
     <string name="title_activity_home__page">Home</string>
-    <string name="title_activity_group_create_contacts">Contacts</string>
-    <string name="title_activity_choose__contacts">Choose Buddies</string>
+    <string name="title_activity_group_create_contacts">Invite your contacts</string>
+    <string name="title_activity_choose__contacts">Choose Members to be added</string>
     <string name="title_activity_group__details">Group Details</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>

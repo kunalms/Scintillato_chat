@@ -9,8 +9,8 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginBottom="12dp"
@@ -57,7 +57,7 @@
                 android:layout_below="@id/tv_question_row_user"
                 android:text="Time"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/half_black" />
             </RelativeLayout>
 
         <RelativeLayout
@@ -77,14 +77,16 @@
                 android:layout_alignParentStart="true"
                 android:text="Question"
                 android:textColor="@color/black"
-                android:textSize="25dp" />
+                android:textSize="14dp" />
 
             <ImageView
                 android:id="@+id/iv_feed_row_que_image"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                android:src="@color/background"
                 android:layout_below="@+id/tv_question_row_question"
-                android:src="@color/background" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/tv_question_row_like"

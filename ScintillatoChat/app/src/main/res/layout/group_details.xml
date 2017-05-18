@@ -1,53 +1,72 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.scintillato.scintillatochat.Group_Details"
-    android:background="@drawable/chatback">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.scintillato.scintillatochat.Group_Details">
 
-    <EditText
-        android:id="@+id/et_group_details_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/iv_group_details_image"
-        android:layout_marginLeft="14dp"
-        android:hint="Type group name..."
-        android:layout_toRightOf="@+id/iv_group_details_image"
-        android:ems="10" >
 
-    </EditText>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_group_details_image"
         android:layout_width="64dp"
         android:layout_height="64dp"
-		android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/groupprofile100" />
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_photo_camera_black_24dp"
+        app:civ_border_color="@color/half_black"
+        app:civ_fill_color="@color/light_grey"
+        app:civ_border_width="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <EditText
+        android:id="@+id/et_group_details_name"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:hint="Type name..."
+        android:layout_alignTop="@id/iv_group_details_image"
+        android:layout_toRightOf="@+id/iv_group_details_image"
+        android:ems="10"
+        android:background="@drawable/textview_back_black"
+
+        >
+
+    </EditText>
 
     <EditText
         android:id="@+id/et_group_details_topic"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
-        android:hint="Type group topic..."
+        android:hint="Type topic..."
+        android:layout_alignLeft="@id/et_group_details_name"
         android:layout_below="@+id/et_group_details_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_alignStart="@+id/et_group_details_name"
+        android:background="@drawable/textview_back_black"
+        android:layout_marginTop="5dp"
+
         android:ems="10" >
     </EditText>
 
     <EditText
         android:id="@+id/et_group_details_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginRight="10dp"
         android:layout_alignStart="@+id/et_group_details_name"
-        android:hint="Type group description..."
+        android:hint="Type description..."
+        android:scrollbars="vertical"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_group_details_topic"
         android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxHeight="100dp"
+        android:layout_alignLeft="@+id/et_group_details_name"
         android:layout_marginTop="5dp"
-        android:ems="10" >
-
+        android:background="@drawable/textview_back_black">
     </EditText>
     <Switch
         android:layout_width="wrap_content"
@@ -55,9 +74,10 @@
         android:text="Public"
         android:id="@+id/switch_group_details_status"
         android:layout_below="@+id/et_group_details_description"
-        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@id/et_group_details_name"
         android:checked="false"
-        android:buttonTint="@color/white"/>
+        android:buttonTint="@color/cyan"
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +85,8 @@
         android:text="Members"
         android:textColor="@color/black"
         android:layout_below="@+id/switch_group_details_status"
-        android:layout_marginLeft="@dimen/parent_margin_left"/>
+        android:layout_marginLeft="@dimen/parent_margin_left"
+        android:layout_marginTop="5dp"/>
 
 
     <ListView
