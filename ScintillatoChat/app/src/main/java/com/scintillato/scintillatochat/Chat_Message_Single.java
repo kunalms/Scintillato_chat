@@ -286,7 +286,6 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
     {
         backGroundTaskSend=new BackGroundTaskSend(message_id);
         backGroundTaskSend.execute(message_string,receiver,sender,message_id);
-
     }
 
 

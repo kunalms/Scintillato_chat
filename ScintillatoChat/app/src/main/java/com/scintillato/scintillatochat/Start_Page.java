@@ -13,6 +13,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,7 +92,7 @@ public class Start_Page extends TabActivity {
 			v.setBackgroundResource(R.drawable.tab_selector);
 		}
 
-		/*if(isNetworkAvailable()==true)
+		if(isNetworkAvailable()==true)
 		{
 		}
 		else
@@ -100,24 +101,25 @@ public class Start_Page extends TabActivity {
 		}
         send_message_pending();
 
-        put_status(cur_number,"1");*/
+        put_status(cur_number,"1");
 	}
 
-    /*void send_message_pending()
+    void send_message_pending()
     {
-        Group_Execute obj=new Group_Execute(ctx,cur_number);
-        c=obj.get_message_chat_unsend(obj);
+        Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
+        c=obj.fetch_message_unsend_single(obj);
+        c.moveToFirst();
         if(c.getCount()>0) {
-            c.moveToFirst();
-            String flag=c.getString(4);
-            if(flag.equals("0"))
-            {
-                send_single_message(c.getString(3),c.getString(2),cur_number,c.getString(0));
-            }
-            else
-            {
-                send_group_message(c.getString(3),cur_number,c.getString(1),c.getString(0));
-            }
+            do {
+                Cursor c1 = obj.fetch_message_by_id(obj, c.getString(0));
+                c1.moveToFirst();
+                if (c1.getCount() > 0) {
+                    do {
+                        send_single_message(c.getString(1),c1.getString(5),cur_number,c.getString(0));
+                    }while(c1.moveToNext());
+                }
+                // send_single_message();
+            }while (c.moveToNext());
         }
 
     }
@@ -128,18 +130,132 @@ public class Start_Page extends TabActivity {
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
 
+    BackGroundTaskSend backGroundTaskSend;
     void send_single_message(String message,String number,String sender,String message_id)
     {
-        backGroundTaskSingle=new BackGroundTaskSingle(message_id,"0");
-        backGroundTaskSingle.execute(message,number,sender);
+        backGroundTaskSend=new BackGroundTaskSend(message_id);
+        backGroundTaskSend.execute(message,number,sender,message_id);
 
     }
     void send_group_message(String message,String sender,String group_id,String message_id)
     {
-        backGroundTaskGroup=new BackGroundTaskGroup(message_id,"1");
-        backGroundTaskGroup.execute(message,sender,group_id);
     }
-    class BackGroundTaskSingle extends AsyncTask<String, Void, String> {
+
+	class BackGroundTaskSend extends AsyncTask<String, Void, String> {
+		int flag;
+		int flag1=1;
+		String message_id;
+		BackGroundTaskSend(String message_id)
+		{
+			this.message_id=message_id;
+			flag=0;
+		}
+		@Override
+		protected String doInBackground(String... params) {
+
+			String message=params[0];
+			String number=params[1];
+			String sender=params[2];
+			String message_id=params[3];
+
+			String register_url="http://www.scintillato.esy.es/message_send_single.php";
+
+
+			try{
+				URL url=new URL(register_url);
+				HttpURLConnection httpURLConnection=(HttpURLConnection)url.openConnection();
+				httpURLConnection.setRequestMethod("POST");
+				httpURLConnection.setDoOutput(true);
+				OutputStream OS=httpURLConnection.getOutputStream();
+				BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
+				String data= URLEncoder.encode("message","UTF-8")+"="+URLEncoder.encode(message,"UTF-8")+"&"+
+						URLEncoder.encode("r_mobile_no","UTF-8")+"="+URLEncoder.encode(number,"UTF-8")+"&"+
+						URLEncoder.encode("s_mobile_no","UTF-8")+"="+URLEncoder.encode(sender,"UTF-8")+"&"+
+						URLEncoder.encode("message_id","UTF-8")+"="+URLEncoder.encode(message_id,"UTF-8");
+				bufferedWriter.write(data);
+				bufferedWriter.flush();
+				bufferedWriter.close();
+				OS.close();
+				InputStream IS=httpURLConnection.getInputStream();
+				BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(IS,"iso-8859-1"));
+
+				String line="";
+				line=bufferedReader.readLine();
+
+
+				bufferedReader.close();
+				IS.close();
+				httpURLConnection.disconnect();
+
+				if(line.equals("")==false)
+				{
+					flag=1;
+					//Log.d("inside","1");
+					//tv_status.setText(line);
+
+				}
+				else
+				{
+					//Log.d("outside","1");
+					flag=0;
+					//tv_status.setText("failure");
+				}
+
+				return line;
+
+			}
+			catch(Exception e)
+			{
+				flag1=0;
+				return "Check Internet Connection!";
+
+			}
+
+
+		}
+		@Override
+		protected void onPostExecute(String result) {
+			// loading.dismiss();
+			Log.d("1",flag+"");
+			Toast.makeText(ctx,result,Toast.LENGTH_LONG);
+
+			if(flag1==0)
+			{
+				Toast.makeText(ctx,result,Toast.LENGTH_LONG);
+			}
+			else
+			{
+				if(flag==1)
+				{
+					update_message_status(message_id,"1");
+					Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
+					obj.delete_message_unsend_single_selected(message_id);
+                    Toast.makeText(ctx, "sent"+message_id, Toast.LENGTH_SHORT).show();
+                }
+			}
+		}
+		@Override
+		protected void onPreExecute() {
+
+		}
+	}
+
+
+	void update_message_status(String message_id,String status){
+		Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
+		obj.update_status_message_single(obj,message_id,status);
+	}
+    private BackGroundTaskInsertUnique BackGroundTaskInsertUnique;
+    void put_status(String user_number,String status)
+    {
+        if(BackGroundTaskInsertUnique!=null)
+            BackGroundTaskInsertUnique.cancel(true);
+        BackGroundTaskInsertUnique=new BackGroundTaskInsertUnique(getApplicationContext());
+        BackGroundTaskInsertUnique.execute(user_number,status);
+    }
+
+    /*
+	class BackGroundTaskSingle extends AsyncTask<String, Void, String> {
 
         int flag1=1,flag;
         String flag_type;
@@ -409,35 +525,28 @@ public class Start_Page extends TabActivity {
 
         }
     }
-    private BackGroundTaskInsertUnique BackGroundTaskInsertUnique;
-    void put_status(String user_number,String status)
-    {
-        if(BackGroundTaskInsertUnique!=null)
-            BackGroundTaskInsertUnique.cancel(true);
-        BackGroundTaskInsertUnique=new BackGroundTaskInsertUnique(getApplicationContext());
-        BackGroundTaskInsertUnique.execute(user_number,status);
-    }
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        put_status(cur_number,"0");
-                        Start_Page.this.finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-        alert.getButton(alert.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.black));
-        alert.getButton(alert.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.black));
-    }*/
+   */
+@Override
+public void onBackPressed() {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setMessage("Are you sure you want to exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    put_status(cur_number,"0");
+                    Start_Page.this.finish();
+                }
+            })
+            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+    AlertDialog alert = builder.create();
+    alert.show();
+    alert.getButton(alert.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.black));
+    alert.getButton(alert.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.black));
+}
 
 }
 

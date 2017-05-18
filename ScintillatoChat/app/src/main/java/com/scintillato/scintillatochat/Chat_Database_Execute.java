@@ -220,6 +220,13 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
         Log.d("statis","one row inserted"+MessageSingleInfo.TABLE_NAME+k+message);
         return k+"";
     }
+    Cursor fetch_message_by_id(Chat_Database_Execute obj,String message_id)
+    {
+        SQLiteDatabase SQ=obj.getReadableDatabase();
+        String[] coloumns={MessageSingleInfo.MESSAGE_ID,MessageSingleInfo.MESSAGE,MessageSingleInfo.DATE_TIME,MessageSingleInfo.SEND_RECIEVE,MessageSingleInfo.SENDER,MessageSingleInfo.RECIEVER,MessageSingleInfo.OPPOSITE_PERSON_NUMBER,MessageSingleInfo.STATUS,MessageSingleInfo.IMAGE_LOC,MessageSingleInfo.VIDEO_LOC,MessageSingleInfo.OPPOSITE_PERSON_MESSAGE_ID};
+        Cursor cr=SQ.query(MessageSingleInfo.TABLE_NAME, coloumns, MessageSingleInfo.MESSAGE_ID+"=?",new String[]{message_id}, null, null, null);
+        return cr;
+    }
 
     //*******************************************************RECENT_CHATS********************************************************
 

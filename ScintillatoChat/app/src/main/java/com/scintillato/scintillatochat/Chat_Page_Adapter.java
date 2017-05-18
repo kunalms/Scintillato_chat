@@ -93,7 +93,7 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
         {
             if(chat_list.getStatus().equals("0"))
             {
-                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_done_white18));
+                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_action_clock));
             }
             else if(chat_list.getStatus().equals("1"))
             {
@@ -107,12 +107,12 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
             }
             else //if(chat_list.getStatus().equals("3"))
             {
-                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_done_all_white18));
+                home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.done_all_black_18x18));
             }
         }
         else if(chat_list.getSend_receive().equals("1"))
         {
-            home_page_holder.iv_status.setVisibility(View.INVISIBLE);
+            home_page_holder.iv_status.setVisibility(View.GONE);
         }
         home_page_holder.name.setText(chat_list.get_name());
         home_page_holder.message.setText(chat_list.get_messaage());

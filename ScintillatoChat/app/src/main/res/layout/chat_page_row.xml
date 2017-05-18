@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/iv_char_page_row_status"
             android:text="Message"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:maxLines="1"
             android:layout_below="@+id/tv_chat_page_row_name" />
 

@@ -115,6 +115,7 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
         RelativeLayout.LayoutParams params  = new RelativeLayout.LayoutParams(message_chat_holder.box.getLayoutParams());
         message_chat_holder.setIsRecyclable(false);
         Chat_Message_Single_List message_chat=list.get(position);
+        message_chat_holder.read.setVisibility(View.GONE);
         if(message_chat.isMine())
         {
             message_chat_holder.box.setBackgroundResource(R.drawable.cyanbubble);
@@ -123,7 +124,7 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             message_chat_holder.message.setTextColor(Color.parseColor("#FFFFFF"));
             message_chat_holder.time.setTextColor(Color.parseColor("#FFFFFF"));
             if(message_chat.getStatus().equals("0"))
-                message_chat_holder.status.setImageResource(R.drawable.done_black_18x18);
+                message_chat_holder.status.setImageResource(R.drawable.ic_clock_white);
             else if(message_chat.getStatus().equals("1"))
             {
                 message_chat_holder.status.setImageResource(R.drawable.ic_done_white18);
@@ -134,6 +135,8 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             }
             else
             {
+                message_chat_holder.read.setVisibility(View.VISIBLE);
+                message_chat_holder.status.setImageResource(R.drawable.ic_done_all_white18);
 
             }
         }
@@ -218,6 +221,7 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
         TextView message,time;
         RelativeLayout box;
         ImageView status;
+        TextView read;
         private ClickListener listener;
       //  RelativeLayout background;
 
@@ -228,6 +232,7 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             time=(TextView) row.findViewById(R.id.tv_message_chat_single_row_time);
             box=(RelativeLayout) row.findViewById(R.id.message_single_chat_box);
             status=(ImageView)row.findViewById(R.id.img_message_single_chat_status);
+            read=(TextView)row.findViewById(R.id.tv_chat_message_single_row_read);
          //   background=(RelativeLayout)row.findViewById(R.id.chat_message_single_row_background);
             this.listener=listener;
             row.setOnClickListener(this);
