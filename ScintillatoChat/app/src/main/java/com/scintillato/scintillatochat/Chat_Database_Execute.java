@@ -328,12 +328,19 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     public Cursor fetch_message_unsend_single(Chat_Database_Execute obj)
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
-        String[] coloumns={MessageUnsendSingleInfo.MESSAGE_ID,MessageUnsendSingleInfo.MESSAGE};
+        String[] coloumns={MessageUnsendSingleInfo.MESSAGE_ID,MessageUnsendSingleInfo.MESSAGE,MessageUnsendSingleInfo.OPPOSITE_PERSON_NUMBER};
         Cursor cr=SQ.query(MessageUnsendSingleInfo.TABLE_NAME, coloumns, null,null, null, null, null,null);
         return cr;
     }
 
-    //*******************************************************MESSAGE_GROUP*************************************************************
+    public Cursor fetch_message_unsend_group(Chat_Database_Execute obj)
+    {
+        SQLiteDatabase SQ=obj.getReadableDatabase();
+        String[] coloumns={MessageUnsendGroupInfo.MESSAGE_ID,MessageUnsendGroupInfo.MESSAGE,MessageUnsendGroupInfo.GROUP_ID};
+        Cursor cr=SQ.query(MessageUnsendGroupInfo.TABLE_NAME, coloumns, null,null, null, null, null,null);
+        return cr;
+    }
+//*******************************************************MESSAGE_GROUP*************************************************************
 
     public void delete_message_group_all()
     {

@@ -122,6 +122,16 @@ public class Start_Page extends TabActivity {
             }while (c.moveToNext());
         }
 
+        obj=new Chat_Database_Execute(ctx,cur_number);
+        c=obj.fetch_message_unsend_group(obj);
+        c.moveToFirst();
+        if(c.getCount()>0)
+        {
+            do {
+                send_group_message(c.getString(1),cur_number,c.getString(2),c.getString(0));
+            }while (c.moveToNext());
+        }
+
     }
 	private boolean isNetworkAvailable() {
 		ConnectivityManager connectivityManager
@@ -137,10 +147,6 @@ public class Start_Page extends TabActivity {
         backGroundTaskSend.execute(message,number,sender,message_id);
 
     }
-    void send_group_message(String message,String sender,String group_id,String message_id)
-    {
-    }
-
 	class BackGroundTaskSend extends AsyncTask<String, Void, String> {
 		int flag;
 		int flag1=1;
@@ -526,7 +532,120 @@ public class Start_Page extends TabActivity {
         }
     }
    */
-@Override
+
+
+    private BackGroundTaskSendGroup backgroudsendgroup;
+    void send_group_message(String message,String sender,String group_id,String message_id)
+    {
+
+        backgroudsendgroup=new BackGroundTaskSendGroup(message_id);
+        backgroudsendgroup.execute(message,sender,group_id);
+    }
+
+    int flag;
+    class BackGroundTaskSendGroup extends AsyncTask<String, Void, String> {
+        int flag1=1;
+        String message_id;
+        BackGroundTaskSendGroup(String message_id)
+        {
+            this.message_id=message_id;
+            flag=0;
+        }
+        @Override
+        protected String doInBackground(String... params) {
+
+            String message=params[0];
+            //String number_json=params[1];
+            String sender=params[1];
+            String group_id=params[2];
+
+
+            String register_url="http://www.scintillato.esy.es/message_send_group.php";
+
+
+            try{
+                URL url=new URL(register_url);
+                HttpURLConnection httpURLConnection=(HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream OS=httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
+                String data= URLEncoder.encode("message","UTF-8")+"="+URLEncoder.encode(message,"UTF-8")+"&"+
+                        URLEncoder.encode("s_mobile_no","UTF-8")+"="+URLEncoder.encode(sender,"UTF-8")+"&"+
+                        URLEncoder.encode("group_id","UTF-8")+"="+URLEncoder.encode(group_id,"UTF-8");
+
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+
+                OS.close();
+
+
+                InputStream IS=httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(IS,"iso-8859-1"));
+
+                String line="";
+                line=bufferedReader.readLine();
+
+
+                bufferedReader.close();
+                IS.close();
+                httpURLConnection.disconnect();
+
+                if(line.equals("")==false)
+                {
+                    flag=1;
+                }
+                else
+                {
+                    flag=0;
+                }
+                return line;
+
+            }
+            catch(Exception e)
+            {
+                flag1=0;
+                return "Check Internet Connection!";
+
+            }
+
+
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            // loading.dismiss();
+            Log.d("1",flag+"");
+            Toast.makeText(ctx,result,Toast.LENGTH_LONG);
+
+            if(flag1==0)
+            {
+                Toast.makeText(ctx,result,Toast.LENGTH_LONG);
+            }
+            else
+            {
+
+
+                if(flag==1)
+                {
+                    update_message_status_group(message_id,"1");
+                    Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
+                    obj.delete_message_unsend_group_selected(message_id);
+                }
+            }
+        }
+        @Override
+        protected void onPreExecute() {
+
+        }
+    }
+
+    void update_message_status_group(String message_id,String status){
+        Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
+        obj.update_status_message_group(obj,message_id,status);
+    }
+
+    @Override
 public void onBackPressed() {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setMessage("Are you sure you want to exit?")
