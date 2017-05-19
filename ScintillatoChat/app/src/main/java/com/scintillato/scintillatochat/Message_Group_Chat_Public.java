@@ -542,6 +542,7 @@ public class Message_Group_Chat_Public extends Fragment {
                     }
                     Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
                     obj.delete_message_unsend_group_selected(message_id);
+
                 }
             }
         }

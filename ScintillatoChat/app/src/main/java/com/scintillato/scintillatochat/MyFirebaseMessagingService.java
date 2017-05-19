@@ -162,7 +162,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
             message_id=obj.insert_message_single(obj,formattedDate,final_message,"1",sender,cur_number,sender,"0","0","0",other_message_id);
-            obj.insert_message_unsend_single(obj,formattedDate,final_message,"1",sender,cur_number,sender,"0","0","0",message_id);
+           // obj.insert_message_unsend_single(obj,formattedDate,final_message,"1",sender,cur_number,sender,"0","0","0",message_id);
             if(obj.recent_chats_single_exists(obj,sender)==true)
             {
                 obj.update_recent_chats_single(obj,sender,formattedDate);

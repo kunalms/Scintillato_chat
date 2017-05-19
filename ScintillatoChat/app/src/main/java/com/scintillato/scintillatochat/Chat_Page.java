@@ -188,13 +188,29 @@ public class Chat_Page extends AppCompatActivity {
                 }
                 else//group
                 {
-                    String group_id=c.getString(1);
+                    String group_id=c.getString(1),message="Group Created",status="0",send_receive="0";
+                    String[] count_message_id=new String[1];
+                    //send-0 recieve=1, status=0,1,2
                     Cursor cursor_group=obj.fetch_group_selected(obj,group_id);
                     if(cursor_group.getCount()>0) {
                         cursor_group.moveToFirst();
                         do {
+
+
+                            Cursor cursor_message=obj.fetch_last_message_chat_group(obj,group_id);
+                            cursor_message.moveToFirst();
+                            if(cursor_message.getCount()>0)
+                            {
+                                do {
+                                    message=cursor_message.getString(1);
+                                    send_receive=cursor_message.getString(3);
+                                    status=cursor_message.getString(2);
+                                    count_message_id=obj.get_count_unread_message_group(obj,group_id);
+                                }while(cursor_message.moveToNext());
+
+                            }
                        //     Toast.makeText(getApplicationContext(),"time_group"+cursor_group.getString(4),Toast.LENGTH_SHORT).show();
-                            Chat_Page_List chatPageList = new Chat_Page_List(cursor_group.getString(1), "message", group_id, c.getString(0), "0", c.getString(4), "0", "0");
+                            Chat_Page_List chatPageList = new Chat_Page_List(cursor_group.getString(1), message, group_id, c.getString(0), count_message_id[0], c.getString(4), status, send_receive);
                             chat_page_list.add(chatPageList);
                             adapter.notifyDataSetChanged();
                         }while (cursor_group.moveToNext());

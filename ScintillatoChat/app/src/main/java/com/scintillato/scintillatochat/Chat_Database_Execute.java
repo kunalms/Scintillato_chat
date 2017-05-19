@@ -385,6 +385,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
             if(i==0)
             {
                 Cursor cr = SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID + "=? and "+MessageGroupInfo.SEND_RECIEVE+"=? and "+MessageGroupInfo.STATUS+"=?", new String[]{group_id,"1","0"}, null, null, MessageGroupInfo.MESSAGE_ID + " DESC ", "1");
+                cr.moveToFirst();
                 if(cr.getCount()>0)
                 {
                     message_id=cr.getString(0);
@@ -396,6 +397,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
             else
             {
                 Cursor cr = SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID + "=? and "+MessageGroupInfo.SEND_RECIEVE+"=? and "+MessageGroupInfo.STATUS+"=? and "+MessageGroupInfo.MESSAGE_ID+"<?", new String[]{group_id,"1","0",message_id}, null, null, MessageGroupInfo.MESSAGE_ID + " DESC ", "1");
+                cr.moveToFirst();
                 if(cr.getCount()>0)
                 {
                     message_id=cr.getString(0);

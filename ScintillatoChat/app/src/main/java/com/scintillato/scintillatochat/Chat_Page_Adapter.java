@@ -81,7 +81,7 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
         Chat_Page_List chat_list=list.get(position);
         if(chat_list.get_flag().equals("0"))
         {
-            home_page_holder.message.setText("Group Created");
+           // home_page_holder.message.setText("Group Created");
             fetch_group_profile_pic(chat_list.get_group_id(),home_page_holder.dp);
         }
         else

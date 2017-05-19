@@ -70,7 +70,7 @@
         <activity
             android:name=".Login_Page"
             android:label="@string/title_activity_login__page"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Answer_Feed" />
         <activity android:name=".Answer_Community_Question" />
         <activity android:name=".Message_Chat_Public_Group_Main" />
@@ -101,8 +101,9 @@
             android:name=".Chat_Message_Single"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Profile_Chat_Group" />
-        <activity android:name=".Add_Member"></activity>
-        <activity android:name=".Message_Group_Chat_Public"></activity>
+        <activity android:name=".Add_Member" />
+        <activity android:name=".Message_Group_Chat_Public" />
+        <activity android:name=".VerifyOTP"></activity>
     </application>
 
 </manifest>

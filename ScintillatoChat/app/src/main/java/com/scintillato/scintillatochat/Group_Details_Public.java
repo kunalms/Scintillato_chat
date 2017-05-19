@@ -208,7 +208,7 @@ public class Group_Details_Public extends ActionBarActivity {
             } while (cursor_members.moveToNext());
         }
 
-        obj_chat.insert_recent_chats(obj_chat,"1",public_id,"0",cur_number,formattedDate);
+        obj_chat.insert_recent_chats(obj_chat,"0",public_id,"0",cur_number,formattedDate);
 
         Cursor c=obj_chat.fetch_group_members(obj_chat,public_id);
         if(c.getCount()>0)
