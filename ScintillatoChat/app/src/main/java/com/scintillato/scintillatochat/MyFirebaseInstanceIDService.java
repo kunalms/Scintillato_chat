@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -51,6 +52,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         Intent i=new Intent(getApplicationContext(),Login_Page.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
+
     }
 
 }

@@ -306,6 +306,8 @@ public class Category_check extends Activity {
                     loading.dismiss();
                     Intent i=new Intent(getApplicationContext(),SyncActivity.class);
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     finish();
                 }
                 else

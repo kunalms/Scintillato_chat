@@ -680,6 +680,7 @@ public class Message_Group_Chat_Public extends Fragment {
 
         super.onStop();
     }
+
     @Override
     public void onResume() {
         super.onResume();

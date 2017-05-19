@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -213,11 +214,15 @@ public class Question_Holder extends RecyclerView.ViewHolder {
                         Intent i = new Intent(ctx, Self_Profile.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         ctx.startActivity(i);
+                        ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     } else {
                         Intent i = new Intent(ctx, Profile_Other.class);
                         i.putExtra("user_id", question_holder.mItem.getUser_id());
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         ctx.startActivity(i);
+                        ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     }
                 }
             }
@@ -237,6 +242,8 @@ public class Question_Holder extends RecyclerView.ViewHolder {
                 i.putExtra("anonymous",question_holder.mItem.getAnonymous());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Log.d("abc","abc");
 
             }
@@ -260,6 +267,8 @@ public class Question_Holder extends RecyclerView.ViewHolder {
                 Log.d("check",question_holder.mItem.getQuestion_id()+question_holder.mItem.getUser()+question_holder.mItem.getLike_count()+question_holder.mItem.getNo_answer());
                 // Toast.makeText(ctx,"click",Toast.LENGTH_SHORT).show();
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Log.d("abc","abc");
 
             }

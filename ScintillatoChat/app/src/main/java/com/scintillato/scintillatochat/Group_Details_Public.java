@@ -226,6 +226,8 @@ public class Group_Details_Public extends ActionBarActivity {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         startActivity(i);
+        overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

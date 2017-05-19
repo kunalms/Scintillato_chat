@@ -52,18 +52,22 @@ public class Bottom_Sheet_Create_Group extends BottomSheetDialog {
                         Intent intent=new Intent(context,Group_create_contacts.class);
                         intent.putExtra("one_to_one_flag","0");
                         ((Activity)context).startActivity(intent);
-    	  		        break;
+                        ((Activity)context).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
+                        break;
                     case 1:
                         intent=new Intent(context,Group_create_contacts.class);
                         intent.putExtra("one_to_one_flag","0");
     	  		        ((Activity)context).startActivity(intent);
+                        ((Activity)context).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 
                         break;
                     case 2:
                         intent=new Intent(context,Group_create_contacts.class);
                         intent.putExtra("one_to_one_flag","1");
                         ((Activity)context).startActivity(intent);
-
+                        ((Activity)context).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
                 }
 
             }

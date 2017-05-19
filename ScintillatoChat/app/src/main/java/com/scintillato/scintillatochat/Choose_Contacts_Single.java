@@ -62,6 +62,8 @@ public class Choose_Contacts_Single extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Chat_Message_Single.class);
                 i.putExtra("user_number",user_number);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 
             }
         });

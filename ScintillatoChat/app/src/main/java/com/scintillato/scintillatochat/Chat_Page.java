@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -66,6 +67,8 @@ public class Chat_Page extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(),Group_create_contacts.class);
                 intent.putExtra("one_to_one_flag","0");
                 startActivity(intent);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
 
@@ -76,6 +79,8 @@ public class Chat_Page extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(),Group_create_contacts.class);
                 intent.putExtra("one_to_one_flag","2");
                 startActivity(intent);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         act_3.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +89,8 @@ public class Chat_Page extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(),Group_create_contacts.class);
                 intent.putExtra("one_to_one_flag","1");
                 startActivity(intent);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +118,8 @@ public class Chat_Page extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Launch_Activity.class);
                 finish();
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 
             }
         });
@@ -124,12 +133,16 @@ public class Chat_Page extends AppCompatActivity {
                             Intent i = new Intent(getApplicationContext(),Chat_Message_Single.class );
                             i.putExtra("user_number",list.get_opposite_person_number());
                             startActivity(i);
+                            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                         }
                         else {
                             Intent i = new Intent(getApplicationContext(),Message_Chat_Public_Group_Main.class );
                             i.putExtra("group_name",list.get_name());
                             i.putExtra("group_id",list.get_group_id());
                             startActivity(i);
+                            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                         }
                     }
 

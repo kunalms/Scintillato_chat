@@ -99,6 +99,8 @@ public class Edit_Profile extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Self_Profile.class);
                 finish();
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
             else
             {
@@ -189,6 +191,8 @@ public class Edit_Profile extends AppCompatActivity {
                     Intent i=new Intent(getApplicationContext(),Self_Profile.class);
                     finish();
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
             }
         }

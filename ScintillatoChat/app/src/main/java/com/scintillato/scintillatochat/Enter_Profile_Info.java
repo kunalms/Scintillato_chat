@@ -348,6 +348,8 @@ public class Enter_Profile_Info extends ActionBarActivity {
 					// set the new task and clear flags
 					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 					startActivity(i);
+					overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 					//Toast.makeText(Create_Page_3.this,result,Toast.LENGTH_LONG).show();
 				}
 			}

@@ -72,6 +72,8 @@ public class SyncActivity extends RuntimePermissionsActivity {
             Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
             finish();
             startActivity(i);
+            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
         }
 
     }
@@ -108,6 +110,8 @@ public class SyncActivity extends RuntimePermissionsActivity {
         Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
         finish();
         startActivity(i);
+        overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
     }
 
     BackGroundSync backGroundSync;

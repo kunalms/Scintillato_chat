@@ -227,6 +227,8 @@ public class Answer_Community_Question extends AppCompatActivity {
 
                     finish();
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 
                 }
             }

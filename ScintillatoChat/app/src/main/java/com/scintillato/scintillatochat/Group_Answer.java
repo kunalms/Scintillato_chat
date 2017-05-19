@@ -162,6 +162,7 @@ public class Group_Answer extends AppCompatActivity {
                     i.putExtra("group_id",group_id);
                     finish();
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
                 }
             }

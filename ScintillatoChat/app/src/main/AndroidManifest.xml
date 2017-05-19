@@ -39,6 +39,7 @@
         <activity
             android:name=".Start_Page"
             android:label="@string/title_activity_start__page"
+            android:noHistory="true"
             android:launchMode="singleTop" />
         <activity
             android:name=".Group_create_contacts"
@@ -99,6 +100,7 @@
         <activity android:name=".Chat_Page" />
         <activity
             android:name=".Chat_Message_Single"
+            android:noHistory="true"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Profile_Chat_Group" />
         <activity android:name=".Add_Member" />

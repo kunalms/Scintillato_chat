@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -180,12 +181,16 @@ public class Answer_Adapter extends ArrayAdapter {
                     Intent i = new Intent(ctx, Self_Profile.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(i);
+                    ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
                 else {
                     Intent i = new Intent(ctx, Profile_Other.class);
                     i.putExtra("user_id", answer_list.getUser_id());
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(i);
+                    ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
             }
         });
@@ -235,6 +240,8 @@ public class Answer_Adapter extends ArrayAdapter {
                 Log.d("answer_id",answer_list.getAnswer_id());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         answer_holder.comment.setOnClickListener(new View.OnClickListener(){
@@ -247,9 +254,9 @@ public class Answer_Adapter extends ArrayAdapter {
                 i.putExtra("answer_id",answer_list.getAnswer_id());
                 i.putExtra("user_name",answer_list.getUser());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Log.d("abc","abc");
 
             }

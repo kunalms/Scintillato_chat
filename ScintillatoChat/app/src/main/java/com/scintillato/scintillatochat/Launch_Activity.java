@@ -73,11 +73,15 @@ public class Launch_Activity extends Activity {
 				Intent i = new Intent(getApplicationContext(), SyncActivity.class);
 				finish();
 				startActivity(i);
+				overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 			} else {
 
                 Intent i = new Intent(getApplicationContext(), Login_Page.class);
 				finish();
 				startActivity(i);
+				overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 			}
 		}
 		else

@@ -196,7 +196,7 @@ public class Verify_Phone extends ActionBarActivity {
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
-								Intent i = new Intent(getApplicationContext(), VerifyOTP.class);
+								Intent i = new Intent(getApplicationContext(), Enter_Username.class);
 								i.putExtra("number", number.getText().toString());
 
 								startActivity(i);
@@ -366,6 +366,6 @@ public class Verify_Phone extends ActionBarActivity {
 			backgroudtask.cancel(true);
 			loading.cancel();
 		}
-		super.onPause();
+		super.onStop();
 	}
 }

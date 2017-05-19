@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -79,6 +80,8 @@ public class Feed_Recycler extends AppCompatActivity {
             {
                 Intent i=new Intent(getApplicationContext(),Ask_Question_Category.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
 

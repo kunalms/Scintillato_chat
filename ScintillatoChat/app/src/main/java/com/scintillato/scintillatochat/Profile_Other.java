@@ -118,6 +118,8 @@ public class Profile_Other extends AppCompatActivity {
                 i.putExtra("user_name",tv_user_name.getText().toString());
                 i.putExtra("username",tv_username.getText().toString());
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         btn_answer.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +130,8 @@ public class Profile_Other extends AppCompatActivity {
                 i.putExtra("user_name",tv_user_name.getText().toString());
                 i.putExtra("username",tv_username.getText().toString());
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         follow.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +147,8 @@ public class Profile_Other extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Self_Profile_Group.class);
                 i.putExtra("user_id",user_id);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         /*
@@ -485,6 +491,8 @@ public class Profile_Other extends AppCompatActivity {
             i.putExtra("user_number",user_number);
             i.putExtra("user_name",user_name);
             startActivity(i);
+            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
         }
 
         return super.onOptionsItemSelected(item);

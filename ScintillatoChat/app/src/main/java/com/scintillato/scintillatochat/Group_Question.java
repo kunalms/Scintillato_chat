@@ -89,6 +89,8 @@ public class Group_Question extends Fragment {
                 Intent i=new Intent(getActivity(),Ask_Question_Group.class);
                 i.putExtra("group_id",group_id);
                 startActivity(i);
+                getActivity().overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         progressBar.setVisibility(View.GONE);

@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -82,6 +83,8 @@ public class Self_Profile extends AppCompatActivity {
                 i.putExtra("user_name",user_name.getText().toString());
                 i.putExtra("username",username.getText().toString());
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         answer.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +95,8 @@ public class Self_Profile extends AppCompatActivity {
                 i.putExtra("user_name",user_name.getText().toString());
                 i.putExtra("username",username.getText().toString());
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +108,8 @@ public class Self_Profile extends AppCompatActivity {
                 i.putExtra("username",username.getText().toString());
                 i.putExtra("user_id",user_id);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         groups.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +118,7 @@ public class Self_Profile extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Self_Profile_Group.class);
                 i.putExtra("user_id",user_id);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
             }
         });
