@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/verifyback"
     tools:context="com.scintillato.scintillatochat.Group_Details_Public" >
+
 
     <EditText
         android:id="@+id/et_group_details_public_name"

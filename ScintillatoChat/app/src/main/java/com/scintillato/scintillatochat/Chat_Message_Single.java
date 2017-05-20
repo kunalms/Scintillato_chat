@@ -10,12 +10,12 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ActionMode;
@@ -110,7 +110,6 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
         relativeLayout=(RelativeLayout)activityName.findViewById(R.id.rl_custom_actionbar_layout);
         back=(ImageView)activityName.findViewById(R.id.iv_custom_actionbar_layout_back);
         send=(FloatingActionButton) findViewById(R.id.btn_message_chat_single_send);
-        send.setImageResource(R.drawable.ic_send24);
         message=(EditText)findViewById(R.id.et_message_chat_single_message);
         chat_list=new ArrayList<>();
         chat_RecyclerView=(RecyclerView)findViewById(R.id.rv_message_chat_single_chat);

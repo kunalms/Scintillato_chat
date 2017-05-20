@@ -1,10 +1,14 @@
+<android.support.v7.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/parent_margin_left"
-    android:layout_marginRight="@dimen/parent_margin_right"
-    android:background="@drawable/adapter_background"
-     >
+    >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_group_details_row_dp"
@@ -38,3 +42,4 @@
         android:textColor="#000000" />
 
 </RelativeLayout>
+</android.support.v7.widget.CardView>

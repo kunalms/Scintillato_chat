@@ -5,55 +5,81 @@
     android:background="@color/white"
 
     >
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/rel_layout_chat_page_row_1">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_chat_page_row_dp"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_launcher"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
         />
-
+</RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout4"
-        android:layout_alignBottom="@+id/iv_chat_page_row_dp"
+        android:layout_alignBottom="@+id/rel_layout_chat_page_row_1"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/iv_chat_page_row_dp"
+        android:layout_toEndOf="@+id/rel_layout_chat_page_row_1"
         android:layout_alignParentTop="true"
         android:background="@drawable/bottom_adapter"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/iv_chat_page_row_dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/iv_char_page_row_status"
-            android:layout_alignLeft="@+id/tv_chat_page_row_name"
-            android:layout_below="@+id/tv_chat_page_row_name"
-            android:src="@drawable/done_all_black_18x18"
-            android:layout_alignBottom="@+id/tv_chat_page_row_message"
-            />
-        <TextView
-            android:id="@+id/tv_chat_page_row_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/iv_char_page_row_status"
-            android:text="Message"
-            android:textColor="@color/black"
-            android:maxLines="1"
-            android:layout_below="@+id/tv_chat_page_row_name" />
+        android:layout_toRightOf="@+id/rel_layout_chat_page_row_1">
 
         <TextView
             android:id="@+id/tv_chat_page_row_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
+            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
-            android:text="NAME" />
+            android:text="name"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:inputType="textCapSentences"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:id="@+id/iv_char_page_row_status"
+            android:layout_alignLeft="@+id/tv_chat_page_row_name"
+            android:layout_below="@+id/tv_chat_page_row_name"
+            android:src="@drawable/done_all_black_18x18"
+            android:layout_marginTop="5dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R"
+            android:textSize="12dp"
+            android:gravity="bottom"
+            android:layout_toRightOf="@+id/iv_char_page_row_status"
+            android:layout_alignBottom="@id/iv_char_page_row_status"
+            android:id="@+id/tv_chat_page_row_r"/>
+
+        <TextView
+            android:id="@+id/tv_chat_page_row_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_char_page_row_status"
+            android:text="Message"
+            android:gravity="bottom"
+            android:maxLines="1"
+            android:maxLength="25"
+            android:layout_toRightOf="@id/tv_chat_page_row_r"
+            android:layout_below="@+id/tv_chat_page_row_name"
+            android:layout_marginLeft="3dp"/>
+
+
 
         <TextView
             android:text="day"
@@ -62,9 +88,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_chat_page_row_time"
             android:layout_marginEnd="11dp"
-            android:layout_marginTop="4dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/tv_chat_page_row_name"
             android:layout_marginRight="11dp"
             android:layout_alignParentRight="true" />
 
@@ -77,6 +101,7 @@
             android:textColor="@color/white"
             android:padding="1dp"
             android:textSize="13dp"
+            android:textStyle="bold"
             android:layout_alignBottom="@+id/tv_chat_page_row_message"
             android:layout_alignEnd="@+id/tv_chat_page_row_time"
             android:layout_alignRight="@+id/tv_chat_page_row_time" />
