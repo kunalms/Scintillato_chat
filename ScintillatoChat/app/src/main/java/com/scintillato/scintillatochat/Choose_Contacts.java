@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
@@ -76,10 +77,14 @@ public class Choose_Contacts extends ActionBarActivity {
 			if (one_to_one_flag.equals("0")) {
 				Intent i = new Intent(getApplicationContext(), Group_Details.class);
 				startActivity(i);
+				overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 			} else if (one_to_one_flag.equals("2")) {
 				Intent i = new Intent(getApplicationContext(), Group_Details_Public.class);
 				startActivity(i);
-			}
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
+            }
 		}
 		return super.onOptionsItemSelected(item);
 	}

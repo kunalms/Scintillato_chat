@@ -328,12 +328,19 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     public Cursor fetch_message_unsend_single(Chat_Database_Execute obj)
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
-        String[] coloumns={MessageUnsendSingleInfo.MESSAGE_ID,MessageUnsendSingleInfo.MESSAGE};
+        String[] coloumns={MessageUnsendSingleInfo.MESSAGE_ID,MessageUnsendSingleInfo.MESSAGE,MessageUnsendSingleInfo.OPPOSITE_PERSON_NUMBER};
         Cursor cr=SQ.query(MessageUnsendSingleInfo.TABLE_NAME, coloumns, null,null, null, null, null,null);
         return cr;
     }
 
-    //*******************************************************MESSAGE_GROUP*************************************************************
+    public Cursor fetch_message_unsend_group(Chat_Database_Execute obj)
+    {
+        SQLiteDatabase SQ=obj.getReadableDatabase();
+        String[] coloumns={MessageUnsendGroupInfo.MESSAGE_ID,MessageUnsendGroupInfo.MESSAGE,MessageUnsendGroupInfo.GROUP_ID};
+        Cursor cr=SQ.query(MessageUnsendGroupInfo.TABLE_NAME, coloumns, null,null, null, null, null,null);
+        return cr;
+    }
+//*******************************************************MESSAGE_GROUP*************************************************************
 
     public void delete_message_group_all()
     {
@@ -378,6 +385,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
             if(i==0)
             {
                 Cursor cr = SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID + "=? and "+MessageGroupInfo.SEND_RECIEVE+"=? and "+MessageGroupInfo.STATUS+"=?", new String[]{group_id,"1","0"}, null, null, MessageGroupInfo.MESSAGE_ID + " DESC ", "1");
+                cr.moveToFirst();
                 if(cr.getCount()>0)
                 {
                     message_id=cr.getString(0);
@@ -389,6 +397,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
             else
             {
                 Cursor cr = SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID + "=? and "+MessageGroupInfo.SEND_RECIEVE+"=? and "+MessageGroupInfo.STATUS+"=? and "+MessageGroupInfo.MESSAGE_ID+"<?", new String[]{group_id,"1","0",message_id}, null, null, MessageGroupInfo.MESSAGE_ID + " DESC ", "1");
+                cr.moveToFirst();
                 if(cr.getCount()>0)
                 {
                     message_id=cr.getString(0);

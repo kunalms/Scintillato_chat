@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -154,6 +155,7 @@ public class Comment_Answer_Community extends AppCompatActivity {
                     i.putExtra("answer_id",answer_id);
                     finish();
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
                 }
             }

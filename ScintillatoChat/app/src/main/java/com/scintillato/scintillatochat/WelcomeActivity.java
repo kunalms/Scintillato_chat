@@ -130,6 +130,8 @@ public class WelcomeActivity extends AppCompatActivity {
         boolean tmp=sharedpreferences.getBoolean("IsFirstTimeLaunch",true);
         Log.v("abc", "launchHomeScreen: "+tmp);
         startActivity(new Intent(WelcomeActivity.this, Start_Page.class));
+        overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
         finish();
     }
 

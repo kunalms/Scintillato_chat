@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -197,6 +198,8 @@ public class Self_Answer_Adapter extends ArrayAdapter {
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 // Toast.makeText(ctx,"click",Toast.LENGTH_SHORT).show();
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Log.d("abc","abc");
 
             }
@@ -216,6 +219,8 @@ public class Self_Answer_Adapter extends ArrayAdapter {
 
 
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Log.d("abc","abc");
 
             }
@@ -228,6 +233,8 @@ public class Self_Answer_Adapter extends ArrayAdapter {
                 Log.d("answer_id",que.getAnswer_id());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(i);
+                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
 

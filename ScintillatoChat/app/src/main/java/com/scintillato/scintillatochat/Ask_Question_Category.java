@@ -375,6 +375,8 @@ public class Ask_Question_Category extends AppCompatActivity {
                     Intent i=new Intent(getApplicationContext(),Start_Page.class);
                     finish();
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     //Toast.makeText(Create_Page_3.this,result,Toast.LENGTH_LONG).show();
                 }
             }
@@ -504,6 +506,17 @@ public class Ask_Question_Category extends AppCompatActivity {
         }
         super.onPause();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(getApplicationContext(),Start_Page.class);
+        finish();
+        startActivity(i);
+        overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
+    }
+
     @Override
     public void onStop()
     {

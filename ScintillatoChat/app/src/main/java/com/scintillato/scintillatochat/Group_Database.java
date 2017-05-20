@@ -20,7 +20,7 @@ public class Group_Database {
 			public static final String GROUP_IMAGE="group_image";
 			public static final String TABLE_NAME="groups";
 			public static final String GROUP_ID="group_id";
-			public static final String STATUS="status";
+			public static final String STATUS="status"; // may be public or private
         }
 }
 

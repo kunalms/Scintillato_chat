@@ -81,14 +81,14 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
         Chat_Page_List chat_list=list.get(position);
         if(chat_list.get_flag().equals("0"))
         {
-
+           // home_page_holder.message.setText("Group Created");
             fetch_group_profile_pic(chat_list.get_group_id(),home_page_holder.dp);
         }
         else
         {
+            home_page_holder.message.setText("");
             fetch_single_profile_pic(chat_list.get_opposite_person_number(),home_page_holder.dp);
         }
-
         if(chat_list.getSend_receive().equals("0"))
         {
             if(chat_list.getStatus().equals("0"))
@@ -114,6 +114,7 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
         {
             home_page_holder.iv_status.setVisibility(View.GONE);
         }
+
         home_page_holder.name.setText(chat_list.get_name());
         home_page_holder.message.setText(chat_list.get_messaage());
         home_page_holder.count.setText(chat_list.getMessage_count());

@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -218,6 +219,8 @@ public class Add_Member extends AppCompatActivity {
                     i.putExtra("group_id",group_id);
                     startActivity(i);
                     finish();
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
                 }
                 else

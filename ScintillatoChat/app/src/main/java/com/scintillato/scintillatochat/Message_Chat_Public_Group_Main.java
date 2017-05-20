@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -57,6 +58,8 @@ public class Message_Chat_Public_Group_Main extends ActionBarActivity implements
                 Intent i=new Intent(getApplicationContext(),Profile_Chat_Group.class);
                 i.putExtra("group_id",b.getString("group_id"));
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Toast.makeText(getApplicationContext(),"Actionbar clicked",Toast.LENGTH_SHORT).show();
             }
         });
@@ -123,5 +126,19 @@ public class Message_Chat_Public_Group_Main extends ActionBarActivity implements
     public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
         // TODO Auto-generated method stub
     }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Log.d("baxck","bacv");
+        Intent i=new Intent(getApplicationContext(),Start_Page.class);
+        finish();
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
+        // finish();
+    }
+
 
 }

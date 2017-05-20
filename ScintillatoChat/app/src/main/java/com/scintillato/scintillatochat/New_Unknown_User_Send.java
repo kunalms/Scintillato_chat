@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -214,6 +215,8 @@ public class New_Unknown_User_Send extends AppCompatActivity {
                     Intent i=new Intent(ctx,Message_Chat_Single.class);
                     i.putExtra("user_number",num);
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
                }
         }

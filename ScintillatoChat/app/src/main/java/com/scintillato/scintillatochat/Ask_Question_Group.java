@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -352,6 +353,8 @@ public class Ask_Question_Group extends AppCompatActivity {
                     i.putExtra("group_id", group_id);
                     Log.d("group_id_list", group_id);
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     //Toast.makeText(Create_Page_3.this,result,Toast.LENGTH_LONG).show();
                 }
             }

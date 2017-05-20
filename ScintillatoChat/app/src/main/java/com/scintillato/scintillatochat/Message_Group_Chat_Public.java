@@ -367,7 +367,6 @@ public class Message_Group_Chat_Public extends Fragment {
                         last_id = cr.getString(0);
                         Log.d("message", "id:" + cr.getString(0) + "mes:" + cr.getString(1));
                     }
-
                 }
                 else {
                     Log.d("left2",cr.getInt(14)+"");
@@ -543,6 +542,7 @@ public class Message_Group_Chat_Public extends Fragment {
                     }
                     Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
                     obj.delete_message_unsend_group_selected(message_id);
+
                 }
             }
         }
@@ -680,6 +680,7 @@ public class Message_Group_Chat_Public extends Fragment {
 
         super.onStop();
     }
+
     @Override
     public void onResume() {
         super.onResume();

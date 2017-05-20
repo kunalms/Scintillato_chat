@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -112,12 +113,16 @@ public class Comment_Feed_Community_Adapter extends ArrayAdapter {
                     Intent i = new Intent(ctx, Self_Profile.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(i);
+                    ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
                 else {
                     Intent i = new Intent(ctx, Profile_Other.class);
                     i.putExtra("user_id", Comment_Feed_Community_List.getUser_id());
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(i);
+                    ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
 
             }

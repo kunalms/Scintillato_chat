@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -305,6 +306,8 @@ public class Enter_Username extends AppCompatActivity {
                     i.putExtra("number",number);
                     i.putExtra("password",pwd.getText().toString());
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                     //Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
                 }
                 else

@@ -1,5 +1,6 @@
 package com.scintillato.scintillatochat;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -180,6 +181,8 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
                 Intent i=new Intent(getApplicationContext(),Profile_Chat_Single.class);
                 i.putExtra("user_number",user_number);
                 startActivity(i);
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 Toast.makeText(getApplicationContext(),"Actionbar clicked",Toast.LENGTH_SHORT).show();
             }
         });
@@ -1146,10 +1149,15 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
     @Override
     public void onBackPressed()
     {
+        super.onBackPressed();
+        Log.d("baxck","bacv");
          put_status(cur_number,"0");//unneccessary
         Intent i=new Intent(getApplicationContext(),Start_Page.class);
+        finish();
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
+        overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
         // finish();
     }
     @Override

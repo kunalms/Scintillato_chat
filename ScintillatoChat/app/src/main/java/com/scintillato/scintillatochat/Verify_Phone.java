@@ -366,6 +366,6 @@ public class Verify_Phone extends ActionBarActivity {
 			backgroudtask.cancel(true);
 			loading.cancel();
 		}
-		super.onPause();
+		super.onStop();
 	}
 }

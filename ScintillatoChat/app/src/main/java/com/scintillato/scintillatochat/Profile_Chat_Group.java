@@ -223,6 +223,8 @@ public class Profile_Chat_Group extends AppCompatActivity {
                     Intent i=new Intent(ctx,Start_Page.class);
                     startActivity(i);
                     finish();
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
             }
         }
@@ -328,6 +330,8 @@ public class Profile_Chat_Group extends AppCompatActivity {
                     obj.insert_message_group_boolean(obj,false,false,false,true,false,number,"",group_id,cur_number);
                     Intent i=new Intent(ctx,Start_Page.class);
                     startActivity(i);
+                    overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
                 }
             }
         }
@@ -359,6 +363,8 @@ public class Profile_Chat_Group extends AppCompatActivity {
             i.putExtra("rank",rank);
             Log.d("rank",rank);
             startActivity(i);
+            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
         }
 
         return super.onOptionsItemSelected(item);

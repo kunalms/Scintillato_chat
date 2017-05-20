@@ -137,7 +137,6 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
             {
                 message_chat_holder.read.setVisibility(View.VISIBLE);
                 message_chat_holder.status.setImageResource(R.drawable.ic_done_all_white18);
-
             }
         }
         //If not mine then it is from sender to show orange background and align to left

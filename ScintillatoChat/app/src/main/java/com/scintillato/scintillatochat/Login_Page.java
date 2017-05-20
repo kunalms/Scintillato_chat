@@ -3,6 +3,7 @@ package com.scintillato.scintillatochat;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -109,6 +110,8 @@ public class Login_Page extends AppCompatActivity {
                 Intent i=new Intent(getApplicationContext(),Verify_Phone.class);
                 startActivity(i);
                 finish();
+                overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
             }
         });
         show_pwd();
@@ -265,6 +268,8 @@ public class Login_Page extends AppCompatActivity {
             Intent i = new Intent(Login_Page.this, SyncActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
+            overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
         }
         catch(JSONException e)
         {

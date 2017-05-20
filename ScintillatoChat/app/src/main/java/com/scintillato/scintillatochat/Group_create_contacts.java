@@ -106,6 +106,8 @@ public class Group_create_contacts extends ActionBarActivity {
 					Intent i=new Intent(getApplicationContext(),Choose_Contacts.class);
 					startActivity(i);
 					finish();
+					overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 				}
 			}
  		}
@@ -129,18 +131,24 @@ public class Group_create_contacts extends ActionBarActivity {
 						Intent i = new Intent(getApplicationContext(), Choose_Contacts.class);
 						i.putExtra("one_to_one_flag", one_to_one_flag);
 						startActivity(i);
+						overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 					}
 					else if(one_to_one_flag.equals("2"))
 					{
 						Intent i = new Intent(getApplicationContext(), Choose_Contacts.class);
 						i.putExtra("one_to_one_flag", one_to_one_flag);
 						startActivity(i);
+						overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 
 					}
 					else
 					{
 						Intent i=new Intent(getApplicationContext(),Choose_Contacts_Single.class);
 						startActivity(i);
+						overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+
 					}
 
 
