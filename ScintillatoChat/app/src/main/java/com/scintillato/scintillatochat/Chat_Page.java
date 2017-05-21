@@ -158,8 +158,9 @@ public class Chat_Page extends AppCompatActivity {
     void fetch_chats()
     {
         chat_page_list.clear();
-        adapter.notifyDataSetChanged();
+
         adapter=new Chat_Page_Adapter(getApplicationContext(),chat_page_list);
+
         Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
 
         Cursor c;
@@ -171,7 +172,8 @@ public class Chat_Page extends AppCompatActivity {
             do {
                 if(c.getString(0).equals("1"))//single_chat
                 {
-                    String user_number=c.getString(2),user_name,message="",count,status="0",send_recieve="-1";
+                    String user_number=c.getString(2),user_name,message="",status="0",send_recieve="-1";
+                    int count;
                     Contacts_Unregistered_Execute ob = new Contacts_Unregistered_Execute(getApplicationContext(), cur_number);
                     final String user_exists = ob.number_exists(ob, user_number);
                     if (user_exists.equals("1") == true) {
@@ -195,14 +197,19 @@ public class Chat_Page extends AppCompatActivity {
                     }
                     String[] message_count=obj.get_count_unread_message_single(obj,user_number);
                   //  Toast.makeText(getApplicationContext(),"time_single"+c.getString(4),Toast.LENGTH_SHORT).show();
+
+                    if(message_count[0]!=null) {
+                        count = Integer.parseInt(message_count[0]);
+                        if (count >= 1000)
+                            message_count[0] = "1k+";
+                    }
                     Chat_Page_List chatPageList = new Chat_Page_List(user_name,message,user_number,c.getString(0),message_count[0],c.getString(4),status,send_recieve);
                     chat_page_list.add(chatPageList);
-                    adapter.notifyDataSetChanged();
                 }
                 else//group
                 {
                     String group_id=c.getString(1),message="Group Created",status="0",send_receive="0";
-                    String[] count_message_id=new String[1];
+                    String[] count_message_id=new String[2];
                     //send-0 recieve=1, status=0,1,2
                     Cursor cursor_group=obj.fetch_group_selected(obj,group_id);
                     if(cursor_group.getCount()>0) {
@@ -222,14 +229,24 @@ public class Chat_Page extends AppCompatActivity {
                                 }while(cursor_message.moveToNext());
 
                             }
+                            if(count_message_id[0]!=null) {
+                                int count = Integer.parseInt(count_message_id[0]);
+                                if (count >= 1000)
+                                    count_message_id[0] = "1k+";
+                            }
                        //     Toast.makeText(getApplicationContext(),"time_group"+cursor_group.getString(4),Toast.LENGTH_SHORT).show();
                             Chat_Page_List chatPageList = new Chat_Page_List(cursor_group.getString(1), message, group_id, c.getString(0), count_message_id[0], c.getString(4), status, send_receive);
                             chat_page_list.add(chatPageList);
-                            adapter.notifyDataSetChanged();
                         }while (cursor_group.moveToNext());
+
                     }
+
                 }
+
             }while (c.moveToNext());
+
+            adapter.notifyDataSetChanged();
+
         }
 
     }

@@ -416,6 +416,15 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
         cv.put(MessageGroupInfo.STATUS,status);
         SQ.update(MessageGroupInfo.TABLE_NAME, cv, MessageGroupInfo.MESSAGE_ID+"=?", new String[]{message_id});
     }
+
+    public void update_status_message_group(Chat_Database_Execute obj,String status)//change afterwards
+    {
+        SQLiteDatabase SQ =obj.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(MessageGroupInfo.STATUS,status);
+        SQ.update(MessageGroupInfo.TABLE_NAME, cv, MessageGroupInfo.SEND_RECIEVE+"=1", null);
+    }
+
     public String insert_message_group_boolean(Chat_Database_Execute obj,boolean icon_change,boolean name_change,boolean left,boolean remove,boolean add,String member,String new_name,String group_id,String sender)
     {
         SQLiteDatabase SQ =obj.getWritableDatabase();

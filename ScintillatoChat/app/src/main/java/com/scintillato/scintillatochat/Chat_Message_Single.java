@@ -171,7 +171,7 @@ public class Chat_Message_Single extends AppCompatActivity implements Chat_Messa
             Log.d("other",other_message_unseen_list.get(j));
         }
 
-        Toast.makeText(getApplicationContext(),other_message_unseen_list_string,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(),other_message_unseen_list_string,Toast.LENGTH_SHORT).show();
         send_seen_receipt(other_message_unseen_list_string);
         fetch_message_first();
         update_message_seen();

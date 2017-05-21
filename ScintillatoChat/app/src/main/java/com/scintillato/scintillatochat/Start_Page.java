@@ -592,7 +592,7 @@ public class Start_Page extends TabActivity {
                 IS.close();
                 httpURLConnection.disconnect();
 
-                if(line.equals("")==false)
+                if(line.equals("")==true)
                 {
                     flag=1;
                 }
