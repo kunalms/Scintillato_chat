@@ -85,7 +85,9 @@ public class Message_Group_Chat_Public extends Fragment {
         cur_number = sharedpreferences.getString("number", "");
         ctx = getActivity();
         Chat_Database_Execute obj=new Chat_Database_Execute(getActivity(),cur_number);
+        update_message_seen_status(obj,"1");
         Cursor c=obj.fetch_group_selected(obj,group_id);
+
         if(c.getCount()>0)
         {
             c.moveToFirst();
@@ -493,7 +495,7 @@ public class Message_Group_Chat_Public extends Fragment {
                 IS.close();
                 httpURLConnection.disconnect();
 
-                if(line.equals("")==false)
+                if(line.equals("")==true)
                 {
                     flag=1;
                 }
@@ -522,10 +524,13 @@ public class Message_Group_Chat_Public extends Fragment {
             if(flag1==0)
             {
                 Toast.makeText(ctx,result,Toast.LENGTH_LONG);
+                Log.d("message_id here2","here"+message_id);
+
             }
             else
             {
 
+                Log.d("message_id here1","here"+message_id+result+"bhj");
 
                 if(flag==1)
                 {
@@ -540,6 +545,8 @@ public class Message_Group_Chat_Public extends Fragment {
                             break;
                         }
                     }
+
+                    Log.d("message_id here","here"+message_id);
                     Chat_Database_Execute obj=new Chat_Database_Execute(ctx,cur_number);
                     obj.delete_message_unsend_group_selected(message_id);
 
@@ -555,6 +562,10 @@ public class Message_Group_Chat_Public extends Fragment {
     void update_message_status(String message_id,String status){
         Chat_Database_Execute obj=new Chat_Database_Execute(getActivity(),cur_number);
         obj.update_status_message_group(obj,message_id,status);
+    }
+    void update_message_seen_status(Chat_Database_Execute obj,String status)
+    {
+        obj.update_status_message_group(obj,status);
     }
 
     /*
