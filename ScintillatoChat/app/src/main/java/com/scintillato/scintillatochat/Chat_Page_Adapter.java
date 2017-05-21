@@ -39,7 +39,7 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
     private List<Chat_Page_List> list;
     public class Chat_Page_Holder extends RecyclerView.ViewHolder {
         public final View view;
-        TextView name,message,count,time;
+        TextView name,message,count,time,read;
         ImageView iv_status;
         CircleImageView dp;
         public Chat_Page_Holder(View row) {
@@ -51,6 +51,7 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
             time=(TextView)row.findViewById((R.id.tv_chat_page_row_time));
             dp=(CircleImageView)row.findViewById(R.id.iv_chat_page_row_dp);
             iv_status=(ImageView)row.findViewById(R.id.iv_char_page_row_status);
+            read=(TextView)row.findViewById(R.id.tv_chat_page_row_r);
         }
     }
     private Context ctx;
@@ -91,6 +92,7 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
         }
         if(chat_list.getSend_receive().equals("0"))
         {
+            home_page_holder.read.setVisibility(View.GONE);
             if(chat_list.getStatus().equals("0"))
             {
                 home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.ic_action_clock));
@@ -107,12 +109,22 @@ public class Chat_Page_Adapter extends RecyclerView.Adapter<Chat_Page_Adapter.Ch
             }
             else //if(chat_list.getStatus().equals("3"))
             {
+                home_page_holder.read.setVisibility(View.VISIBLE);
                 home_page_holder.iv_status.setImageDrawable(ctx.getResources().getDrawable(R.drawable.done_all_black_18x18));
+
             }
         }
         else if(chat_list.getSend_receive().equals("1"))
         {
+            home_page_holder.read.setVisibility(View.GONE);
             home_page_holder.iv_status.setVisibility(View.GONE);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.addRule(RelativeLayout.BELOW,R.id.tv_chat_page_row_name);
+            params.addRule(RelativeLayout.ALIGN_LEFT,R.id.tv_chat_page_row_name);
+            home_page_holder.message.setLayoutParams(params);
         }
 
         home_page_holder.name.setText(chat_list.get_name());
