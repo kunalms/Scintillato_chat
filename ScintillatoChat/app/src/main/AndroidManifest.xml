@@ -94,7 +94,8 @@
         <activity android:name=".Profile_Other" />
         <activity android:name=".Message_Chat_Single_Profile" />
         <activity android:name=".Comment_Feed_Community" />
-        <activity android:name=".Profile_Chat_Single" />
+        <activity android:name=".Profile_Chat_Single"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity android:name=".Feed_Recycler" />
         <activity android:name=".Chat_Page" />

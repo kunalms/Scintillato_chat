@@ -5,11 +5,14 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Environment;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,12 +33,18 @@ import java.util.ArrayList;
 
 public class Profile_Chat_Single extends AppCompatActivity {
 
-    private RecyclerView rv_groups;
-    private TextView tv_group_count,tv_phone;
-    private String user_number,cur_number;
-    private ImageButton ib_message;
+    Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    FloatingActionButton floatingActionButton;
+    int mutedColor = R.attr.colorPrimary;
+    RecyclerView recyclerView;
+
+
     private Profile_Chat_Single_Recycler_Adapter adapter;
     ArrayList<Profile_Chat_Single_Groups_List> list;
+
+    private String user_number,cur_number;
+
     private Context ctx;
     private ImageView profie_pic;
 
@@ -44,23 +53,34 @@ public class Profile_Chat_Single extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_chat_single);
-        tv_phone=(TextView)findViewById(R.id.tv_profile_chat_single_number);
-        tv_group_count=(TextView)findViewById(R.id.tv_profile_chat_single_group_count);
-        ib_message=(ImageButton)findViewById(R.id.ib_profile_chat_single_message);
-        rv_groups=(RecyclerView)findViewById(R.id.lv_profile_chat_single_groups);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        floatingActionButton=(FloatingActionButton)findViewById(R.id.fab);
+        recyclerView=(RecyclerView)findViewById(R.id.lv_profile_chat_single_groups);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        toolbar.setTitle("Hello");
+        collapsingToolbarLayout.setTitle("Demo");
+
+        setSupportActionBar(toolbar);
+
+        //recyclerview
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setHasFixedSize(true);
+
         profie_pic=(ImageView)findViewById(R.id.iv_profile_chat_single_pic);
         ctx=this;
         list=new ArrayList<>();
+
         adapter=new Profile_Chat_Single_Recycler_Adapter(getApplicationContext(),list);
-        final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        rv_groups.setLayoutManager(mLayoutManager);
-        rv_groups.setItemAnimator(new DefaultItemAnimator());
-        rv_groups.setAdapter(adapter);
+
+        recyclerView.setAdapter(adapter);
 
         Bundle b=getIntent().getExtras();
         user_number=b.getString("user_number");
-        tv_phone.setText(user_number);
 
+        collapsingToolbarLayout.setTitle(user_number);
         SharedPreferences sharedpreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
         cur_number = sharedpreferences.getString("number", "");
 
@@ -89,10 +109,8 @@ public class Profile_Chat_Single extends AppCompatActivity {
     {
         Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
         Cursor c=obj.get_groups_member(obj,user_number);
-        tv_group_count.setText("0");
         if(c.getCount()>0)
         {
-            tv_group_count.setText(c.getCount()+"");
             c.moveToFirst();
             do {
                 Cursor c1=obj.fetch_group_selected(obj,c.getString(0));
