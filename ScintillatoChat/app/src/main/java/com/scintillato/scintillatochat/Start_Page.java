@@ -610,7 +610,6 @@ public class Start_Page extends TabActivity {
 
             }
 
-
         }
         @Override
         protected void onPostExecute(String result) {

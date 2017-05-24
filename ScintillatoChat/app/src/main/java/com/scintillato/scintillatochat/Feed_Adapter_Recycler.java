@@ -267,7 +267,7 @@ public class Question_Holder extends RecyclerView.ViewHolder {
                 Log.d("check",question_holder.mItem.getQuestion_id()+question_holder.mItem.getUser()+question_holder.mItem.getLike_count()+question_holder.mItem.getNo_answer());
                 // Toast.makeText(ctx,"click",Toast.LENGTH_SHORT).show();
                 ctx.startActivity(i);
-                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+              //  Answer_Community_Question.this.overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
                 Log.d("abc","abc");
 
