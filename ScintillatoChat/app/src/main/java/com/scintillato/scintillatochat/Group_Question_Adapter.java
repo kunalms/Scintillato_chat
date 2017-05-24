@@ -222,7 +222,7 @@ public class Group_Question_Adapter extends ArrayAdapter {
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 // Toast.makeText(ctx,"click",Toast.LENGTH_SHORT).show();
                 ctx.startActivity(i);
-                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+               // ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
                 Log.d("abc","abc");
 
@@ -245,7 +245,7 @@ public class Group_Question_Adapter extends ArrayAdapter {
 
                 // Toast.makeText(ctx,"click",Toast.LENGTH_SHORT).show();
                 ctx.startActivity(i);
-                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+                //((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
 
             }

@@ -97,7 +97,7 @@ public class Answer_Group_Feed extends AppCompatActivity {
                 i.putExtra("user_name",user_name);
                 i.putExtra("cur_user_id",cur_user_id);
                 ctx.startActivity(i);
-                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+               // ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
 
             }

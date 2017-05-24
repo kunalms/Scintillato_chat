@@ -176,7 +176,7 @@ public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Fe
                     Intent i = new Intent(ctx, Self_Profile.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(i);
-                    ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+                  //  ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
                 }
                 else {
@@ -184,7 +184,7 @@ public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Fe
                     i.putExtra("user_id", answer_list.getUser_id());
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     ctx.startActivity(i);
-                    ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+                    //((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
                 }
             }
@@ -235,7 +235,7 @@ public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Fe
                 Log.d("answer_id",answer_list.getAnswer_id());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(i);
-                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+               // ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
             }
         });
@@ -250,7 +250,7 @@ public class Answer_Feed_Adapter_Recycler extends RecyclerView.Adapter<Answer_Fe
                 i.putExtra("user_name",answer_list.getUser());
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 ctx.startActivity(i);
-                ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+               // ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
                 Log.d("abc","abc");
 
             }

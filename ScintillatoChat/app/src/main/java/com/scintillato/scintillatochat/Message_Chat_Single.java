@@ -846,7 +846,7 @@ public class Message_Chat_Single extends AppCompatActivity {
         Intent i=new Intent(getApplicationContext(),Start_Page.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
-        ((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
+        //((Activity)ctx).overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
 
         // finish();
     }
