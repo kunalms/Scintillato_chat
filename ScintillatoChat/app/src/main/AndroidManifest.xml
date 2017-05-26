@@ -78,7 +78,8 @@
         <activity android:name=".Ask_Question_Group" />
         <activity android:name=".Group_Answer" />
         <activity android:name=".Answer_Group_Feed" />
-        <activity android:name=".SyncActivity" />
+        <activity android:name=".SyncActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".New_Unknown_User_Send" />
         <activity android:name=".Group_Details_Public" />
         <activity android:name=".Trending_Groups" />

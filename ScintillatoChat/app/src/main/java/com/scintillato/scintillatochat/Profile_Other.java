@@ -37,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Profile_Other extends AppCompatActivity {
     private TextView tv_username,tv_user_name,tv_user_bio;
     private CircleImageView user_image;
-    private ImageButton btn_question,btn_answer,btn_group;
+    private Button btn_question,btn_answer,btn_group;
     private String cur_number,user_id,cur_user_id,follow_status,user_number,user_name;
     private Button answer,question,groups,follow;
     private Bitmap bitmap_profile_pic;
@@ -52,9 +52,9 @@ public class Profile_Other extends AppCompatActivity {
         tv_user_name=(TextView)findViewById(R.id.tv_user_profile);
       //  answer=(Button)findViewById(R.id.btn_self_profile_answer);
     //   question=(Button)findViewById(R.id.btn_self_profile_question1) ;
-        btn_question=(ImageButton)findViewById(R.id.btn_self_profile_question1) ;
-        btn_answer=(ImageButton)findViewById(R.id.btn_self_profile_answer) ;
-        btn_group=(ImageButton)findViewById(R.id.btn_self_profile_group) ;
+        btn_question=(Button)findViewById(R.id.btn_self_profile_question1) ;
+        btn_answer=(Button)findViewById(R.id.btn_self_profile_answer) ;
+        btn_group=(Button)findViewById(R.id.btn_self_profile_group) ;
 
         //groups=(Button)findViewById(R.id.btn_self_profile_group);
         tv_user_bio=(TextView)findViewById(R.id.tv_profile_bio);

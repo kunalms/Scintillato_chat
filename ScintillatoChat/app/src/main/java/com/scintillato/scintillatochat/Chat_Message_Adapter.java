@@ -151,7 +151,7 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
         }
         if(message_chat.isUnseen()==true)
         {
-            message_chat_holder.box.setBackgroundResource(R.drawable.whitebubble);
+            message_chat_holder.box.setBackgroundResource(R.drawable.unread_background);
             params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
             message_chat_holder.message.setTextColor(Color.parseColor("#000000"));
             message_chat_holder.status.setVisibility(View.GONE);
