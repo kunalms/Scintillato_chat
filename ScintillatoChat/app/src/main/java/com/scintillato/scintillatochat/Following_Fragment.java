@@ -7,9 +7,6 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,48 +32,90 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 
-public class Notification extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Following_Fragment extends Fragment {
 
+
+    public Following_Fragment() {
+        // Required empty public constructor
+    }
+    private ListView listView;
+    private Recommend_User_Adapter adapter;
+    private ArrayList<Recommend_User_List> recommend_user_lists;
     private String myJSON,last_fetch_user_id="-1",cur_number;
     private ProgressBar progressBar;
     private Context ctx;
     private boolean last=false;
     private BackGroundTaskRegister backGroundTaskRegister;
-    private RecyclerView request_RecyclerView;
-    private Notification_Request_Adapter adapter;
-    private ArrayList<Notification_Request_List> notification_request_list;
 
-    public Notification() {
-        // Required empty public constructor
-    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.notification, container, false);
+        View view=inflater.inflate(R.layout.activity_recommend_user, container, false);
         ctx=getActivity();
         SharedPreferences sharedpreferences = ctx.getSharedPreferences("User", Context.MODE_PRIVATE);
         cur_number = sharedpreferences.getString("number", "");
-        request_RecyclerView=(RecyclerView)view.findViewById(R.id.rv_notification);
-        notification_request_list=new ArrayList<>();
-
-        adapter=new Notification_Request_Adapter(ctx,notification_request_list);
-        request_RecyclerView.setAdapter(adapter);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        request_RecyclerView.setLayoutManager(mLayoutManager);
-        request_RecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        //fetch_requests
         //progressBar=(ProgressBar)findViewById(R.id.progress_bar_feed);
+        listView=(ListView)view.findViewById(R.id.lv_recommend_user);
+        adapter=new Recommend_User_Adapter(ctx,R.layout.recommend_user_row);
+        listView.setAdapter(adapter);
+        progressBar=(ProgressBar)view.findViewById(R.id.progress_bar_recommended_user);
+        //progressBar.setVisibility(View.VISIBLE);
+        recommend_user_lists=new ArrayList<>();
+
+
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                if (listView.getLastVisiblePosition() == listView.getAdapter().getCount() -1 &&
+                        listView.getChildAt(listView.getChildCount() - 1).getBottom() <= listView.getHeight())
+                {
+                    if(last==false) {
+                        //progressBar.setVisibility(View.VISIBLE);
+                        fetch_recommend_user();                    }
+                }
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(ctx,"abc",Toast.LENGTH_SHORT).show();
+            }
+        });
+        fetch_recommend_user();
         return view;
     }
+    void  fetch_recommend_user()
+    {
+        String user_id="";
+        My_Details_Execute obj=new My_Details_Execute(ctx,cur_number);
+        Cursor cursor=obj.get_my_details(obj);
+        if (cursor.getCount()>0)
+        {
+            cursor.moveToFirst();
+            user_id=cursor.getString(0);
+        }
+        last=true;
+        backGroundTaskRegister=new BackGroundTaskRegister();
+        backGroundTaskRegister.execute(user_id,last_fetch_user_id);
 
+    }
 
+    int flag;
 
     class BackGroundTaskRegister extends AsyncTask<String, Void, String> {
         int flag1=1;
-        int flag;
-
         BackGroundTaskRegister()
         {
             flag=0;
@@ -183,6 +222,10 @@ public class Notification extends Fragment {
                 fetch_user_id=JO.getString("fetch_user_id");
                 name=JO.getString("user_name");
                 follower=JO.getString("followers");
+                Recommend_User_List list=new Recommend_User_List(name,follower,fetch_user_id);
+                adapter.add(list);
+                adapter.notifyDataSetChanged();
+                recommend_user_lists.add(list);
                 last=false;
                 if (count==jsonArray.length()-1) {
                     if (last_fetch_user_id != fetch_user_id) {

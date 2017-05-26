@@ -18,7 +18,7 @@ public class Follow_Notification_Adapter  extends FragmentStatePagerAdapter{
         // TODO Auto-generated method stub
         switch (index) {
             case 0:
-                return new Notification();
+                return new Following_Fragment();
 
             case 1:
                 return new Notification();

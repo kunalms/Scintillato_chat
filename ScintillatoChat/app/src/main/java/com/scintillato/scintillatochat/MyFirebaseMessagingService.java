@@ -178,7 +178,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 update_message_status(message_id,"2");
             else
                 update_message_status(message_id,"3");
-
         }
         else if(code.equals("5"))
         {
@@ -225,6 +224,73 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             fetch_new_members(group_members,group_pubic_id);
             Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
             obj.update_group_count(obj,group_pubic_id,group_count);
+        }
+        else if(code.equals("10"))
+        {
+            Intent i = new Intent(this, Chat_Page.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                    .setAutoCancel(true)
+                    .setContentTitle("Burble")
+                    .setContentText("You may have some new group requests")
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentIntent(pendingIntent);
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.notify(0, builder.build());
+        }
+        else if(code.equals("11"))
+        {
+            formattedDate=get_time();
+            Intent i = new Intent(this, Start_Page.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                    .setAutoCancel(true)
+                    .setContentTitle(admin)
+                    .setContentText(group_pubic_id+" accepted you request!")
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentIntent(pendingIntent);
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.notify(0, builder.build());
+
+            Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
+            obj.insert_groups(obj,group_name,group_topic,group_description,formattedDate,group_count,status,group_pubic_id);
+            add_members_group(group_members,group_pubic_id,admin);
+            add_members_group1(group_members,group_pubic_id,admin);
+            obj.insert_recent_chats(obj,"0",group_pubic_id,"-1",admin,formattedDate);
+        }
+    }
+
+    private void add_members_group1(String group_members, String group_pubic_id, String admin) {
+
+        formattedDate=get_time();
+        Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
+
+        try{
+                jsonObject=new JSONObject(group_members);
+                jsonArray=jsonObject.getJSONArray("result");
+
+                String rank,member_number;
+                count=0;
+                //	Log.d("length", jsonArray.length()+"");
+                while(count<jsonArray.length()) {
+                    JSONObject JO = jsonArray.getJSONObject(count);
+
+                        member_number = JO.getString("member_phone_number");
+                        rank = JO.getString("rank");
+                    if(member_number.equals(admin)==false)
+                        obj.putinfo_group_members(obj,group_pubic_id,member_number,"0",rank,formattedDate);
+                    else
+                        obj.putinfo_group_members(obj,group_pubic_id,member_number,"1",rank,formattedDate);
+                    count++;
+                }
+        }
+        catch (Exception e)
+        {
+
         }
     }
 
@@ -335,6 +401,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     group_pubic_id=JO.getString("group_id");
                     group_members=JO.getString("members");
                     group_count=JO.getString("group_count");
+                }
+                else if(code.equals("10"))
+                {
+                    sender=JO.getString("sender_number");
+                    group_pubic_id=JO.getString("group_id");
+                    message_date=JO.getString("date");
+                }
+                else if(code.equals("11"))
+                {
+                    group_name=JO.getString("group_name");
+                    group_topic=JO.getString("group_topic");
+                    group_description=JO.getString("group_description");
+                    group_count=JO.getString("group_count");
+                    status=JO.getString("status");
+                    admin=JO.getString("admin");
+                    group_members=JO.getString("group_members");
+                    group_pubic_id=JO.getString("group_id");
                 }
                 count++;
             }

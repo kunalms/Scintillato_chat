@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -61,7 +62,7 @@ public class Trending_Groups extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Trending_Group_List trending_group_list=(Trending_Group_List) adapter.getItem(position);
+                final Trending_Group_List trending_group_list=(Trending_Group_List) adapter.getItem(position);
                 final Dialog dialog = new Dialog(Trending_Groups.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -78,14 +79,22 @@ public class Trending_Groups extends AppCompatActivity {
                 topic.setText(trending_group_list.getGroup_topic());
                 followers.setText(trending_group_list.getGroup_count());
                 dialog.show();
-                TextView ok;
-                ok = (TextView) dialog.findViewById(R.id.btn_trending_groups_details_dialoge_ok);
-
+                Button ok,join;
+                ok = (Button) dialog.findViewById(R.id.btn_trending_groups_details_dialoge_ok);
+                join=(Button) dialog.findViewById(R.id.btn_trending_groups_details_dialoge_join);
                 ok.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
                         // TODO Auto-generated method stub
+                        dialog.cancel();
+                    }
+                });
+
+                join.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        send_request_group(trending_group_list.getGroup_public_id(),cur_number);
                         dialog.cancel();
                     }
                 });
@@ -117,7 +126,7 @@ public class Trending_Groups extends AppCompatActivity {
     {
         last=true;
         backGroundTaskFetchGroups=new BackGroundTaskFetchGroups();
-        backGroundTaskFetchGroups.execute(user_id,last_id);
+        backGroundTaskFetchGroups.execute(user_id,last_id,cur_number);
     }
     class BackGroundTaskFetchGroups extends AsyncTask<String, Void, String>
     {
@@ -131,7 +140,7 @@ public class Trending_Groups extends AppCompatActivity {
 
             String user_id=params[0];
             String last_id=params[1];
-
+            String cur_number=params[2];
 
             String register_url="http://scintillato.esy.es/fetch_profile_group.php";
 
@@ -144,7 +153,8 @@ public class Trending_Groups extends AppCompatActivity {
                 OutputStream OS=httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
                 String data= URLEncoder.encode("user_id","UTF-8")+"="+URLEncoder.encode(user_id,"UTF-8")+"&"+
-					URLEncoder.encode("last_id","UTF-8")+"="+URLEncoder.encode(last_id,"UTF-8");
+					URLEncoder.encode("last_id","UTF-8")+"="+URLEncoder.encode(last_id,"UTF-8")+"&"+
+                        URLEncoder.encode("mobile_no","UTF-8")+"="+URLEncoder.encode(cur_number,"UTF-8");
 
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
@@ -228,21 +238,20 @@ public class Trending_Groups extends AppCompatActivity {
 
             while (count < jsonArray.length()) {
                 JSONObject JO = jsonArray.getJSONObject(count);
-                group_public_id = JO.getString("group_public_id");
+                group_public_id = JO.getString("group_id");
                 group_name = JO.getString("group_name");
                 group_topic = JO.getString("group_topic");
                 group_description = JO.getString("group_description");
                 group_create_date = JO.getString("group_create_date");
                 group_count = JO.getString("group_count");
                 member_phone = JO.getString("member_phone_admin");
-                category_id = JO.getString("category_id");
                 Log.d("get_group", group_name);
 
                Log.d("recent", group_public_id);
                 count++;
                 Log.d("count", count + " " + jsonArray.length());
                 last=false;
-                Trending_Group_List list=new Trending_Group_List(group_public_id,group_name,group_topic,group_description,group_create_date,group_count,member_phone,category_id);
+                Trending_Group_List list=new Trending_Group_List(group_public_id,group_name,group_topic,group_description,group_create_date,group_count,member_phone,"0");
                 adapter.add(list);
                 if (last_id != group_public_id) {
                     last_id=group_public_id;
@@ -257,6 +266,109 @@ public class Trending_Groups extends AppCompatActivity {
             Log.d("error","here");
         }
     }
+
+
+    BackGroundTaskSendRequestGroup backGroundTaskSendRequestGroup;
+    void send_request_group(String group_id,String cur_number)
+    {
+     backGroundTaskSendRequestGroup=new BackGroundTaskSendRequestGroup();
+        backGroundTaskSendRequestGroup.execute(group_id,cur_number);
+    }
+
+    class BackGroundTaskSendRequestGroup extends AsyncTask<String, Void, String>
+    {
+        int flag1=1,flag;
+        BackGroundTaskSendRequestGroup()
+        {
+
+            Toast.makeText(ctx,"Sending Request...",Toast.LENGTH_LONG).show();
+            flag=0;
+        }
+        @Override
+        protected String doInBackground(String... params) {
+
+            String group_id=params[0];
+            String cur_number=params[1];
+
+            String register_url="http://scintillato.esy.es/send_request.php";
+
+
+            try{
+                URL url=new URL(register_url);
+                HttpURLConnection httpURLConnection=(HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream OS=httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
+                String data= URLEncoder.encode("group_id","UTF-8")+"="+URLEncoder.encode(group_id,"UTF-8")+"&"+
+                        URLEncoder.encode("mobile_no","UTF-8")+"="+URLEncoder.encode(cur_number,"UTF-8");
+
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                OS.close();
+                InputStream IS=httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(IS,"iso-8859-1"));
+
+                String line="";
+                line=bufferedReader.readLine();
+
+
+                bufferedReader.close();
+                IS.close();
+                httpURLConnection.disconnect();
+                Log.d("get_group", line);
+
+                if(line.equals("")==true)
+                {
+                    flag=0;
+                }
+                else
+                {
+                    flag=1;
+                }
+                return line;
+
+            }
+            catch(Exception e)
+            {
+                flag1=0;
+                return "Check Internet Connection!";
+
+            }
+
+
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            //	Log.e("1",result+"");
+            //	Toast.makeText(ctx,flag+"",Toast.LENGTH_LONG).show();
+
+            progressBar.setVisibility(View.GONE);
+            if(flag1==0)
+            {
+
+                Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+
+                if(flag==1)
+                {
+                    Toast.makeText(ctx, "Request has been sent!", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                {
+                    Toast.makeText(ctx, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+        @Override
+        protected void onPreExecute() {
+        }
+    }
+
     @Override
     public void onPause()
     {

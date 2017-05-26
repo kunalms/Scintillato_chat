@@ -81,7 +81,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
         SQLiteDatabase SQ=obj.getReadableDatabase();
         String[] coloumns={MessageSingleInfo.MESSAGE_ID,MessageSingleInfo.MESSAGE,MessageSingleInfo.DATE_TIME,MessageSingleInfo.SEND_RECIEVE,MessageSingleInfo.SENDER,MessageSingleInfo.RECIEVER,MessageSingleInfo.OPPOSITE_PERSON_NUMBER,MessageSingleInfo.STATUS,MessageSingleInfo.IMAGE_LOC,MessageSingleInfo.VIDEO_LOC,MessageSingleInfo.OPPOSITE_PERSON_MESSAGE_ID};
 
-        Cursor cr=SQ.query(MessageSingleInfo.TABLE_NAME, coloumns, MessageSingleInfo.OPPOSITE_PERSON_NUMBER+"=?",new String[]{opposite_person_number}, null, null, MessageSingleInfo.MESSAGE_ID+" DESC ","15");
+        Cursor cr=SQ.query(MessageSingleInfo.TABLE_NAME, coloumns, MessageSingleInfo.OPPOSITE_PERSON_NUMBER+"=?",new String[]{opposite_person_number}, null, null, MessageSingleInfo.MESSAGE_ID+" DESC ","150");
         return cr;
     }
 
@@ -89,7 +89,7 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
         String[] coloumns={MessageSingleInfo.MESSAGE_ID,MessageSingleInfo.MESSAGE,MessageSingleInfo.DATE_TIME,MessageSingleInfo.SEND_RECIEVE,MessageSingleInfo.SENDER,MessageSingleInfo.RECIEVER,MessageSingleInfo.OPPOSITE_PERSON_NUMBER,MessageSingleInfo.STATUS,MessageSingleInfo.IMAGE_LOC,MessageSingleInfo.VIDEO_LOC,MessageSingleInfo.OPPOSITE_PERSON_MESSAGE_ID};
-        Cursor cr=SQ.query(MessageSingleInfo.TABLE_NAME, coloumns, MessageSingleInfo.OPPOSITE_PERSON_NUMBER+"=? AND "+MessageSingleInfo.MESSAGE_ID+"<?",new String[]{opposite_person_number,last_id}, null, null, MessageSingleInfo.MESSAGE_ID+" DESC ","5");
+        Cursor cr=SQ.query(MessageSingleInfo.TABLE_NAME, coloumns, MessageSingleInfo.OPPOSITE_PERSON_NUMBER+"=? AND "+MessageSingleInfo.MESSAGE_ID+"<?",new String[]{opposite_person_number,last_id}, null, null, MessageSingleInfo.MESSAGE_ID+" DESC ","150");
         return cr;
     }
     public Cursor fetch_last_message_chat_single(Chat_Database_Execute obj, String opposite_person_number)
@@ -358,14 +358,14 @@ public class Chat_Database_Execute extends SQLiteOpenHelper {
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
         String[] coloumns={MessageGroupInfo.MESSAGE_ID,MessageGroupInfo.MESSAGE,MessageGroupInfo.DATE_TIME,MessageGroupInfo.SEND_RECIEVE,MessageGroupInfo.SENDER,MessageGroupInfo.GROUP_ID,MessageGroupInfo.STATUS,MessageGroupInfo.IMAGE_LOC,MessageGroupInfo.VIDEO_LOC,MessageGroupInfo._MEMBER,MessageGroupInfo.NEW_NAME,MessageGroupInfo.ADD,MessageGroupInfo.NAME_CHANGE,MessageGroupInfo.REMOVE,MessageGroupInfo.LEFT,MessageGroupInfo.ICON_CHANGE};
-        Cursor cr=SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID+"=?",new String[]{group_id}, null, null, MessageGroupInfo.MESSAGE_ID+" DESC ","15");
+        Cursor cr=SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID+"=?",new String[]{group_id}, null, null, MessageGroupInfo.MESSAGE_ID+" DESC ","150");
         return cr;
     }
     public Cursor fetch_message_chat_next_group(Chat_Database_Execute obj, String group_id,String last_id)
     {
         SQLiteDatabase SQ=obj.getReadableDatabase();
         String[] coloumns={MessageGroupInfo.MESSAGE_ID,MessageGroupInfo.MESSAGE,MessageGroupInfo.DATE_TIME,MessageGroupInfo.SEND_RECIEVE,MessageGroupInfo.SENDER,MessageGroupInfo.GROUP_ID,MessageGroupInfo.STATUS,MessageGroupInfo.IMAGE_LOC,MessageGroupInfo.VIDEO_LOC,MessageGroupInfo._MEMBER,MessageGroupInfo.NEW_NAME,MessageGroupInfo.ADD,MessageGroupInfo.NAME_CHANGE,MessageGroupInfo.REMOVE,MessageGroupInfo.LEFT,MessageGroupInfo.ICON_CHANGE};
-        Cursor cr=SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID+"=? AND "+MessageGroupInfo.MESSAGE_ID+"<?",new String[]{group_id,last_id}, null, null, MessageGroupInfo.MESSAGE_ID+" DESC ","5");
+        Cursor cr=SQ.query(MessageGroupInfo.TABLE_NAME, coloumns, MessageGroupInfo.GROUP_ID+"=? AND "+MessageGroupInfo.MESSAGE_ID+"<?",new String[]{group_id,last_id}, null, null, MessageGroupInfo.MESSAGE_ID+" DESC ","150");
         return cr;
     }
     public Cursor fetch_last_message_chat_group(Chat_Database_Execute obj, String group_id)

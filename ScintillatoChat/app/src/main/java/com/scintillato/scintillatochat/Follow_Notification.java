@@ -28,7 +28,7 @@ public class Follow_Notification extends ActionBarActivity implements TabListene
         mTabsAdapter = new Follow_Notification_Adapter(getSupportFragmentManager());
         tabsviewPager.setAdapter(mTabsAdapter);
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        Tab following = getSupportActionBar().newTab().setText("FOLLOWING").setTabListener(this);
+        Tab following = getSupportActionBar().newTab().setText("SUGGESTIONS").setTabListener(this);
         Tab notifications= getSupportActionBar().newTab().setText("NOTIFICATIONS").setTabListener(this);
         getSupportActionBar().addTab(following);
         getSupportActionBar().addTab(notifications);

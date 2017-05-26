@@ -98,7 +98,7 @@ public class Edit_Profile extends AppCompatActivity {
             new_username=et_username.getText().toString();
             if(new_bio.equals(ori_bio) && new_username.equals(ori_username)&&new_user_name.equals(ori_user_name))
             {
-                Intent i=new Intent(getApplicationContext(),Self_Profile.class);
+                Intent i=new Intent(getApplicationContext(),Start_Page.class);
                 finish();
                 startActivity(i);
                 overridePendingTransition(R.anim.left_to_right,R.anim.right_to_left);
