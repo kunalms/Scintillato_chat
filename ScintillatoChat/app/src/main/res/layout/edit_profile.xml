@@ -6,6 +6,7 @@
     xmlns:gradient="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_alignParentBottom="true"
 
     tools:context="com.scintillato.scintillatochat.Edit_Profile">
 
@@ -15,34 +16,33 @@
         gradient:transition_duration = "4000"
         gradient:transition_drawable="@drawable/translate"
         />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_below="@+id/et_edit_profile_username"
-        android:layout_alignStart="@+id/et_edit_profile_username"
-        android:layout_marginTop="24dp"
-        android:id="@+id/editText3" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/userprofile100"
+        android:id="@+id/ibtn_edit_profile"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text=""
         android:hint="Name"
+        android:background="@drawable/textview_back"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
         android:ems="10"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_alignTop="@id/ibtn_edit_profile"
         android:id="@+id/et_edit_profile_user_name"
-        android:layout_below="@+id/ibtn_edit_profile"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_toRightOf="@id/ibtn_edit_profile"
+        />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="Username"
@@ -51,7 +51,11 @@
         android:textColor="@color/white"
         android:id="@+id/et_edit_profile_username"
         android:layout_below="@+id/et_edit_profile_user_name"
-        android:layout_alignStart="@+id/et_edit_profile_user_name" />
+        android:layout_alignLeft="@id/ibtn_edit_profile"
+        android:layout_marginTop="5dp"
+        android:layout_alignRight="@id/et_edit_profile_user_name"
+        android:background="@drawable/textview_back"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -59,45 +63,64 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:hint="bio"
+        android:maxLines="7"
+        android:scrollbars="vertical"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:layout_alignBottom="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/et_edit_profile_bio" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/et_edit_profile_username"
+        android:id="@+id/et_edit_profile_bio"
+        android:background="@drawable/textview_back"
+        android:layout_alignLeft="@+id/et_edit_profile_username"
+        android:layout_alignRight="@+id/et_edit_profile_username"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Password"
+        android:layout_below="@+id/et_edit_profile_bio"
+        android:layout_alignLeft="@+id/et_edit_profile_username"
+        android:layout_alignRight="@+id/et_edit_profile_username"
+        android:layout_marginTop="5dp"
+        android:id="@+id/et_edit_profile_password"
+        android:background="@drawable/textview_back"
+        />
+
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/et_edit_profile_bio">
+    android:layout_below="@id/et_edit_profile_password"
+    android:layout_marginTop="5dp"
+    android:weightSum="1"
+    android:layout_alignParentBottom="true">
     <Button
         android:text="Change Password"
-        android:layout_marginRight="@dimen/parent_margin_right"
-        android:layout_marginLeft="@dimen/parent_margin_left"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_edit_profile_change_password"
         android:layout_below="@+id/editText3"
-        android:layout_weight="1"
+        android:layout_weight=".5"
         android:textAllCaps="false"
         android:background="@drawable/button_semi_transparent"/>
 
     <Button
-        android:text="    Change Number    "
-        android:layout_marginLeft= "@dimen/parent_margin_left"
-        android:layout_marginRight="@dimen/parent_margin_right"
+        android:text="Change Number"
         android:textAllCaps="false"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_semi_transparent"
         android:id="@+id/btn_edit_profile_change_number"
-        android:layout_weight="1" />
+        android:layout_weight=".5" />
 </LinearLayout>
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="50dp"
-        android:src="@drawable/userprofile100"
-        android:id="@+id/ibtn_edit_profile"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

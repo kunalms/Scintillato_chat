@@ -6,6 +6,62 @@
     android:layout_height="match_parent"
     tools:context="com.scintillato.scintillatochat.Ask_Question_Category">
 
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:inputType="textCapSentences|textMultiLine|textAutoCorrect"
+        android:hint="Ask Question..."
+        android:background="@drawable/adapter_background"
+        android:ems="10"
+        android:layout_marginLeft="@dimen/parent_margin_left"
+        android:layout_marginRight="@dimen/parent_margin_right"
+        android:layout_marginTop="14dp"
+        android:id="@+id/et_ask_question_category_question"
+        android:scrollbars="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_ask_question_category_question"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/iv_ask_question_category_image"
+        android:src="@drawable/userprofile100"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/iv_ask_question_category_image"
+        android:layout_alignLeft="@+id/et_ask_question_category_question"
+        android:layout_alignRight="@+id/et_ask_question_category_question"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ll_ask_question_category"
+        android:background="@drawable/adapter_background"
+        android:weightSum="1"
+        >
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Search Tags..."
+            android:ems="10"
+            android:id="@+id/et_ask_question_category_category"
+            android:layout_weight=".5"
+            />
+
+        <Switch
+            android:text="anonymous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switch_ask_question_category_anonumous"
+            />
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,59 +89,7 @@
         android:layout_alignLeft="@id/ll_ask_question_category"
         android:layout_alignRight="@id/ll_ask_question_category"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:inputType="textCapSentences|textMultiLine|textAutoCorrect"
-        android:hint="Ask Question..."
-        android:background="@drawable/adapter_background"
-        android:ems="10"
-        android:layout_marginLeft="@dimen/parent_margin_left"
-        android:layout_marginRight="@dimen/parent_margin_right"
-        android:layout_marginTop="14dp"
-        android:id="@+id/et_ask_question_category_question"
-        android:scrollbars="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-  <de.hdodenhof.circleimageview.CircleImageView
 
-    android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_ask_question_category_question"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/iv_ask_question_category_image"
-        android:src="@drawable/userprofile100"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/iv_ask_question_category_image"
-        android:layout_alignLeft="@+id/et_ask_question_category_question"
-        android:layout_alignRight="@+id/et_ask_question_category_question"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/ll_ask_question_category"
-        android:background="@drawable/adapter_background"
-        >
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Search Tags..."
-            android:ems="10"
-            android:id="@+id/et_ask_question_category_category"
-            android:layout_weight="1"
-            />
-
-        <Switch
-            android:text="Anonymous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/switch_ask_question_category_anonumous"
-            android:layout_weight="1"
-            />
-
-    </LinearLayout>
 
 
 

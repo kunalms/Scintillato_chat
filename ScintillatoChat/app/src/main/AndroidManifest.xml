@@ -89,7 +89,8 @@
         <activity
             android:name=".Comment_Answer_Community"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".Edit_Profile" />
+        <activity android:name=".Edit_Profile"
+            android:windowSoftInputMode="adjustResize|adjustPan"/>
         <activity android:name=".Self_Profile_Group" />
         <activity android:name=".Profile_Other" />
         <activity android:name=".Message_Chat_Single_Profile" />

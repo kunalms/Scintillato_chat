@@ -10,7 +10,7 @@
         android:id="@+id/btn_edit_profile_change"
         android:title=""
         app:showAsAction="always"
-        android:icon="@drawable/ic_send_black_24dp"
+        android:icon="@drawable/ic_send24"
         />
 
 </menu>

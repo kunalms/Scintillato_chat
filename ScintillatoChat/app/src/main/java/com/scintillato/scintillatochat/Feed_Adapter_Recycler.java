@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -157,6 +158,10 @@ public class Question_Holder extends RecyclerView.ViewHolder {
             else
                 time_enlapsed=(minutes+" Minutes ago");
         }
+        DisplayMetrics displayMetrics = ctx.getResources().getDisplayMetrics();
+        int pxWidth = displayMetrics.widthPixels;
+        question_holder.que_image.getLayoutParams().width=pxWidth;
+        question_holder.que_image.getLayoutParams().height=pxWidth;
         question_holder.time.setText(time_enlapsed);
         question_holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
