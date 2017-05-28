@@ -152,7 +152,8 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
         if(message_chat.isUnseen()==true)
         {
             message_chat_holder.box.setBackgroundResource(R.drawable.unread_background);
-            params.addRule(RelativeLayout.CENTER_HORIZONTAL,RelativeLayout.TRUE);
+            params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+            params.addRule(RelativeLayout.TEXT_ALIGNMENT_CENTER, RelativeLayout.TRUE);
             message_chat_holder.message.setTextColor(Color.parseColor("#000000"));
             message_chat_holder.status.setVisibility(View.GONE);
             message_chat_holder.time.setVisibility(View.GONE);
@@ -353,8 +354,6 @@ public class Chat_Message_Adapter extends RecyclerView.Adapter<Chat_Message_Adap
     public void remove(Object object) {
         list.remove(object);
     }
-
-
 
 
 

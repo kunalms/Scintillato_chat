@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_answer__feed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,21 +9,32 @@
     android:layout_marginRight="@dimen/parent_margin_right"
     tools:context="com.scintillato.scintillatochat.Answer_Group_Feed">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        android:elevation="6dp"
+        android:id="@+id/ll_question"
+        app:cardUseCompatPadding="true"
+        >
     <LinearLayout
         android:orientation="vertical"
-        android:padding="8dp"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:id="@+id/ll_question"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/adapter_background">
+        android:layout_marginBottom="4dp">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:background="@color/white"
+            >
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="wrap_content"
@@ -47,11 +58,13 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="55dp"
                 android:layout_below="@+id/tv_answer_group_feed_user"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentRight="true" />
         </RelativeLayout>
 
         <TextView
             android:text="Question"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/top_border_adapter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/tv_answer_group_feed_question" />
@@ -71,21 +84,23 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginTop="2dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/like30"
                 android:id="@+id/btn_answer_group_feed_like"
-                android:layout_weight="1"
+                android:layout_weight=".33"
                 android:background="@drawable/top_border_adapter"/>
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_answer_group_feed_answer"
-                android:layout_weight="1"
+                android:layout_weight=".33"
                 android:src="@drawable/comments30"
                 android:background="@drawable/top_border_adapter"/>
 
@@ -94,14 +109,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_answer_group_feed_tag"
-                android:layout_weight="1"
+                android:layout_weight=".33"
                 android:background="@drawable/top_border_adapter"/>
-
         </LinearLayout>
-
     </LinearLayout>
 
-
+    </android.support.v7.widget.CardView>
     <ProgressBar
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
@@ -116,6 +129,4 @@
         android:id="@+id/lv_answer_group_feed_answers"
         android:layout_above="@id/progressBar_answer_group_feed"
         android:layout_below="@+id/ll_question" />
-
-
 </RelativeLayout>

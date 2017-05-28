@@ -1,42 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardUseCompatPadding="true"
+    >
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/adapter_background"
     android:id="@+id/rl_self_answer_row"
-    android:padding="16dp">
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentLeft="true">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/like30"
-            android:id="@+id/bt_self_answer_row_like"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:background="@drawable/top_border_adapter"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:src="@drawable/comments30"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_answer_row_comment"
-            android:textColor="@color/black"
-            android:layout_weight="1"
-            android:background="@drawable/top_border_adapter"/>
-
-    </LinearLayout>
+    android:padding="8dp">
 
     <RelativeLayout
         android:orientation="vertical"
@@ -80,30 +57,49 @@
             android:src="@drawable/userprofile100"
             android:layout_alignParentLeft="true" />
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv_self_answer_row"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#2d0275cc"
+        android:layout_below="@+id/iv_self_answer_row_profile"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:background="#2d0275cc"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="3dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:text="Question"
+                android:textSize="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_self_answer_row_question" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_self_answer_row_question"
+                android:text="ANSWERS"
+                android:textColor="#000000"
+                android:id="@+id/tv_self_answer_row_question_answers"
+                />
+        </RelativeLayout>
 
 
-        <TextView
-            android:text="Question"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginTop="5dp"
-            android:background="@color/black_overlay"
-            android:id="@+id/tv_self_answer_row_question"
-            android:layout_below="@+id/iv_self_answer_row_profile"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true" />
+    </android.support.v7.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_self_answer_row_question"
-            android:text="ANSWERS"
-            android:background="@color/black_overlay"
-            android:textColor="#000000"
-            android:id="@+id/tv_self_answer_row_question_answers"
-            />
+
+
 
         <TextView
             android:text="ANSWER"
@@ -113,7 +109,7 @@
             android:textSize="21dp"
             android:layout_height="wrap_content"
             android:id="@+id/tv_self_answer_row_answer"
-            android:layout_below="@+id/tv_self_answer_row_question_answers"
+            android:layout_below="@+id/cv_self_answer_row"
             android:layout_alignParentStart="true" />
         <ImageView
             android:layout_width="match_parent"
@@ -123,27 +119,59 @@
             android:src="@color/background"
             android:layout_centerHorizontal="true"/>
 
+
+        <TextView
+            android:text="User"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_self_answer_row_user"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_self_answer_row_profile"
+            />
+
         <TextView
             android:text="Time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:id="@+id/tv_self_answer_row_time"
-            android:layout_marginBottom="13dp"
-            android:layout_above="@+id/tv_self_answer_row_question"
-            android:layout_alignStart="@+id/tv_self_answer_row_user" />
+            android:layout_below="@id/tv_self_answer_row_user"
+            android:layout_alignLeft="@id/tv_self_answer_row_user"
+            />
 
-        <TextView
-            android:text="User"
-            android:textStyle="bold"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_self_answer_row_user"
-            android:textColor="@color/black"
-            android:layout_above="@+id/tv_self_answer_row_time"
-            android:layout_toEndOf="@+id/tv_self_answer_row_question_answers" />
+
     </RelativeLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/like30"
+            android:id="@+id/bt_self_answer_row_like"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:background="@drawable/top_border_adapter"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:src="@drawable/comments30"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_answer_row_comment"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:background="@drawable/top_border_adapter"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by VIVEK on 16-03-2017.
  */
 
-public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Message_Group_Chat_Public_Adapter.Chat_Page_Holder>  {
+public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Message_Group_Chat_Public_Adapter.Chat_Page_Holder> implements StickyRecyclerHeadersAdapter<Message_Group_Chat_Public_Adapter.Chat_Holder_Header> {
     private ArrayList<Message_Chat_List> list=new ArrayList<>();
 
     @Override
@@ -150,6 +152,36 @@ public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Mess
     }
 
     @Override
+    public long getHeaderId(int position) {
+        return list.get(position).getmillisec();
+    }
+
+    @Override
+    public Chat_Holder_Header onCreateHeaderViewHolder(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.header, parent, false);
+        return new Chat_Holder_Header(view);
+    }
+
+    @Override
+    public void onBindHeaderViewHolder(Chat_Holder_Header holder, int position) {
+        String incoming_date=getdatemilli(list.get(position).getmillisec());
+        String today_date=gettoday();
+        String yester=getyesterday();
+        Log.d("time", "today"+today_date+"incoming_date"+incoming_date);
+        if(today_date.equals(incoming_date)){
+            holder.date.setText("Today");
+        }
+
+        else if(incoming_date.equals(yester)){
+            holder.date.setText("Yesterday");
+        }
+        else {
+            holder.date.setText(incoming_date);
+        }
+    }
+
+    @Override
     public int getItemCount() {
         return list.size();
     }
@@ -169,6 +201,17 @@ public class Message_Group_Chat_Public_Adapter extends RecyclerView.Adapter<Mess
             status=(ImageView)row.findViewById(R.id.img_message_chat_status);
         }
     }
+
+    public  class Chat_Holder_Header extends RecyclerView.ViewHolder{
+        public  View view;
+        TextView date;
+        public  Chat_Holder_Header(View row){
+            super(row);
+            this.view=row;
+            date=(TextView)row.findViewById(R.id.tv_header_row);
+        }
+    }
+
     private Context ctx;
     private String cur_number,cur_user_id;
     public Message_Group_Chat_Public_Adapter(Context ctx, ArrayList<Message_Chat_List> list) {

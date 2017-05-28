@@ -32,7 +32,7 @@
             android:layout_weight="16"
             android:layout_alignParentLeft="true" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_message_chat_single_send"
             android:layout_alignParentTop="false"
             android:layout_alignParentEnd="true"

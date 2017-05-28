@@ -5,10 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/rl_message_chat_single_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/rl_message_chat_single_1"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:weightSum="1"
@@ -52,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:rotation="225"
+                    android:visibility="gone"
                     android:layout_gravity="bottom"
                     android:src="@drawable/attachment_black_24dp"
                     android:background="@drawable/imagebutton_back"

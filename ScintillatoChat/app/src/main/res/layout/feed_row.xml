@@ -10,10 +10,8 @@
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="10dp"
-    app:cardElevation="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginBottom="12dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
     >
 
     <RelativeLayout
@@ -77,7 +75,7 @@
                 android:layout_alignParentStart="true"
                 android:text="Question"
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="16dp" />
 
             <ImageView
                 android:id="@+id/iv_feed_row_que_image"
@@ -93,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/iv_feed_row_que_image"
                 android:text="Likes :"
+                android:textSize="13dp"
                 android:textColor="@color/black" />
 
             <TextView
@@ -104,6 +103,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/tv_question_row_like"
                 android:text="Answers :"
+                android:textSize="13dp"
                 android:textColor="@color/black" />
         </RelativeLayout>
 

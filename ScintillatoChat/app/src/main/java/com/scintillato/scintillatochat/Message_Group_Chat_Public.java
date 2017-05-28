@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +24,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
+
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -106,11 +108,22 @@ public class Message_Group_Chat_Public extends Fragment {
 
         Toast.makeText(getActivity(),numbers_json,Toast.LENGTH_SHORT).show();
         adapter = new Message_Group_Chat_Public_Adapter(ctx, list_chat);
+        adapter.notifyDataSetChanged();
         final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         chat.setLayoutManager(mLayoutManager);
         chat.setItemAnimator(new DefaultItemAnimator());
         chat.setAdapter(adapter);
         ((LinearLayoutManager)chat.getLayoutManager()).setReverseLayout(true);
+        final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(adapter);
+        chat.addItemDecoration(headersDecor);
+        chat.addItemDecoration(new StickyRecyclerHeadersDecoration(adapter));
+        chat.post(new Runnable() {
+            @Override
+            public void run() {
+                chat.invalidateItemDecorations();
+                headersDecor.invalidateHeaders();
+            }
+        });
 
         send.setOnClickListener(new View.OnClickListener() {
 
