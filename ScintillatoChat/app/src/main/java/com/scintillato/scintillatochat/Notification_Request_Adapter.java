@@ -94,7 +94,7 @@ public class Notification_Request_Adapter extends RecyclerView.Adapter<Notificat
         request_holder.setIsRecyclable(false);
 
         //request_holder.category.setText(notification_request_list.getCategory());
-        request_holder.user_number.setText(notification_request_list.getUser_number());
+        request_holder.user_number.setText(notification_request_list.getUser_number()+" has requested to join group:-");
         request_holder.group_id.setText(notification_request_list.getGroup_id());
         request_holder.accept.setOnClickListener(new View.OnClickListener() {
             @Override

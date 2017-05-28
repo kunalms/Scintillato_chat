@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class Notification extends Fragment {
     private ProgressBar progressBar;
     private Context ctx;
     private boolean last=false;
-    private BackGroundTaskRegister backGroundTaskRegister;
+    private BackGroundTaskFetch backGroundTaskFetch;
     private RecyclerView request_RecyclerView;
     private Notification_Request_Adapter adapter;
     private ArrayList<Notification_Request_List> notification_request_list;
@@ -73,21 +74,20 @@ public class Notification extends Fragment {
 
 
 
-    class BackGroundTaskRegister extends AsyncTask<String, Void, String> {
+    class BackGroundTaskFetch extends AsyncTask<String, Void, String> {
         int flag1=1;
         int flag;
 
-        BackGroundTaskRegister()
+        BackGroundTaskFetch()
         {
             flag=0;
         }
         @Override
         protected String doInBackground(String... params) {
 
-            String user_id=params[0];
-            String last_fetch_user_id=params[1];
+            String cur_number=params[0];
 
-            String register_url="http://scintillato.esy.es/fetch_recommend_user.php";
+            String register_url="http://scintillato.esy.es/fetch_request.php";
 
             try{
                 URL url=new URL(register_url);
@@ -96,8 +96,7 @@ public class Notification extends Fragment {
                 httpURLConnection.setDoOutput(true);
                 OutputStream OS=httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
-                String data= URLEncoder.encode("user_id","UTF-8")+"="+URLEncoder.encode(user_id,"UTF-8")+"&"+
-                        URLEncoder.encode("last_fetch_user_id","UTF-8")+"="+URLEncoder.encode(last_fetch_user_id,"UTF-8");
+                String data= URLEncoder.encode("cur_number","UTF-8")+"="+URLEncoder.encode(cur_number,"UTF-8");
 
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
@@ -200,21 +199,57 @@ public class Notification extends Fragment {
 
         }
     }
+
+    /*'group_public_id'=>$row[0],
+		'mobile_no'=>$row[1],
+		'request_id'=>$row[2],
+		'request_date'=>$row[3]*/
+
+    public void fetch_group_request(String myJSON) {
+        int  count = 0;
+        Log.d("get_group1",myJSON);
+        JSONObject jsonObject;
+        JSONArray jsonArray;
+        String group_public_id,mobile_no,request_id,request_date;
+        try {
+            jsonObject = new JSONObject(myJSON);
+            jsonArray = jsonObject.getJSONArray("result");
+
+            Log.d("length1", jsonArray.length()+"");
+
+            while (count < jsonArray.length()) {
+                JSONObject JO = jsonArray.getJSONObject(count);
+
+                group_public_id=JO.getString("group_public_id");
+                mobile_no=JO.getString("mobile_no");
+                request_date=JO.getString("request_date");
+                request_id=JO.getString("request_id");
+                Notification_Request_List notification_request=new Notification_Request_List(group_public_id,mobile_no);
+                notification_request_list.add(notification_request);
+                count++;
+            }
+            adapter.notifyDataSetChanged();
+        }
+        catch (Exception e)
+        {
+            Log.d("error","here");
+        }
+    }
     @Override
     public void onPause()
     {
-        if(backGroundTaskRegister!=null)
+        if(backGroundTaskFetch!=null)
         {
-            backGroundTaskRegister.cancel(true);
+            backGroundTaskFetch.cancel(true);
         }
         super.onPause();
     }
     @Override
     public void onStop()
     {
-        if(backGroundTaskRegister!=null)
+        if(backGroundTaskFetch!=null)
         {
-            backGroundTaskRegister.cancel(true);
+            backGroundTaskFetch.cancel(true);
         }
         super.onStop();
     }

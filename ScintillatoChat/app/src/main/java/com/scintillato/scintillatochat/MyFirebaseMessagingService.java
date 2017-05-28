@@ -258,8 +258,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             Chat_Database_Execute obj=new Chat_Database_Execute(getApplicationContext(),cur_number);
             obj.insert_groups(obj,group_name,group_topic,group_description,formattedDate,group_count,status,group_pubic_id);
-            add_members_group(group_members,group_pubic_id,admin);
+           // add_members_group(group_members,group_pubic_id,admin);
             add_members_group1(group_members,group_pubic_id,admin);
+
+            Log.d("group_naae",group_name);
             obj.insert_recent_chats(obj,"0",group_pubic_id,"-1",admin,formattedDate);
         }
     }
@@ -418,6 +420,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     admin=JO.getString("admin");
                     group_members=JO.getString("group_members");
                     group_pubic_id=JO.getString("group_id");
+
+                    Log.d("group_naae",group_name);
                 }
                 count++;
             }
