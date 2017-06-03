@@ -81,7 +81,6 @@ public class Profile_Chat_Single_Recycler_Adapter extends RecyclerView.Adapter<P
     public void onBindViewHolder(Profile_Chat_Single_Recycler_Adapter.Group_Holder holder, int position) {
         holder.setIsRecyclable(false);
         Profile_Chat_Single_Groups_List issue_1_list = list.get(position);
-
         holder.group_name.setText(issue_1_list.getGroup_name());
         holder.time.setVisibility(View.INVISIBLE);
         holder.count.setVisibility(View.INVISIBLE);
