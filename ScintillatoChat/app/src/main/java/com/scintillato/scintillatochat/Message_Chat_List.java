@@ -127,18 +127,24 @@ public class Message_Chat_List {
     long getmillisec()
     {
         long millisecond=0;
-        Log.d("time__1", time );
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date mdate = df.parse(time);
+        if(time!=null) {
+            Log.d("time__1", time);
 
-            millisecond=mdate.getTime();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date mdate = df.parse(time);
+
+                millisecond = mdate.getTime();
+            } catch (Exception e) {
+                Log.d("error time", "error time");
+            }
+            return millisecond;
         }
-        catch (Exception e)
+        else
         {
-            Log.d("error time","error time");
+            return 1;
         }
-        return millisecond;
+
     }
 }
 
