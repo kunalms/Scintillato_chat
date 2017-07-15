@@ -13,6 +13,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -70,6 +71,10 @@ public class Profile_Chat_Single extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         profie_pic=(ImageView)findViewById(R.id.iv_profile_chat_single_pic);
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int pxWidth = displayMetrics.widthPixels;
+        profie_pic.getLayoutParams().width=pxWidth;
+        profie_pic.getLayoutParams().height=pxWidth;
         ctx=this;
         list=new ArrayList<>();
 

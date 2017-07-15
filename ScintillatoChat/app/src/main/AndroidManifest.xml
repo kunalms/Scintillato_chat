@@ -73,7 +73,9 @@
             android:label="@string/title_activity_login__page"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Answer_Feed" />
-        <activity android:name=".Answer_Community_Question" />
+        <activity android:name=".Answer_Community_Question"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity android:name=".Message_Chat_Public_Group_Main" />
         <activity android:name=".Ask_Question_Group" />
         <activity android:name=".Group_Answer" />
