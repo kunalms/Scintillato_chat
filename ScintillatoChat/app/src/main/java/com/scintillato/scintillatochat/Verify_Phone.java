@@ -23,15 +23,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.Random;
 
 public class Verify_Phone extends ActionBarActivity {
 
@@ -42,6 +50,36 @@ public class Verify_Phone extends ActionBarActivity {
 	private String token;
 	private Button login;
     private ProgressDialog loading;
+
+    String mobileno,country_code="91";
+
+    String authkey = "164854A3ujGlFnI596524f3";
+    //Multiple mobiles numbers separated by comma
+    String mobile;
+    //Sender ID,While using route4 sender id should be 6 characters long.
+    String senderId = "BURBLE";
+    //Your message to send, Add URL encoding here.
+    String message;
+    //OTP expiry (in minutes)
+
+    //otp
+    String OTP;
+
+    String expiry="60";
+    //OTP length
+    String length="5";
+
+    URLConnection myURLConnection=null;
+    URL myURL=null;
+    BufferedReader reader=null;
+
+    //encoding message
+    String encoded_message;
+
+    //Send SMS API
+    String mainUrl="https://control.msg91.com/api/sendotp.php?";
+
+    String response;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -196,10 +234,33 @@ public class Verify_Phone extends ActionBarActivity {
 							@Override
 							public void onClick(View v) {
 								// TODO Auto-generated method stub
-								Intent i = new Intent(getApplicationContext(), Enter_Username.class);
-								i.putExtra("number", number.getText().toString());
+                                mobile=country_code+number.getText().toString();
 
-								startActivity(i);
+                                //OTP generation
+                                Random r = new Random();
+                                int Low = 10000;
+                                int High = 99999;
+                                int Result = r.nextInt(High-Low) + Low;
+
+                                OTP= String.valueOf(Result);
+								message="Welcome to Burble Your Verification Code is "+OTP+". Keep Burbling !!";
+								encoded_message= URLEncoder.encode(message);
+                                StringBuilder sbPostData= new StringBuilder(mainUrl);
+                                sbPostData.append("authkey="+authkey);
+                                sbPostData.append("&mobile="+mobile);
+                                sbPostData.append("&message="+encoded_message);
+                                sbPostData.append("&sender="+senderId);
+                                sbPostData.append("&otp="+OTP);
+                                sbPostData.append("&otp_expiry="+expiry);
+                                sbPostData.append("&otp_length="+length);
+
+                                mainUrl = sbPostData.toString();
+                                Log.d("APICALL",mainUrl);
+
+								RequestOTP requestOTP=new RequestOTP();
+								requestOTP.execute(mainUrl);
+
+
 							}
 						});
 
@@ -327,10 +388,10 @@ public class Verify_Phone extends ActionBarActivity {
                         @Override
                         public void onClick(View v) {
                             // TODO Auto-generated method stub
-                            Intent i = new Intent(getApplicationContext(), Enter_Username.class);
-                            i.putExtra("number", number.getText().toString());
+							Intent i = new Intent(getApplicationContext(), Enter_Username.class);
+							i.putExtra("number", number.getText().toString());
+							startActivity(i);
 
-                            startActivity(i);
                         }
                     });
                     //Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
@@ -367,5 +428,56 @@ public class Verify_Phone extends ActionBarActivity {
 			loading.cancel();
 		}
 		super.onStop();
+	}
+
+	class RequestOTP extends AsyncTask <String, Void, String>{
+		@Override
+		protected void onPreExecute() {
+			loading = ProgressDialog.show(ctx, "Status", "Generating OTP...",true,false);
+			loading.setCancelable(false);
+		}
+
+		@Override
+		protected void onPostExecute(String s) {
+			loading.dismiss();
+
+			try {
+				//JSONObject jsonObject=new JSONObject(response);
+
+					Intent i = new Intent(getApplicationContext(), VerifyOTP.class);
+					i.putExtra("number",number.getText().toString());
+					startActivity(i);
+
+			}catch(Exception e){
+
+			}
+
+
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			try {
+				String apicall=params[0];
+				myURL = new URL(apicall);
+				myURLConnection = myURL.openConnection();
+				myURLConnection.connect();
+				reader= new BufferedReader(new InputStreamReader(myURLConnection.getInputStream()));
+
+				//reading response
+
+				while ((response = reader.readLine()) != null)
+					//print response
+					Log.d("APIRESPONSE", ""+response);
+				//finally close connection
+				reader.close();
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			return response;
+		}
 	}
 }

@@ -19,5 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/et_verify_otp"
             android:layout_centerHorizontal="true"
-            android:text="Validate"/>
+            android:text="Validate"
+            android:id="@+id/btn_validate"/>
 </RelativeLayout>
